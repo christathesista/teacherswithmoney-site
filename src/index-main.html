@@ -110,7 +110,7 @@
       <div class="form-box">
         <p class="label">Join the newsletter</p>
         <div class="embed">{{FORM_NEWSLETTER}}</div>
-        <p class="small fallback" hidden>Form not loading? <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">Join on beehiiv</a>.</p>
+        <p class="small fallback" hidden>Not seeing the form? You're probably already subscribed in this browser. If not, <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">join on beehiiv</a>.</p>
         <p class="small fine">Use your personal email (not your school one) so we stay connected even if you switch districts. No spam, unsubscribe any time. <a href="privacy.html">Privacy Policy</a>.</p>
       </div>
     </div>
@@ -133,7 +133,7 @@
           <div class="form-box">
             <p class="label">Join the Summit waitlist</p>
             <div class="embed">{{FORM_SUMMIT}}</div>
-            <p class="small fallback" hidden>Form not loading? <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">Join on beehiiv</a>.</p>
+            <p class="small fallback" hidden>Not seeing the form? You're probably already subscribed in this browser. If not, <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">join on beehiiv</a>.</p>
             <p class="small fine">Use your personal email (not your school one) so we stay connected even if you switch districts. Waitlisters also get my Wednesday newsletter. <a href="privacy.html">Privacy Policy</a>.</p>
           </div>
         </div>
@@ -175,7 +175,8 @@
   </section>
 
 <script>
-  // If beehiiv's embed script is blocked, show a plain link instead of an empty box.
+  // beehiiv hides its form for a year in any browser that already subscribed (bhv_*_subscribed cookie),
+  // and some setups block the embed. Either way, say so instead of leaving an empty box.
   setTimeout(function () {
     document.querySelectorAll(".form-box").forEach(function (box) {
       if (!box.querySelector(".embed iframe")) {

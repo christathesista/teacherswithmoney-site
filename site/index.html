@@ -399,7 +399,7 @@ p { margin: 0; max-width: 68ch; }
       <div class="form-box">
         <p class="label">Join the newsletter</p>
         <div class="embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="b6cd0344-203d-4142-9f4f-25e7c0bf6114"></script></div>
-        <p class="small fallback" hidden>Form not loading? <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">Join on beehiiv</a>.</p>
+        <p class="small fallback" hidden>Not seeing the form? You're probably already subscribed in this browser. If not, <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">join on beehiiv</a>.</p>
         <p class="small fine">Use your personal email (not your school one) so we stay connected even if you switch districts. No spam, unsubscribe any time. <a href="privacy.html">Privacy Policy</a>.</p>
       </div>
     </div>
@@ -422,7 +422,7 @@ p { margin: 0; max-width: 68ch; }
           <div class="form-box">
             <p class="label">Join the Summit waitlist</p>
             <div class="embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="04d15350-3e84-45c0-912f-db1615eafa2d"></script></div>
-            <p class="small fallback" hidden>Form not loading? <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">Join on beehiiv</a>.</p>
+            <p class="small fallback" hidden>Not seeing the form? You're probably already subscribed in this browser. If not, <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">join on beehiiv</a>.</p>
             <p class="small fine">Use your personal email (not your school one) so we stay connected even if you switch districts. Waitlisters also get my Wednesday newsletter. <a href="privacy.html">Privacy Policy</a>.</p>
           </div>
         </div>
@@ -464,7 +464,8 @@ p { margin: 0; max-width: 68ch; }
   </section>
 
 <script>
-  // If beehiiv's embed script is blocked, show a plain link instead of an empty box.
+  // beehiiv hides its form for a year in any browser that already subscribed (bhv_*_subscribed cookie),
+  // and some setups block the embed. Either way, say so instead of leaving an empty box.
   setTimeout(function () {
     document.querySelectorAll(".form-box").forEach(function (box) {
       if (!box.querySelector(".embed iframe")) {
