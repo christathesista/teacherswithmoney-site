@@ -17,6 +17,7 @@ header = (SRC / "header.html").read_text()
 footer = (SRC / "footer.html").read_text()
 index_main = (SRC / "index-main.html").read_text()
 privacy_main = (SRC / "privacy-main.html").read_text()
+pillars_main = (SRC / "pillars-main.html").read_text()
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
@@ -83,6 +84,13 @@ priv_body = (header.replace("{{HOME}}", "/") +
          "How Teachers With Money handles the email address you share with us.",
          "https://teacherswithmoney.com/privacy.html"), priv_body))
 
+PILLARS_TITLE = "Our Pillars | Teachers With Money"
+PILLARS_DESC = ("The five pillars behind Teachers With Money: side hustles, wealth strategy, "
+                "money and mental health, teacher pathways, and systemic change.")
+pillars_body = header.replace("{{HOME}}", "/") + pillars_main + footer.replace("{{HOME}}", "/")
+(SITE / "pillars.html").write_text(page(
+    head(PILLARS_TITLE, PILLARS_DESC, "https://teacherswithmoney.com/pillars.html"), pillars_body))
+
 # ---------- preview ----------
 if PREVIEW.exists():
     shutil.rmtree(PREVIEW)
@@ -99,4 +107,7 @@ prev_main = (f"<title>Teachers With Money</title>\n{FONTS}\n<style>\n{css}</styl
     header.replace("{{HOME}}", "./") +
     privacy_main.replace("{{EFFECTIVE_DATE}}", "October 14, 2026") +
     footer.replace("{{HOME}}", "./")))
+(PREVIEW / "pillars.html").write_text(page(
+    head(PILLARS_TITLE, PILLARS_DESC, "https://teacherswithmoney.com/pillars.html"),
+    header.replace("{{HOME}}", "./") + pillars_main + footer.replace("{{HOME}}", "./")))
 print("built", SITE, PREVIEW)
