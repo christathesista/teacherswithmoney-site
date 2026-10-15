@@ -93,6 +93,19 @@ p { margin: 0; max-width: 68ch; }
   text-transform: uppercase;
   color: var(--green);
 }
+.section-name {
+  font-family: var(--mono);
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--pink);
+}
+.band--green .section-name { color: var(--gold); }
+.band--berry .section-name { color: var(--gold); }
+.summit-panel .section-name { color: var(--pink); }
+.section-name + .label { margin-top: -8px; }
 .script { font-family: var(--script); font-size: clamp(32px, 4vw, 42px); line-height: 1; color: var(--pink); font-weight: 400; }
 .stack { display: flex; flex-direction: column; gap: 18px; }
 
@@ -216,6 +229,7 @@ p { margin: 0; max-width: 68ch; }
 /* ---------- speaking ---------- */
 .speaking .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
 .speaking p { color: var(--cream-soft); }
+.speaking .or { font-size: 15px; color: var(--cream-soft); }
 .speaking .email { font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; color: var(--cream); }
 @media (max-width: 860px) { .speaking .wrap { grid-template-columns: minmax(0, 1fr); } }
 
@@ -276,7 +290,6 @@ p { margin: 0; max-width: 68ch; }
   <section class="band band--green hero" aria-labelledby="hero-title">
     <div class="wrap">
       <div class="stack">
-        <p class="label">Money + mindset for educators</p>
         <h1 id="hero-title">You can love teaching AND want more money.</h1>
         <p class="lead">Teachers With Money is a happy place to talk about money, with zero guilt and plenty of possibility. Stay in your classroom or take your skills somewhere new (or build something on the side while you decide). It's your call, and we'll help the money part feel good.</p>
         <div class="hero-cta">
@@ -298,7 +311,7 @@ p { margin: 0; max-width: 68ch; }
   <section class="band beliefs" aria-labelledby="beliefs-title">
     <div class="wrap">
       <div class="stack">
-        <p class="label">What we believe</p>
+        <p class="section-name">What we believe</p>
         <h2 id="beliefs-title">Teaching is noble. So is getting paid.</h2>
         <p>Teachers get called heroes and saints a lot. It's a lovely compliment that somehow always arrives with a pay cut. (We'll take the compliment. And the raise, please.)</p>
         <p>Around here, we'd rather call you a class act.</p>
@@ -334,7 +347,8 @@ p { margin: 0; max-width: 68ch; }
       <div class="pod-head">
         <picture><source srcset="assets/first-in-class-cover.webp" type="image/webp"><img class="cover" src="assets/first-in-class-cover.jpg" alt="Teachers With Money: First in Class podcast cover" width="600" height="600"></picture>
         <div class="stack">
-          <p class="label">The podcast · New episodes every Tuesday</p>
+          <p class="section-name">Podcast</p>
+          <p class="label">New episodes every Tuesday</p>
           <h2 id="podcast-title">Teachers With Money: First in Class</h2>
           <p>Every Tuesday you get a seat at the table with educators and money people who've figured something out. A first-generation millionaire on a teacher's salary. A teacher whose writing side hustle grew to match her paycheck. And some weeks it's just me, thinking out loud about whatever money question I can't put down.</p>
           <p class="quote">Expect a lot of "wait, I could do THAT?" moments.</p>
@@ -375,7 +389,8 @@ p { margin: 0; max-width: 68ch; }
   <section class="band" id="newsletter" aria-labelledby="newsletter-title">
     <div class="wrap signup">
       <div class="stack">
-        <p class="label">The newsletter · Free · Every Wednesday</p>
+        <p class="section-name">Newsletter</p>
+        <p class="label">Free · Every Wednesday</p>
         <h2 id="newsletter-title">One email every Wednesday for the Class Acts.</h2>
         <p class="lead">Real money talk for educators. Weekly, short, and everyone's welcome... especially if "money" and "teacher" have never felt like they belong in the same sentence.</p>
         <p>Each Wednesday you get a little money mindset and one small thing you can actually do before the weekend. It's also the first place you'll hear about new episodes and the Summit.</p>
@@ -393,6 +408,7 @@ p { margin: 0; max-width: 68ch; }
       <div class="summit-panel">
         <div class="signup">
           <div class="stack">
+            <p class="section-name">Virtual Summit</p>
             <p class="label">Late January · Online · Free</p>
             <span class="script">you're invited!</span>
             <h2 id="summit-title">Teachers With Money Summit</h2>
@@ -414,7 +430,7 @@ p { margin: 0; max-width: 68ch; }
   <section class="band band--berry speaking" id="speaking" aria-labelledby="speaking-title">
     <div class="wrap">
       <div class="stack">
-        <p class="label">Speaking</p>
+        <p class="section-name">Speaking</p>
         <h2 id="speaking-title">Give your educators a money conversation they'll actually enjoy.</h2>
       </div>
       <div class="stack">
@@ -422,7 +438,7 @@ p { margin: 0; max-width: 68ch; }
         <p>A great fit for PD days, conferences, union events, and podcasts.</p>
         <div class="btn-row">
           <a class="btn btn--primary" href="mailto:christa@teacherswithmoney.com?subject=Speaking">Book a session for your people</a>
-          <span class="email">christa@teacherswithmoney.com</span>
+          <span class="or">or email <a class="email" href="mailto:christa@teacherswithmoney.com?subject=Speaking">christa@teacherswithmoney.com</a></span>
         </div>
       </div>
     </div>
@@ -432,7 +448,7 @@ p { margin: 0; max-width: 68ch; }
     <div class="wrap">
       <picture><source srcset="assets/christa.webp" type="image/webp"><img class="photo" src="assets/christa.jpg" alt="Christa Jones, host of Teachers With Money: First in Class" width="600" height="600"></picture>
       <div class="stack">
-        <p class="label">About</p>
+        <p class="section-name">About</p>
         <h2 id="about-title">Hi, I'm Christa!</h2>
         <p>I'm a former teacher and a forever educator.</p>
         <p>I spent ten years in the classroom, and I loved it. Like, love-of-my-life loved it. In 2023 I made the hardest call of my career and decided to leave, but first, while I was still teaching, I opened a Teachers Pay Teachers store. That store wasn't the bridge out because it was successful. It was the parachute that caught me when I jumped.</p>

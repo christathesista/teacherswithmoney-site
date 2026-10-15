@@ -93,6 +93,19 @@ p { margin: 0; max-width: 68ch; }
   text-transform: uppercase;
   color: var(--green);
 }
+.section-name {
+  font-family: var(--mono);
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--pink);
+}
+.band--green .section-name { color: var(--gold); }
+.band--berry .section-name { color: var(--gold); }
+.summit-panel .section-name { color: var(--pink); }
+.section-name + .label { margin-top: -8px; }
 .script { font-family: var(--script); font-size: clamp(32px, 4vw, 42px); line-height: 1; color: var(--pink); font-weight: 400; }
 .stack { display: flex; flex-direction: column; gap: 18px; }
 
@@ -216,6 +229,7 @@ p { margin: 0; max-width: 68ch; }
 /* ---------- speaking ---------- */
 .speaking .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
 .speaking p { color: var(--cream-soft); }
+.speaking .or { font-size: 15px; color: var(--cream-soft); }
 .speaking .email { font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; color: var(--cream); }
 @media (max-width: 860px) { .speaking .wrap { grid-template-columns: minmax(0, 1fr); } }
 
