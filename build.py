@@ -25,7 +25,7 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
 
 TITLE = "Teachers With Money | Real money talk for educators"
 DESC = ("Real money talk for educators, with zero guilt. A podcast every Tuesday, a "
-        "newsletter every Wednesday, and a free online summit in late January.")
+        "newsletter every Wednesday, and a free online summit on January 30 and 31, 2027.")
 
 def embed(form_id):
     return ('<script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" '

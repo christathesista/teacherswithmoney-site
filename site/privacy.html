@@ -212,6 +212,8 @@ p { margin: 0; max-width: 68ch; }
 .form-box .embed { min-height: 64px; width: 100%; }
 .form-box .embed iframe { max-width: 100%; }
 .form-box .fine { color: var(--ink); opacity: 0.85; }
+.form-box .fallback { color: var(--ink); }
+.form-box .fallback[hidden] { display: none; }
 @media (max-width: 860px) { .signup { grid-template-columns: minmax(0, 1fr); } }
 
 /* preview-only stand-in for the beehiiv iframe */

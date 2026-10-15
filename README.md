@@ -12,7 +12,7 @@ Built October 12, 2026 in the Teachers With Money project chat. Copy = "Website 
 
 ## Rules baked into the page (from Christa, Oct 8)
 
-- Summit wording is "late January" only. No dates, no year, no countdown.
+- Summit dates are public as of Oct 15, 2026: January 30 and 31, 2027. Write them out ("January 30 and 31, 2027"), no dashes, no countdown.
 - No Teachers Pay Teachers seller tiers, tier names, or payout numbers anywhere.
 - TPT Launch Lab is a plain footer link only. No description copy.
 - Newsletter signup is the main button, the podcast is second.

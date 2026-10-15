@@ -110,6 +110,7 @@
       <div class="form-box">
         <p class="label">Join the newsletter</p>
         <div class="embed">{{FORM_NEWSLETTER}}</div>
+        <p class="small fallback" hidden>Form not loading? <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">Join on beehiiv</a>.</p>
         <p class="small fine">Use your personal email (not your school one) so we stay connected even if you switch districts. No spam, unsubscribe any time. <a href="privacy.html">Privacy Policy</a>.</p>
       </div>
     </div>
@@ -121,17 +122,18 @@
         <div class="signup">
           <div class="stack">
             <p class="section-name">Virtual Summit</p>
-            <p class="label">Late January · Online · Free</p>
+            <p class="label">January 30 and 31, 2027 · Online · Free</p>
             <span class="script">you're invited!</span>
             <h2 id="summit-title">Teachers With Money Summit</h2>
             <p class="lead">A free weekend of teacher money basics, without the overwhelm.</p>
             <p>Picture a party at my house. The playlist is great, the snacks are out, and the room is full of my favorite people in teacher money. My only job is introducing you to all of them!</p>
-            <p>It's two days in late January, online and free. Day one is about getting your money right, and day two is about growing your income around the pay scale. Come in your coziest sweatpants and bring a teacher friend, because money stuff is way more fun with company.</p>
+            <p>It's two days, January 30 and 31, 2027, online and free. Day one is about getting your money right, and day two is about growing your income around the pay scale. Come in your coziest sweatpants and bring a teacher friend, because money stuff is way more fun with company.</p>
             <p>The guest list is coming together right now. Join the waitlist and you'll be first to get your invite when registration opens.</p>
           </div>
           <div class="form-box">
             <p class="label">Join the Summit waitlist</p>
             <div class="embed">{{FORM_SUMMIT}}</div>
+            <p class="small fallback" hidden>Form not loading? <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">Join on beehiiv</a>.</p>
             <p class="small fine">Use your personal email (not your school one) so we stay connected even if you switch districts. Waitlisters also get my Wednesday newsletter. <a href="privacy.html">Privacy Policy</a>.</p>
           </div>
         </div>
@@ -172,4 +174,14 @@
     </div>
   </section>
 
+<script>
+  // If beehiiv's embed script is blocked, show a plain link instead of an empty box.
+  setTimeout(function () {
+    document.querySelectorAll(".form-box").forEach(function (box) {
+      if (!box.querySelector(".embed iframe")) {
+        var f = box.querySelector(".fallback"); if (f) f.hidden = false;
+      }
+    });
+  }, 4000);
+</script>
 </main>
