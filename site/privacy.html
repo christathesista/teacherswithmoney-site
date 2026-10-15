@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy Policy | Teachers With Money</title>
+<meta name="description" content="How Teachers With Money handles the email address you share with us.">
+<link rel="canonical" href="https://teacherswithmoney.com/privacy.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Teachers With Money">
+<meta property="og:title" content="Privacy Policy | Teachers With Money">
+<meta property="og:description" content="How Teachers With Money handles the email address you share with us.">
+<meta property="og:url" content="https://teacherswithmoney.com/privacy.html">
+<meta property="og:image" content="https://teacherswithmoney.com/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#315647">
+<link rel="icon" type="image/png" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..900,0..100;1,9..144,400..900,0..100&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Sacramento&display=swap">
+<style>
+/* Teachers With Money: one-page site.
+   Layout: flat colour bands alternating Chalkboard Green and Paper Cream, square corners,
+   one rainbow slash (hero panel), forms always on cream. Single brand theme on purpose. */
+:root {
+  --green: #315647;
+  --green-deep: #2a4a3d;
+  --cream: #FAF3DE;
+  --ink: #1E362C;
+  --pink: #E84263;
+  --berry: #6B1F3A;
+  --gold: #F9C000;
+  --white: #FFFFFF;
+  --hair: rgba(49, 86, 71, 0.2);
+  --hair-cream: rgba(250, 243, 222, 0.24);
+  --cream-soft: rgba(250, 243, 222, 0.86);
+
+  --r1: #FACC04; --r2: #F97B06; --r3: #EC321A; --r4: #BB2D17; --r5: #E84263; --r6: #6B1F3A;
+
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --script: "Sacramento", "Brush Script MT", cursive;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --gutter: clamp(16px, 4vw, 40px);
+  --maxw: 1120px;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--pink); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+a:hover { color: var(--berry); }
+:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+.band--green :focus-visible, .band--berry :focus-visible, .site-footer :focus-visible { outline-color: var(--gold); }
+
+.wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* ---------- type ---------- */
+h1, h2, h3 {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 80;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin: 0;
+  color: var(--green);
+}
+h1 { font-size: clamp(40px, 6.4vw, 64px); line-height: 0.98; font-weight: 700; }
+h2 { font-size: clamp(30px, 4.2vw, 40px); line-height: 1.05; font-weight: 600; }
+h3 { font-size: 22px; line-height: 1.15; font-weight: 600; }
+p { margin: 0; max-width: 68ch; }
+.lead { font-size: clamp(19px, 2.1vw, 21px); line-height: 1.45; font-weight: 500; }
+.small { font-size: 14px; line-height: 1.5; }
+.label {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.script { font-family: var(--script); font-size: clamp(32px, 4vw, 42px); line-height: 1; color: var(--pink); font-weight: 400; }
+.stack { display: flex; flex-direction: column; gap: 18px; }
+
+/* ---------- bands ---------- */
+.band { padding-block: clamp(64px, 9vw, 112px); }
+.band--green { background: var(--green); color: var(--cream); }
+.band--green h1, .band--green h2, .band--green h3 { color: var(--cream); }
+.band--green .label { color: var(--gold); }
+.band--berry { background: var(--berry); color: var(--cream); }
+.band--berry h2 { color: var(--cream); }
+.band--berry .label { color: var(--cream); opacity: 0.8; }
+.band--green a:not(.btn), .band--berry a:not(.btn) { color: var(--cream); }
+.band--green a:not(.btn):hover, .band--berry a:not(.btn):hover { color: var(--gold); }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 12px 22px;
+  font-family: var(--body); font-size: 17px; font-weight: 600; line-height: 1.2;
+  text-decoration: none; border: 1.5px solid transparent; border-radius: 0;
+  cursor: pointer; transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn--primary { background: var(--pink); color: var(--white); }
+.btn--primary:hover { background: var(--berry); color: var(--white); }
+.btn--outline { background: transparent; color: var(--green); border-color: var(--green); }
+.btn--outline:hover { background: var(--green); color: var(--cream); }
+.band--green .btn--outline, .band--berry .btn--outline { color: var(--cream); border-color: var(--cream); }
+.band--green .btn--outline:hover, .band--berry .btn--outline:hover { background: var(--cream); color: var(--green); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* ---------- header ---------- */
+.site-header { background: var(--cream); border-bottom: 1px solid var(--hair); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--green); }
+.brand img { width: 38px; height: auto; }
+.wordmark { display: flex; flex-direction: column; font-family: var(--display); color: var(--green); line-height: 0.9; }
+.wordmark .top { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; font-variant: small-caps; text-transform: uppercase; }
+.wordmark .bottom { font-size: 23px; font-weight: 900; letter-spacing: 0.01em; }
+.nav { display: flex; align-items: center; gap: 22px; }
+.nav a:not(.btn) { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 15px; }
+.nav a:not(.btn):hover { color: var(--pink); }
+.nav .btn { min-height: 42px; padding: 9px 16px; font-size: 15px; }
+@media (max-width: 860px) { .nav a:not(.btn) { display: none; } }
+
+/* ---------- hero ---------- */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
+.hero .stack { gap: 22px; }
+.hero .lead { color: var(--cream-soft); }
+.hero .note { color: var(--cream-soft); }
+.hero-cta { display: flex; flex-direction: column; gap: 10px; }
+.hero-cta .script { margin-left: 4px; }
+.sleeve { position: relative; aspect-ratio: 1 / 1; width: 100%; max-width: 460px; justify-self: end; overflow: hidden; background: var(--green-deep); }
+.sleeve .slash { position: absolute; left: -45%; top: 2%; width: 190%; height: 54%; transform: rotate(-32deg); transform-origin: center; display: grid; grid-template-rows: repeat(6, 1fr); }
+.slash span:nth-child(1) { background: var(--r1); }
+.slash span:nth-child(2) { background: var(--r2); }
+.slash span:nth-child(3) { background: var(--r3); }
+.slash span:nth-child(4) { background: var(--r4); }
+.slash span:nth-child(5) { background: var(--r5); }
+.slash span:nth-child(6) { background: var(--r6); }
+.sleeve picture { position: absolute; right: 9%; bottom: 8%; width: 54%; }
+.sleeve .tag { position: absolute; left: 7%; bottom: 7%; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  .sleeve { max-width: 340px; justify-self: start; }
+}
+
+/* ---------- beliefs ---------- */
+.beliefs .wrap { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 80px); align-items: start; }
+.definition { background: var(--berry); color: var(--cream); padding: 26px 28px; display: flex; flex-direction: column; gap: 8px; }
+.definition .term { font-family: var(--display); font-size: 30px; font-weight: 600; font-style: italic; line-height: 1.1; }
+.definition .pos { font-family: var(--mono); font-size: 12px; letter-spacing: 0.15em; color: var(--cream); opacity: 0.75; }
+.definition p { font-size: 19px; line-height: 1.45; }
+.belief-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 32px; }
+.belief { border-top: 1px solid var(--hair); padding-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+@media (max-width: 860px) {
+  .beliefs .wrap { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) { .belief-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- podcast ---------- */
+.pod-head { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.pod-head .cover { width: 200px; }
+.pod-head .stack p { color: var(--cream-soft); }
+.pod-head .quote { color: var(--cream); font-weight: 600; }
+.start-here { margin-top: clamp(40px, 6vw, 64px); display: flex; flex-direction: column; gap: 16px; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.card { border: 1px solid var(--hair-cream); padding: 22px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: var(--cream); transition: background-color .15s ease, border-color .15s ease; }
+.card:hover { background: var(--green-deep); border-color: var(--cream); color: var(--cream); }
+.card .label { font-size: 11px; }
+.card h3 { font-size: 20px; }
+.card p { color: var(--cream-soft); font-size: 16px; }
+.card .go { margin-top: auto; font-size: 15px; font-weight: 600; color: var(--gold); }
+.pod-buttons { margin-top: 28px; }
+@media (max-width: 860px) {
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .pod-head { grid-template-columns: minmax(0, 1fr); }
+  .pod-head .cover { width: 160px; }
+}
+
+/* ---------- forms (beehiiv embeds sit on cream) ---------- */
+.signup { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.form-box { border: 1.5px solid var(--green); background: var(--cream); padding: 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.form-box .label { font-size: 11px; }
+.form-box .embed { min-height: 64px; width: 100%; }
+.form-box .embed iframe { max-width: 100%; }
+.form-box .fine { color: var(--ink); opacity: 0.85; }
+@media (max-width: 860px) { .signup { grid-template-columns: minmax(0, 1fr); } }
+
+/* preview-only stand-in for the beehiiv iframe */
+.embed-stub { display: flex; flex-wrap: wrap; gap: 8px; }
+.embed-stub .field { flex: 1 1 200px; min-height: 48px; border: 1px solid var(--hair); background: var(--white); padding: 12px 14px; color: #6b7a72; font-size: 16px; }
+.embed-stub .btn { pointer-events: none; }
+.embed-stub-note { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--berry); }
+
+/* ---------- summit ---------- */
+.summit-panel { background: var(--cream); color: var(--ink); padding: clamp(28px, 5vw, 56px); }
+.summit-panel h2 { color: var(--green); }
+.summit-panel .label { color: var(--green); }
+.summit-panel .signup { align-items: start; }
+
+/* ---------- speaking ---------- */
+.speaking .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.speaking p { color: var(--cream-soft); }
+.speaking .email { font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; color: var(--cream); }
+@media (max-width: 860px) { .speaking .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- about ---------- */
+.about .wrap { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+.about .photo { border: 1.5px solid var(--green); }
+.about .stack { gap: 16px; }
+@media (max-width: 860px) {
+  .about .wrap { grid-template-columns: minmax(0, 1fr); }
+  .about .photo { max-width: 320px; }
+}
+
+/* ---------- footer ---------- */
+.site-footer { background: var(--green); color: var(--cream); padding-block: clamp(56px, 8vw, 96px) 40px; }
+.closing { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px; padding-bottom: clamp(40px, 6vw, 64px); border-bottom: 1px solid var(--hair-cream); }
+.closing h2 { color: var(--cream); font-size: clamp(34px, 5vw, 52px); }
+.closing p { color: var(--cream-soft); margin-top: 10px; }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; padding-top: 40px; }
+.foot-grid .wordmark { color: var(--cream); }
+.foot-grid ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.foot-grid a { color: var(--cream); text-decoration: none; }
+.foot-grid a:hover { color: var(--gold); text-decoration: underline; }
+.disclaimer { color: var(--cream-soft); font-size: 14px; }
+.copyright { margin-top: 32px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-soft); }
+@media (max-width: 760px) { .foot-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- privacy page ---------- */
+.legal { padding-block: clamp(48px, 7vw, 88px); }
+.legal .wrap { max-width: 760px; }
+.legal article { display: flex; flex-direction: column; gap: 16px; }
+.legal h1 { font-size: clamp(36px, 5vw, 52px); }
+.legal h2 { font-size: 26px; margin-top: 24px; }
+.legal .meta { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); }
+.summit-panel a:not(.btn) { color: var(--pink); }
+.summit-panel a:not(.btn):hover { color: var(--berry); }
+.summit-panel :focus-visible { outline-color: var(--pink); }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/#top" aria-label="Teachers With Money, home">
+      <picture><source srcset="assets/coin-apple.webp" type="image/webp"><img src="assets/coin-apple.png" alt="" width="38" height="36"></picture>
+      <span class="wordmark"><span class="top">Teachers With</span><span class="bottom">MONEY</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#podcast">Podcast</a>
+      <a href="/#newsletter">Newsletter</a>
+      <a href="/#summit">Summit</a>
+      <a href="/#speaking">Speaking</a>
+      <a href="/#about">About</a>
+      <a class="btn btn--primary" href="/#newsletter">Join the newsletter</a>
+    </nav>
+  </div>
+</header>
+<main class="legal">
+  <div class="wrap">
+    <article>
+      <p class="meta">Teachers With Money · teacherswithmoney.com</p>
+      <h1>Privacy Policy</h1>
+      <!-- LAUNCH TODO: replace with the day the site goes live, e.g. "Effective date: October 20, 2026" -->
+      <p class="meta">Effective date: October 14, 2026</p>
+
+      <h2>The short version</h2>
+      <p>We collect your email address when you choose to give it to us. We use it to send you what you signed up for. We don't sell it, and you can unsubscribe any time.</p>
+      <p>The rest of this page is the detail.</p>
+
+      <h2>Who we are</h2>
+      <p>Teachers With Money is run by Christa Jones through Enharmonic Education, LLC, based in Indiana, USA. On this page, "we" and "us" mean Teachers With Money.</p>
+      <p>Questions about anything here can go to christa@teacherswithmoney.com.</p>
+
+      <h2>What we collect</h2>
+      <p><strong>When you sign up.</strong> If you join the newsletter or the Teachers With Money Summit waitlist, we collect your email address.</p>
+      <p><strong>When you email us.</strong> We receive your email address and whatever you choose to write.</p>
+      <p><strong>When you visit.</strong> The company that hosts this website keeps standard server logs. Those include your IP address, your browser type, the pages requested, and the date and time. They exist to keep the site running and secure. We don't use them to figure out who you are.</p>
+
+      <h2>What we don't collect</h2>
+      <p>This site has no accounts or logins. It doesn't take payments. It doesn't use advertising cookies or analytics that follow you around the internet.</p>
+
+      <h2>How we use your information</h2>
+      <p>We use your email address to send the newsletter you signed up for. If you joined the Summit waitlist, we also use it to send Summit news and registration details.</p>
+      <p>Our emails sometimes mention our own podcast episodes, products, and events.</p>
+      <p>If you write to us, we use your message to write back.</p>
+
+      <h2>Who else handles your information</h2>
+      <p>We don't sell or rent your information to anyone.</p>
+      <p>A few companies help us run things, and they handle your information only to do that job:</p>
+      <p><strong>beehiiv</strong> is our email platform. The signup forms on this site are beehiiv's, so what you type in them goes straight to beehiiv. It stores our subscriber list, sends our emails, and notes which page or link brought you to sign up. Like most email platforms, it also shows us whether an email was opened and which links were clicked.</p>
+      <p><strong>Our web host</strong> serves this website and keeps the server logs described above.</p>
+      <p>We would also share information if the law required us to.</p>
+
+      <h2>Links to other sites</h2>
+      <p>We link to pages run by other companies. Those include podcast apps, social media, the checkout page for TPT Launch Lab, and the coaching application form. Each of those has its own privacy policy, and what you share there is covered by theirs, not this one.</p>
+
+      <h2>Your choices</h2>
+      <p><strong>Unsubscribe.</strong> Every email we send has an unsubscribe link at the bottom. It works right away.</p>
+      <p><strong>See, fix, or delete your information.</strong> Email christa@teacherswithmoney.com and tell us what you'd like. We'll take care of it within 30 days.</p>
+      <p>Some places, including California, the European Union, and the United Kingdom, give residents specific legal rights over their personal information. We'll honor a request like the ones above no matter where you live.</p>
+
+      <h2>How long we keep it</h2>
+      <p>We keep your email address for as long as you're subscribed. If you unsubscribe, our email platform keeps a record of that so we don't email you again by mistake.</p>
+
+      <h2>Children</h2>
+      <p>Teachers With Money is for adults who work in education. It isn't meant for children under 13, and we don't knowingly collect their information. If you think a child has signed up, email us and we'll delete it.</p>
+
+      <h2>Security and location</h2>
+      <p>We're based in the United States, and your information is stored and processed here.</p>
+      <p>We work with established companies and take reasonable steps to protect what you share. No website or email service can promise perfect security, and we won't pretend otherwise.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>If we change how we handle your information, we'll update this page and the date at the top. If the change is a big one, we'll email subscribers too.</p>
+
+      <h2>Contact</h2>
+      <p>christa@teacherswithmoney.com</p>
+    </article>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="closing">
+      <div>
+        <h2>Let's get the ball rolling.</h2>
+        <p>The confident feelings will come after.</p>
+      </div>
+      <a class="btn btn--primary" href="/#newsletter">Join the newsletter</a>
+    </div>
+    <div class="foot-grid">
+      <div class="stack">
+        <span class="wordmark"><span class="top">Teachers With</span><span class="bottom">MONEY</span></span>
+        <p class="small">christa@teacherswithmoney.com</p>
+      </div>
+      <ul aria-label="Site">
+        <li><a href="/#podcast">Podcast</a></li>
+        <li><a href="/#newsletter">Newsletter</a></li>
+        <li><a href="/#summit">Summit</a></li>
+        <li><a href="/#speaking">Speaking</a></li>
+        <li><a href="https://christajones.samcart.com/products/tpt-launch-lab">TPT Launch Lab</a></li>
+        <li><a href="https://tally.so/r/vGkpLl">Coaching</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="mailto:christa@teacherswithmoney.com">Contact</a></li>
+        <li><a href="https://www.instagram.com/teacherswithmoney/">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/christajeanjones/">LinkedIn</a></li>
+      </ul>
+      <p class="disclaimer">This is for educational and informational purposes only and is not intended as financial advice. Please consult a qualified financial professional for guidance specific to your situation.</p>
+    </div>
+    <p class="copyright">© 2026 Teachers With Money</p>
+  </div>
+</footer>
+
+</body>
+</html>

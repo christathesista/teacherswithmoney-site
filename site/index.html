@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teachers With Money | Real money talk for educators</title>
+<meta name="description" content="Real money talk for educators, with zero guilt. A podcast every Tuesday, a newsletter every Wednesday, and a free online summit in late January.">
+<link rel="canonical" href="https://teacherswithmoney.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Teachers With Money">
+<meta property="og:title" content="Teachers With Money | Real money talk for educators">
+<meta property="og:description" content="Real money talk for educators, with zero guilt. A podcast every Tuesday, a newsletter every Wednesday, and a free online summit in late January.">
+<meta property="og:url" content="https://teacherswithmoney.com/">
+<meta property="og:image" content="https://teacherswithmoney.com/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#315647">
+<link rel="icon" type="image/png" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..900,0..100;1,9..144,400..900,0..100&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Sacramento&display=swap">
+<style>
+/* Teachers With Money: one-page site.
+   Layout: flat colour bands alternating Chalkboard Green and Paper Cream, square corners,
+   one rainbow slash (hero panel), forms always on cream. Single brand theme on purpose. */
+:root {
+  --green: #315647;
+  --green-deep: #2a4a3d;
+  --cream: #FAF3DE;
+  --ink: #1E362C;
+  --pink: #E84263;
+  --berry: #6B1F3A;
+  --gold: #F9C000;
+  --white: #FFFFFF;
+  --hair: rgba(49, 86, 71, 0.2);
+  --hair-cream: rgba(250, 243, 222, 0.24);
+  --cream-soft: rgba(250, 243, 222, 0.86);
+
+  --r1: #FACC04; --r2: #F97B06; --r3: #EC321A; --r4: #BB2D17; --r5: #E84263; --r6: #6B1F3A;
+
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --script: "Sacramento", "Brush Script MT", cursive;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --gutter: clamp(16px, 4vw, 40px);
+  --maxw: 1120px;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--pink); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+a:hover { color: var(--berry); }
+:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+.band--green :focus-visible, .band--berry :focus-visible, .site-footer :focus-visible { outline-color: var(--gold); }
+
+.wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* ---------- type ---------- */
+h1, h2, h3 {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 80;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin: 0;
+  color: var(--green);
+}
+h1 { font-size: clamp(40px, 6.4vw, 64px); line-height: 0.98; font-weight: 700; }
+h2 { font-size: clamp(30px, 4.2vw, 40px); line-height: 1.05; font-weight: 600; }
+h3 { font-size: 22px; line-height: 1.15; font-weight: 600; }
+p { margin: 0; max-width: 68ch; }
+.lead { font-size: clamp(19px, 2.1vw, 21px); line-height: 1.45; font-weight: 500; }
+.small { font-size: 14px; line-height: 1.5; }
+.label {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.script { font-family: var(--script); font-size: clamp(32px, 4vw, 42px); line-height: 1; color: var(--pink); font-weight: 400; }
+.stack { display: flex; flex-direction: column; gap: 18px; }
+
+/* ---------- bands ---------- */
+.band { padding-block: clamp(64px, 9vw, 112px); }
+.band--green { background: var(--green); color: var(--cream); }
+.band--green h1, .band--green h2, .band--green h3 { color: var(--cream); }
+.band--green .label { color: var(--gold); }
+.band--berry { background: var(--berry); color: var(--cream); }
+.band--berry h2 { color: var(--cream); }
+.band--berry .label { color: var(--cream); opacity: 0.8; }
+.band--green a:not(.btn), .band--berry a:not(.btn) { color: var(--cream); }
+.band--green a:not(.btn):hover, .band--berry a:not(.btn):hover { color: var(--gold); }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 12px 22px;
+  font-family: var(--body); font-size: 17px; font-weight: 600; line-height: 1.2;
+  text-decoration: none; border: 1.5px solid transparent; border-radius: 0;
+  cursor: pointer; transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn--primary { background: var(--pink); color: var(--white); }
+.btn--primary:hover { background: var(--berry); color: var(--white); }
+.btn--outline { background: transparent; color: var(--green); border-color: var(--green); }
+.btn--outline:hover { background: var(--green); color: var(--cream); }
+.band--green .btn--outline, .band--berry .btn--outline { color: var(--cream); border-color: var(--cream); }
+.band--green .btn--outline:hover, .band--berry .btn--outline:hover { background: var(--cream); color: var(--green); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* ---------- header ---------- */
+.site-header { background: var(--cream); border-bottom: 1px solid var(--hair); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--green); }
+.brand img { width: 38px; height: auto; }
+.wordmark { display: flex; flex-direction: column; font-family: var(--display); color: var(--green); line-height: 0.9; }
+.wordmark .top { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; font-variant: small-caps; text-transform: uppercase; }
+.wordmark .bottom { font-size: 23px; font-weight: 900; letter-spacing: 0.01em; }
+.nav { display: flex; align-items: center; gap: 22px; }
+.nav a:not(.btn) { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 15px; }
+.nav a:not(.btn):hover { color: var(--pink); }
+.nav .btn { min-height: 42px; padding: 9px 16px; font-size: 15px; }
+@media (max-width: 860px) { .nav a:not(.btn) { display: none; } }
+
+/* ---------- hero ---------- */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
+.hero .stack { gap: 22px; }
+.hero .lead { color: var(--cream-soft); }
+.hero .note { color: var(--cream-soft); }
+.hero-cta { display: flex; flex-direction: column; gap: 10px; }
+.hero-cta .script { margin-left: 4px; }
+.sleeve { position: relative; aspect-ratio: 1 / 1; width: 100%; max-width: 460px; justify-self: end; overflow: hidden; background: var(--green-deep); }
+.sleeve .slash { position: absolute; left: -45%; top: 2%; width: 190%; height: 54%; transform: rotate(-32deg); transform-origin: center; display: grid; grid-template-rows: repeat(6, 1fr); }
+.slash span:nth-child(1) { background: var(--r1); }
+.slash span:nth-child(2) { background: var(--r2); }
+.slash span:nth-child(3) { background: var(--r3); }
+.slash span:nth-child(4) { background: var(--r4); }
+.slash span:nth-child(5) { background: var(--r5); }
+.slash span:nth-child(6) { background: var(--r6); }
+.sleeve picture { position: absolute; right: 9%; bottom: 8%; width: 54%; }
+.sleeve .tag { position: absolute; left: 7%; bottom: 7%; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  .sleeve { max-width: 340px; justify-self: start; }
+}
+
+/* ---------- beliefs ---------- */
+.beliefs .wrap { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 80px); align-items: start; }
+.definition { background: var(--berry); color: var(--cream); padding: 26px 28px; display: flex; flex-direction: column; gap: 8px; }
+.definition .term { font-family: var(--display); font-size: 30px; font-weight: 600; font-style: italic; line-height: 1.1; }
+.definition .pos { font-family: var(--mono); font-size: 12px; letter-spacing: 0.15em; color: var(--cream); opacity: 0.75; }
+.definition p { font-size: 19px; line-height: 1.45; }
+.belief-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 32px; }
+.belief { border-top: 1px solid var(--hair); padding-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+@media (max-width: 860px) {
+  .beliefs .wrap { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) { .belief-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- podcast ---------- */
+.pod-head { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.pod-head .cover { width: 200px; }
+.pod-head .stack p { color: var(--cream-soft); }
+.pod-head .quote { color: var(--cream); font-weight: 600; }
+.start-here { margin-top: clamp(40px, 6vw, 64px); display: flex; flex-direction: column; gap: 16px; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.card { border: 1px solid var(--hair-cream); padding: 22px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: var(--cream); transition: background-color .15s ease, border-color .15s ease; }
+.card:hover { background: var(--green-deep); border-color: var(--cream); color: var(--cream); }
+.card .label { font-size: 11px; }
+.card h3 { font-size: 20px; }
+.card p { color: var(--cream-soft); font-size: 16px; }
+.card .go { margin-top: auto; font-size: 15px; font-weight: 600; color: var(--gold); }
+.pod-buttons { margin-top: 28px; }
+@media (max-width: 860px) {
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .pod-head { grid-template-columns: minmax(0, 1fr); }
+  .pod-head .cover { width: 160px; }
+}
+
+/* ---------- forms (beehiiv embeds sit on cream) ---------- */
+.signup { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.form-box { border: 1.5px solid var(--green); background: var(--cream); padding: 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.form-box .label { font-size: 11px; }
+.form-box .embed { min-height: 64px; width: 100%; }
+.form-box .embed iframe { max-width: 100%; }
+.form-box .fine { color: var(--ink); opacity: 0.85; }
+@media (max-width: 860px) { .signup { grid-template-columns: minmax(0, 1fr); } }
+
+/* preview-only stand-in for the beehiiv iframe */
+.embed-stub { display: flex; flex-wrap: wrap; gap: 8px; }
+.embed-stub .field { flex: 1 1 200px; min-height: 48px; border: 1px solid var(--hair); background: var(--white); padding: 12px 14px; color: #6b7a72; font-size: 16px; }
+.embed-stub .btn { pointer-events: none; }
+.embed-stub-note { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--berry); }
+
+/* ---------- summit ---------- */
+.summit-panel { background: var(--cream); color: var(--ink); padding: clamp(28px, 5vw, 56px); }
+.summit-panel h2 { color: var(--green); }
+.summit-panel .label { color: var(--green); }
+.summit-panel .signup { align-items: start; }
+
+/* ---------- speaking ---------- */
+.speaking .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.speaking p { color: var(--cream-soft); }
+.speaking .email { font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; color: var(--cream); }
+@media (max-width: 860px) { .speaking .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- about ---------- */
+.about .wrap { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+.about .photo { border: 1.5px solid var(--green); }
+.about .stack { gap: 16px; }
+@media (max-width: 860px) {
+  .about .wrap { grid-template-columns: minmax(0, 1fr); }
+  .about .photo { max-width: 320px; }
+}
+
+/* ---------- footer ---------- */
+.site-footer { background: var(--green); color: var(--cream); padding-block: clamp(56px, 8vw, 96px) 40px; }
+.closing { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px; padding-bottom: clamp(40px, 6vw, 64px); border-bottom: 1px solid var(--hair-cream); }
+.closing h2 { color: var(--cream); font-size: clamp(34px, 5vw, 52px); }
+.closing p { color: var(--cream-soft); margin-top: 10px; }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; padding-top: 40px; }
+.foot-grid .wordmark { color: var(--cream); }
+.foot-grid ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.foot-grid a { color: var(--cream); text-decoration: none; }
+.foot-grid a:hover { color: var(--gold); text-decoration: underline; }
+.disclaimer { color: var(--cream-soft); font-size: 14px; }
+.copyright { margin-top: 32px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-soft); }
+@media (max-width: 760px) { .foot-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- privacy page ---------- */
+.legal { padding-block: clamp(48px, 7vw, 88px); }
+.legal .wrap { max-width: 760px; }
+.legal article { display: flex; flex-direction: column; gap: 16px; }
+.legal h1 { font-size: clamp(36px, 5vw, 52px); }
+.legal h2 { font-size: 26px; margin-top: 24px; }
+.legal .meta { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); }
+.summit-panel a:not(.btn) { color: var(--pink); }
+.summit-panel a:not(.btn):hover { color: var(--berry); }
+.summit-panel :focus-visible { outline-color: var(--pink); }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Teachers With Money, home">
+      <picture><source srcset="assets/coin-apple.webp" type="image/webp"><img src="assets/coin-apple.png" alt="" width="38" height="36"></picture>
+      <span class="wordmark"><span class="top">Teachers With</span><span class="bottom">MONEY</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#podcast">Podcast</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="#summit">Summit</a>
+      <a href="#speaking">Speaking</a>
+      <a href="#about">About</a>
+      <a class="btn btn--primary" href="#newsletter">Join the newsletter</a>
+    </nav>
+  </div>
+</header>
+<main id="top">
+
+  <section class="band band--green hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="stack">
+        <p class="label">Money + mindset for educators</p>
+        <h1 id="hero-title">You can love teaching AND want more money.</h1>
+        <p class="lead">Teachers With Money is a happy place to talk about money, with zero guilt and plenty of possibility. Stay in your classroom or take your skills somewhere new (or build something on the side while you decide). It's your call, and we'll help the money part feel good.</p>
+        <div class="hero-cta">
+          <div class="btn-row">
+            <a class="btn btn--primary" href="#newsletter">Join the newsletter</a>
+            <a class="btn btn--outline" href="#podcast">Listen to the podcast</a>
+          </div>
+          <p class="small note">Free. One email every Wednesday. Unsubscribe any time.</p>
+        </div>
+      </div>
+      <div class="sleeve" aria-hidden="true">
+        <div class="slash"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <picture><source srcset="assets/coin-apple.webp" type="image/webp"><img src="assets/coin-apple.png" alt="" width="560" height="524"></picture>
+        <span class="tag">First in Class</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="band beliefs" aria-labelledby="beliefs-title">
+    <div class="wrap">
+      <div class="stack">
+        <p class="label">What we believe</p>
+        <h2 id="beliefs-title">Teaching is noble. So is getting paid.</h2>
+        <p>Teachers get called heroes and saints a lot. It's a lovely compliment that somehow always arrives with a pay cut. (We'll take the compliment. And the raise, please.)</p>
+        <p>Around here, we'd rather call you a class act.</p>
+        <div class="definition">
+          <span class="term">class act</span>
+          <span class="pos">(N.)</span>
+          <p>an educator who knows exactly what they're worth and stops pretending otherwise.</p>
+        </div>
+      </div>
+      <div class="belief-grid">
+        <div class="belief">
+          <h3>Money is safe to talk about.</h3>
+          <p>No shame here, and definitely no "just skip the latte" lectures. Money talk gets easier every time you do it, so we do it together.</p>
+        </div>
+        <div class="belief">
+          <h3>You get to choose.</h3>
+          <p>Staying in the classroom is a real choice, and so is trying your skills somewhere new. Either way, you deserve more money and more breathing room.</p>
+        </div>
+        <div class="belief">
+          <h3>Dream out loud.</h3>
+          <p>Your skills are worth more than any one paycheck shows. We think big around here, then take one small, doable step toward it.</p>
+        </div>
+        <div class="belief">
+          <h3>Both things, at once.</h3>
+          <p>Teachers deserve better pay, full stop. We push for systemic change AND we kick ass on our own in the meantime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--green" id="podcast" aria-labelledby="podcast-title">
+    <div class="wrap">
+      <div class="pod-head">
+        <picture><source srcset="assets/first-in-class-cover.webp" type="image/webp"><img class="cover" src="assets/first-in-class-cover.jpg" alt="Teachers With Money: First in Class podcast cover" width="600" height="600"></picture>
+        <div class="stack">
+          <p class="label">The podcast · New episodes every Tuesday</p>
+          <h2 id="podcast-title">Teachers With Money: First in Class</h2>
+          <p>Every Tuesday you get a seat at the table with educators and money people who've figured something out. A first-generation millionaire on a teacher's salary. A teacher whose writing side hustle grew to match her paycheck. And some weeks it's just me, thinking out loud about whatever money question I can't put down.</p>
+          <p class="quote">Expect a lot of "wait, I could do THAT?" moments.</p>
+        </div>
+      </div>
+
+      <div class="start-here">
+        <span class="script">start here</span>
+        <div class="cards">
+          <a class="card" href="https://teacherswithmoney.buzzsprout.com/2609317/episodes/19125141-first-gen-millionaire-on-a-teacher-salary-with-davy-yap">
+            <span class="label">EP 4 · Guest</span>
+            <h3>First-Gen Millionaire on a Teacher Salary, with Davy Yap</h3>
+            <p>Davy became a first-generation millionaire on a teacher's salary. She tells the story herself.</p>
+            <span class="go">Listen →</span>
+          </a>
+          <a class="card" href="https://teacherswithmoney.buzzsprout.com/2609317/episodes/19088147-how-to-start-a-teachers-pay-teachers-store-breaking-through-the-excuses-holding-you-back">
+            <span class="label">EP 3 · Solo</span>
+            <h3>How to Start a Teachers Pay Teachers Store: Breaking Through the Excuses Holding You Back</h3>
+            <p>I thought about opening a store for ten years before I did it. This one's for anyone still thinking about it.</p>
+            <span class="go">Listen →</span>
+          </a>
+          <a class="card" href="https://teacherswithmoney.buzzsprout.com/2609317/episodes/19040812-the-real-cost-of-teachers-don-t-do-it-for-the-money">
+            <span class="label">EP 2 · Solo</span>
+            <h3>The Real Cost of "Teachers Don't Do It for the Money"</h3>
+            <p>The thing everyone says to teachers, and what it actually costs us.</p>
+            <span class="go">Listen →</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="btn-row pod-buttons">
+        <a class="btn btn--primary" href="https://podcasts.apple.com/us/podcast/teachers-with-money-first-in-class/id1893765717">Listen on Apple Podcasts</a>
+        <a class="btn btn--outline" href="https://teacherswithmoney.buzzsprout.com/">All episodes</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="newsletter" aria-labelledby="newsletter-title">
+    <div class="wrap signup">
+      <div class="stack">
+        <p class="label">The newsletter · Free · Every Wednesday</p>
+        <h2 id="newsletter-title">One email every Wednesday for the Class Acts.</h2>
+        <p class="lead">Real money talk for educators. Weekly, short, and everyone's welcome... especially if "money" and "teacher" have never felt like they belong in the same sentence.</p>
+        <p>Each Wednesday you get a little money mindset and one small thing you can actually do before the weekend. It's also the first place you'll hear about new episodes and the Summit.</p>
+      </div>
+      <div class="form-box">
+        <p class="label">Join the newsletter</p>
+        <div class="embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="b6cd0344-203d-4142-9f4f-25e7c0bf6114"></script></div>
+        <p class="small fine">Use your personal email (not your school one) so we stay connected even if you switch districts. No spam, unsubscribe any time. <a href="privacy.html">Privacy Policy</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--green" id="summit" aria-labelledby="summit-title">
+    <div class="wrap">
+      <div class="summit-panel">
+        <div class="signup">
+          <div class="stack">
+            <p class="label">Late January · Online · Free</p>
+            <span class="script">you're invited!</span>
+            <h2 id="summit-title">Teachers With Money Summit</h2>
+            <p class="lead">A free weekend of teacher money basics, without the overwhelm.</p>
+            <p>Picture a party at my house. The playlist is great, the snacks are out, and the room is full of my favorite people in teacher money. My only job is introducing you to all of them!</p>
+            <p>It's two days in late January, online and free. Day one is about getting your money right, and day two is about growing your income around the pay scale. Come in your coziest sweatpants and bring a teacher friend, because money stuff is way more fun with company.</p>
+            <p>The guest list is coming together right now. Join the waitlist and you'll be first to get your invite when registration opens.</p>
+          </div>
+          <div class="form-box">
+            <p class="label">Join the Summit waitlist</p>
+            <div class="embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="04d15350-3e84-45c0-912f-db1615eafa2d"></script></div>
+            <p class="small fine">Use your personal email (not your school one) so we stay connected even if you switch districts. Waitlisters also get my Wednesday newsletter. <a href="privacy.html">Privacy Policy</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--berry speaking" id="speaking" aria-labelledby="speaking-title">
+    <div class="wrap">
+      <div class="stack">
+        <p class="label">Speaking</p>
+        <h2 id="speaking-title">Give your educators a money conversation they'll actually enjoy.</h2>
+      </div>
+      <div class="stack">
+        <p>I've spoken to educators all around the country. My sessions are warm and practical, so your people walk out feeling good about money and ready to take a real next step.</p>
+        <p>A great fit for PD days, conferences, union events, and podcasts.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="mailto:christa@teacherswithmoney.com?subject=Speaking">Book a session for your people</a>
+          <span class="email">christa@teacherswithmoney.com</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band about" id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <picture><source srcset="assets/christa.webp" type="image/webp"><img class="photo" src="assets/christa.jpg" alt="Christa Jones, host of Teachers With Money: First in Class" width="600" height="600"></picture>
+      <div class="stack">
+        <p class="label">About</p>
+        <h2 id="about-title">Hi, I'm Christa!</h2>
+        <p>I'm a former teacher and a forever educator.</p>
+        <p>I spent ten years in the classroom, and I loved it. Like, love-of-my-life loved it. In 2023 I made the hardest call of my career and decided to leave, but first, while I was still teaching, I opened a Teachers Pay Teachers store. That store wasn't the bridge out because it was successful. It was the parachute that caught me when I jumped.</p>
+        <p>This wasn't the path I planned, and I am OBSESSED with my life and my work right now! I get to talk money with educators every single day on the First in Class podcast and in my Wednesday emails, plus the occasional stage. It's my calling now.</p>
+        <p>Maybe you want to stay in your classroom with a lot more breathing room. Maybe you're curious what your skills could do somewhere else. Either way, the choice is yours, and you deserve to feel good about money on whichever path you pick.</p>
+        <p>(P.S. My classroom was an elementary music room. Ten years of concerts and recorders, and I'm still SO proud of it.)</p>
+        <span class="script">so glad you're here!</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="closing">
+      <div>
+        <h2>Let's get the ball rolling.</h2>
+        <p>The confident feelings will come after.</p>
+      </div>
+      <a class="btn btn--primary" href="#newsletter">Join the newsletter</a>
+    </div>
+    <div class="foot-grid">
+      <div class="stack">
+        <span class="wordmark"><span class="top">Teachers With</span><span class="bottom">MONEY</span></span>
+        <p class="small">christa@teacherswithmoney.com</p>
+      </div>
+      <ul aria-label="Site">
+        <li><a href="#podcast">Podcast</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#summit">Summit</a></li>
+        <li><a href="#speaking">Speaking</a></li>
+        <li><a href="https://christajones.samcart.com/products/tpt-launch-lab">TPT Launch Lab</a></li>
+        <li><a href="https://tally.so/r/vGkpLl">Coaching</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="mailto:christa@teacherswithmoney.com">Contact</a></li>
+        <li><a href="https://www.instagram.com/teacherswithmoney/">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/christajeanjones/">LinkedIn</a></li>
+      </ul>
+      <p class="disclaimer">This is for educational and informational purposes only and is not intended as financial advice. Please consult a qualified financial professional for guidance specific to your situation.</p>
+    </div>
+    <p class="copyright">© 2026 Teachers With Money</p>
+  </div>
+</footer>
+<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
+</body>
+</html>
