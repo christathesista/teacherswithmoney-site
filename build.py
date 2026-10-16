@@ -94,7 +94,7 @@ pillars_body = header.replace("{{HOME}}", "/") + pillars_main + footer.replace("
     head(PILLARS_TITLE, PILLARS_DESC, "https://teacherswithmoney.com/pillars.html"), pillars_body))
 
 # Optional partner-page lines Christa has not approved yet stay empty until she says so.
-PARTNER_RULES = "<p>I don't work with MLMs or predatory lenders, and I'm careful with anything aimed at students.</p>"
+PARTNER_RULES = "<p>I don't work with MLMs or predatory lenders.</p>"
 ABOUT_EXTRAS = ""    # Adobe MAX mention left off on purpose (Oct 16): it would go stale fast; LinkedIn carries it.
 PARTNERS_TITLE = "Partner with Teachers With Money | Christa Jones"
 PARTNERS_DESC = ("Sponsorships, creator partnerships, podcast collaborations, and speaking with Christa Jones, "
