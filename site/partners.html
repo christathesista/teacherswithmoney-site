@@ -238,8 +238,8 @@ p { margin: 0; max-width: 68ch; }
 /* ---------- speaking ---------- */
 .speaking .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
 .speaking p { color: var(--cream-soft); }
-.speaking .or { font-size: 15px; color: var(--cream-soft); }
-.speaking .email { font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; color: var(--cream); }
+.speaking .or, .partners-hero .or { font-size: 15px; color: var(--cream-soft); }
+.speaking .email, .partners-hero .email { font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; color: var(--cream); }
 @media (max-width: 860px) { .speaking .wrap { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- partners ---------- */
@@ -334,6 +334,7 @@ p { margin: 0; max-width: 68ch; }
         <div class="btn-row">
           <a class="btn btn--primary" href="mailto:christa@teacherswithmoney.com?subject=Partnership%20inquiry">Email Christa</a>
           <a class="btn btn--outline" href="media-kit.pdf" target="_blank" rel="noopener">Download the media kit</a>
+          <span class="or">or email <a class="email" href="mailto:christa@teacherswithmoney.com?subject=Partnership%20inquiry">christa@teacherswithmoney.com</a></span>
         </div>
       </div>
       <picture><img class="headshot" src="assets/christa.jpg" alt="Christa Jones" width="600" height="600"></picture>
