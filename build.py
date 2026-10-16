@@ -18,6 +18,8 @@ footer = (SRC / "footer.html").read_text()
 index_main = (SRC / "index-main.html").read_text()
 privacy_main = (SRC / "privacy-main.html").read_text()
 pillars_main = (SRC / "pillars-main.html").read_text()
+partners_main = (SRC / "partners-main.html").read_text()
+media_kit = (SRC / "media-kit.html").read_text()
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
@@ -90,6 +92,36 @@ PILLARS_DESC = ("The five pillars behind Teachers With Money: side hustles, weal
 pillars_body = header.replace("{{HOME}}", "/") + pillars_main + footer.replace("{{HOME}}", "/")
 (SITE / "pillars.html").write_text(page(
     head(PILLARS_TITLE, PILLARS_DESC, "https://teacherswithmoney.com/pillars.html"), pillars_body))
+
+# Optional partner-page lines Christa has not approved yet stay empty until she says so.
+PARTNER_RULES = "<p>I don't work with MLMs or predatory lenders, and I'm careful with anything aimed at students.</p>"
+ABOUT_EXTRAS = ""    # Adobe MAX mention left off on purpose (Oct 16): it would go stale fast; LinkedIn carries it.
+PARTNERS_TITLE = "Partner with Teachers With Money | Christa Jones"
+PARTNERS_DESC = ("Sponsorships, creator partnerships, podcast collaborations, and speaking with Christa Jones, "
+                 "founder of Teachers With Money and host of First in Class.")
+partners_body = (header.replace("{{HOME}}", "/") +
+                 partners_main.replace("{{PARTNER_RULES}}", PARTNER_RULES).replace("{{ABOUT_EXTRAS}}", ABOUT_EXTRAS) +
+                 footer.replace("{{HOME}}", "/"))
+(SITE / "partners.html").write_text(page(
+    head(PARTNERS_TITLE, PARTNERS_DESC, "https://teacherswithmoney.com/partners.html"), partners_body))
+(SITE / "media-kit.html").write_text(media_kit.replace("{{FONTS}}", FONTS).replace("{{CSS}}", css))
+
+# media-kit.pdf: print the one-page kit with headless Chrome, when Chrome is installed.
+CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+if pathlib.Path(CHROME).exists():
+    import subprocess
+    subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
+                    "--virtual-time-budget=8000", f"--print-to-pdf={SITE / 'media-kit.pdf'}",
+                    (SITE / "media-kit.html").resolve().as_uri()],
+                   check=True, capture_output=True)
+else:
+    print("WARNING: Chrome not found, media-kit.pdf not regenerated")
+
+(SITE / "sitemap.xml").write_text(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    "".join(f"  <url><loc>https://teacherswithmoney.com/{p}</loc></url>\n" for p in ("", "pillars.html", "partners.html", "privacy.html")) +
+    "</urlset>\n")
+(SITE / "robots.txt").write_text("User-agent: *\nAllow: /\nDisallow: /media-kit.html\nSitemap: https://teacherswithmoney.com/sitemap.xml\n")
 
 # ---------- preview ----------
 if PREVIEW.exists():

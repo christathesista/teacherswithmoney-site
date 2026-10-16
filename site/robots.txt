@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /media-kit.html
+Sitemap: https://teacherswithmoney.com/sitemap.xml

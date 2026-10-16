@@ -220,6 +220,31 @@ p { margin: 0; max-width: 68ch; }
 .speaking .email { font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; color: var(--cream); }
 @media (max-width: 860px) { .speaking .wrap { grid-template-columns: minmax(0, 1fr); } }
 
+/* ---------- partners ---------- */
+.partners-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
+.partners-hero .lead { color: var(--cream-soft); }
+.partners-hero .headshot { max-width: 380px; width: 100%; justify-self: end; border: 1.5px solid var(--cream); }
+.two-col { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.pillar-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.pillar-list li { border-top: 1px solid var(--hair); padding-top: 10px; }
+.reach-grid { margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 24px; }
+.reach { border-top: 1px solid var(--hair-cream); padding-top: 16px; display: flex; flex-direction: column; gap: 4px; }
+.reach .big { font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 700; font-size: clamp(30px, 3.6vw, 40px); line-height: 1; color: var(--gold); }
+.reach .big.text { font-size: clamp(24px, 2.6vw, 30px); line-height: 1.05; }
+.reach .what { font-weight: 600; color: var(--cream); }
+.reach .note { font-size: 14px; color: var(--cream-soft); }
+.note-line { margin-top: 24px; color: var(--cream-soft); }
+.ways { margin-top: 32px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.band--berry p { color: var(--cream-soft); }
+.band--berry a:not(.btn) { color: var(--cream); }
+@media (max-width: 860px) {
+  .partners-hero .wrap, .two-col { grid-template-columns: minmax(0, 1fr); }
+  .partners-hero .headshot { max-width: 300px; justify-self: center; }
+  .reach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ways { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) { .reach-grid { grid-template-columns: minmax(0, 1fr); } }
+
 /* ---------- about ---------- */
 .about .wrap { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
 .about .photo { border: 1.5px solid var(--green); }
@@ -234,14 +259,18 @@ p { margin: 0; max-width: 68ch; }
 .closing { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px; padding-bottom: clamp(40px, 6vw, 64px); border-bottom: 1px solid var(--hair-cream); }
 .closing h2 { color: var(--cream); font-size: clamp(34px, 5vw, 52px); }
 .closing p { color: var(--cream-soft); margin-top: 10px; }
-.foot-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; padding-top: 40px; }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 1.3fr); gap: 32px; padding-top: 40px; }
+.foot-links { display: flex; flex-direction: column; gap: 12px; }
+.foot-links .label { color: var(--gold); font-size: 11px; }
+.foot-links.more a { font-size: 15px; color: var(--cream-soft); }
+.foot-links.more .label { color: var(--cream-soft); }
 .foot-grid .wordmark { color: var(--cream); }
 .foot-grid ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 .foot-grid a { color: var(--cream); text-decoration: none; }
 .foot-grid a:hover { color: var(--gold); text-decoration: underline; }
 .disclaimer { color: var(--cream-soft); font-size: 14px; }
 .copyright { margin-top: 32px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-soft); }
-@media (max-width: 760px) { .foot-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 760px) { .foot-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .foot-grid > .stack, .foot-grid > .disclaimer { grid-column: 1 / -1; } }
 
 /* ---------- privacy page ---------- */
 .legal { padding-block: clamp(48px, 7vw, 88px); }
