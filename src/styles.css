@@ -147,7 +147,7 @@ p { margin: 0; max-width: 68ch; }
 .sleeve .tag { position: absolute; left: 7%; bottom: 7%; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
 @media (max-width: 860px) {
   .hero .wrap { grid-template-columns: minmax(0, 1fr); }
-  .sleeve { max-width: 340px; justify-self: start; }
+  .sleeve { max-width: 340px; justify-self: center; }
 }
 
 /* ---------- beliefs ---------- */
