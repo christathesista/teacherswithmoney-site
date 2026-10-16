@@ -227,6 +227,13 @@ p { margin: 0; max-width: 68ch; }
 .summit-panel h2 { color: var(--green); }
 .summit-panel .label { color: var(--green); }
 .summit-panel .signup { align-items: start; }
+.summit-panel .side { gap: 28px; }
+.proof { display: flex; flex-direction: column; gap: 18px; padding-inline: 4px; }
+.proof .label { font-size: 11px; }
+.quote { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.quote .stars { color: var(--gold); font-size: 14px; letter-spacing: 0.1em; }
+.quote blockquote { margin: 0; font-family: var(--display); font-variation-settings: "SOFT" 80; font-size: 19px; line-height: 1.4; color: var(--green); max-width: 40ch; text-wrap: pretty; }
+.quote figcaption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); opacity: 0.7; }
 
 /* ---------- speaking ---------- */
 .speaking .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
@@ -419,11 +426,26 @@ p { margin: 0; max-width: 68ch; }
             <p>It's two days, January 30 and 31, 2027, online and free. Day one is about getting your money right, and day two is about growing your income around the pay scale. Come in your coziest sweatpants and bring a teacher friend, because money stuff is way more fun with company.</p>
             <p>The guest list is coming together right now. Join the waitlist and you'll be first to get your invite when registration opens.</p>
           </div>
+          <div class="stack side">
           <div class="form-box">
             <p class="label">Join the Summit waitlist</p>
             <div class="embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="04d15350-3e84-45c0-912f-db1615eafa2d"></script></div>
             <p class="small fallback" hidden>Not seeing the form? You're probably already subscribed in this browser. If not, <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">join on beehiiv</a>.</p>
             <p class="small fine">Use your personal email (not your school one) so we stay connected even if you switch districts. Waitlisters also get my Wednesday newsletter. <a href="privacy.html">Privacy Policy</a>.</p>
+          </div>
+          <div class="proof">
+            <p class="label">What listeners say</p>
+            <figure class="quote">
+              <span class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <blockquote>Christa goes beyond the fluff of "teachers should get paid more!" to real mindset shifts, real strategies, and real transformation in how you approach money. I wish I had this podcast years ago!</blockquote>
+              <figcaption>Apple Podcasts review</figcaption>
+            </figure>
+            <figure class="quote">
+              <span class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <blockquote>If you've ever felt weird about money, cringy, uncomfortable, or like it's somehow not for you, Christa gets it.</blockquote>
+              <figcaption>Apple Podcasts review</figcaption>
+            </figure>
+          </div>
           </div>
         </div>
       </div>
