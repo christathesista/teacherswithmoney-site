@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Teachers With Money//Summit//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:twm-summit-2027-day2@teacherswithmoney.com
+DTSTAMP:20261026T120000Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Teachers With Money Summit, Day 2
+DESCRIPTION:Day 2: growing income around the pay scale. Free and online. https://teacherswithmoney.com/summit/
+LOCATION:Online
+URL:https://teacherswithmoney.com/summit/
+END:VEVENT
+END:VCALENDAR

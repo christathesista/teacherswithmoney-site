@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teachers With Money Summit | Free, Jan 30–31, 2027</title>
+<meta name="description" content="A free weekend of teacher money basics, without the overwhelm. January 30 and 31, 2027, online.">
+<link rel="canonical" href="https://teacherswithmoney.com/summit/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Teachers With Money">
+<meta property="og:title" content="Teachers With Money Summit | Free, Jan 30–31, 2027">
+<meta property="og:description" content="A free weekend of teacher money basics, without the overwhelm. January 30 and 31, 2027, online.">
+<meta property="og:url" content="https://teacherswithmoney.com/summit/">
+<meta property="og:image" content="https://teacherswithmoney.com/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#315647">
+<link rel="icon" type="image/png" href="/assets/favicon-64.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..900,0..100;1,9..144,400..900,0..100&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Shrikhand&display=swap">
+<style>
+/* Teachers With Money: one-page site.
+   Layout: flat colour bands alternating Chalkboard Green and Paper Cream, square corners,
+   one rainbow slash (hero panel), forms always on cream. Single brand theme on purpose. */
+:root {
+  --green: #315647;
+  --green-deep: #2a4a3d;
+  --cream: #FAF3DE;
+  --ink: #1E362C;
+  --pink: #E84263;
+  --berry: #6B1F3A;
+  --gold: #F9C000;
+  --white: #FFFFFF;
+  --hair: rgba(49, 86, 71, 0.2);
+  --hair-cream: rgba(250, 243, 222, 0.24);
+  --cream-soft: rgba(250, 243, 222, 0.86);
+
+  --r1: #FACC04; --r2: #F97B06; --r3: #EC321A; --r4: #BB2D17; --r5: #E84263; --r6: #6B1F3A;
+
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --script: "Shrikhand", "Cooper Black", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --gutter: clamp(16px, 4vw, 40px);
+  --maxw: 1120px;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--pink); text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+a:hover { color: var(--berry); }
+:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+.band--green :focus-visible, .band--berry :focus-visible, .site-footer :focus-visible { outline-color: var(--gold); }
+
+.wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* ---------- type ---------- */
+h1, h2, h3 {
+  font-family: var(--display);
+  font-variation-settings: "SOFT" 80;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin: 0;
+  color: var(--green);
+}
+h1 { font-size: clamp(40px, 6.4vw, 64px); line-height: 0.98; font-weight: 700; }
+h2 { font-size: clamp(30px, 4.2vw, 40px); line-height: 1.05; font-weight: 600; }
+h3 { font-size: 22px; line-height: 1.15; font-weight: 600; }
+p { margin: 0; max-width: 68ch; }
+.lead { font-size: clamp(19px, 2.1vw, 21px); line-height: 1.45; font-weight: 500; }
+.small { font-size: 14px; line-height: 1.5; }
+.label {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+/* Section eyebrows: lowercase script, gold on green, pink on cream (the playful pass, Oct 16, 2026) */
+.eyebrow { font-family: var(--script); font-size: clamp(22px, 2.6vw, 30px); line-height: 1.1; letter-spacing: 0.005em; color: var(--pink); font-weight: 400; display: block; }
+.band--green .eyebrow, .band--berry .eyebrow, .site-footer .eyebrow { color: var(--gold); }
+.summit-panel .eyebrow, .form-box .eyebrow { color: var(--pink); }
+.eyebrow.small { font-size: 18px; }
+.eyebrow.tiny { font-size: 15px; color: var(--gold); }
+.eyebrow.muted { color: var(--cream-soft); }
+.eyebrow.dates { font-size: 18px; margin-top: -10px; color: var(--green); }
+.sticker { display: inline-block; align-self: flex-start; font-family: var(--script); font-size: clamp(20px, 2.2vw, 26px); line-height: 1; color: var(--cream); background: var(--pink); padding: 10px 18px 12px; border-radius: 999px; transform: rotate(-4deg); box-shadow: 0 3px 0 var(--berry); margin: 2px 0 6px 2px; }
+.script { font-family: var(--script); font-size: clamp(20px, 2.4vw, 24px); line-height: 1.1; letter-spacing: 0.01em; color: var(--pink); font-weight: 400; }
+.stack { display: flex; flex-direction: column; gap: 18px; }
+
+/* ---------- bands ---------- */
+.band { padding-block: clamp(64px, 9vw, 112px); }
+.band--green { background: var(--green); color: var(--cream); }
+.band--green h1, .band--green h2, .band--green h3 { color: var(--cream); }
+.band--green .label { color: var(--gold); }
+.band--berry { background: var(--berry); color: var(--cream); }
+.band--berry h2 { color: var(--cream); }
+.band--berry .label { color: var(--cream); opacity: 0.8; }
+.band--green a:not(.btn), .band--berry a:not(.btn) { color: var(--cream); }
+.band--green a:not(.btn):hover, .band--berry a:not(.btn):hover { color: var(--gold); }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 12px 24px;
+  font-family: var(--body); font-size: 17px; font-weight: 600; line-height: 1.2;
+  text-decoration: none; border: 1.5px solid transparent; border-radius: 999px;
+  cursor: pointer; transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn--primary { background: var(--pink); color: var(--white); }
+.btn--primary:hover { background: var(--berry); color: var(--white); }
+.btn--outline { background: transparent; color: var(--green); border-color: var(--green); }
+.btn--outline:hover { background: var(--green); color: var(--cream); }
+.band--green .btn--outline, .band--berry .btn--outline { color: var(--cream); border-color: var(--cream); }
+.band--green .btn--outline:hover, .band--berry .btn--outline:hover { background: var(--cream); color: var(--green); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* ---------- header ---------- */
+.site-header { background: var(--cream); border-bottom: 1px solid var(--hair); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--green); }
+.brand img { width: 38px; height: auto; }
+.wordmark { display: flex; flex-direction: column; font-family: var(--display); color: var(--green); line-height: 0.9; }
+.wordmark .top { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; font-variant: small-caps; text-transform: uppercase; }
+.wordmark .bottom { font-size: 23px; font-weight: 900; letter-spacing: 0.01em; }
+.nav { display: flex; align-items: center; gap: 22px; }
+.nav a:not(.btn) { color: var(--ink); text-decoration: none; font-weight: 500; font-size: 15px; }
+.nav a:not(.btn):hover { color: var(--pink); }
+.nav .btn { min-height: 42px; padding: 9px 18px; font-size: 15px; }
+@media (max-width: 860px) { .nav a:not(.btn) { display: none; } }
+
+/* ---------- hero ---------- */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
+.hero .stack { gap: 22px; }
+.hero .lead { color: var(--cream-soft); }
+.hero .note { color: var(--cream-soft); }
+.hero-cta { display: flex; flex-direction: column; gap: 10px; }
+.hero-cta .script { margin-left: 4px; }
+.sleeve { position: relative; aspect-ratio: 1 / 1; width: 100%; max-width: 460px; justify-self: end; overflow: hidden; background: var(--green-deep); border-radius: 18px; }
+.sleeve .slash { position: absolute; left: -45%; top: 2%; width: 190%; height: 54%; transform: rotate(-32deg); transform-origin: center; display: grid; grid-template-rows: repeat(6, 1fr); }
+.slash span:nth-child(1) { background: var(--r1); }
+.slash span:nth-child(2) { background: var(--r2); }
+.slash span:nth-child(3) { background: var(--r3); }
+.slash span:nth-child(4) { background: var(--r4); }
+.slash span:nth-child(5) { background: var(--r5); }
+.slash span:nth-child(6) { background: var(--r6); }
+.sleeve picture { position: absolute; right: 9%; bottom: 8%; width: 54%; }
+.sleeve .tag { position: absolute; left: 7%; bottom: 7%; font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  .sleeve { max-width: 340px; justify-self: center; }
+}
+
+/* ---------- beliefs ---------- */
+.beliefs .wrap { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 80px); align-items: start; }
+.definition { background: var(--berry); color: var(--cream); border-radius: 14px; padding: 26px 28px; display: flex; flex-direction: column; gap: 8px; }
+.definition .term { font-family: var(--display); font-size: 30px; font-weight: 600; font-style: italic; line-height: 1.1; }
+.definition .pos { font-family: var(--mono); font-size: 12px; letter-spacing: 0.15em; color: var(--cream); opacity: 0.75; }
+.definition p { font-size: 19px; line-height: 1.45; }
+.belief-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 32px; }
+.belief { border-top: 1px dashed rgba(49, 86, 71, 0.35); padding-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+@media (max-width: 860px) {
+  .beliefs .wrap { grid-template-columns: minmax(0, 1fr); }
+  .definition { transform: rotate(-1deg); }
+}
+@media (max-width: 560px) { .belief-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- podcast ---------- */
+.pod-head { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.pod-head .cover { width: 200px; }
+.pod-head .stack p { color: var(--cream-soft); }
+.pod-head .quote { color: var(--cream); font-weight: 600; }
+.start-here { margin-top: clamp(40px, 6vw, 64px); display: flex; flex-direction: column; gap: 16px; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.card { border: 1px solid var(--hair-cream); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: var(--cream); transition: background-color .15s ease, border-color .15s ease; }
+.card:hover { background: var(--green-deep); border-color: var(--cream); color: var(--cream); }
+.card .label { font-size: 11px; }
+.card h3 { font-size: 20px; }
+.card p { color: var(--cream-soft); font-size: 16px; }
+.card .go { margin-top: auto; font-size: 15px; font-weight: 600; color: var(--gold); }
+.pod-buttons { margin-top: 28px; }
+@media (max-width: 860px) {
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .pod-head { grid-template-columns: minmax(0, 1fr); }
+  .pod-head .cover { width: 160px; }
+}
+
+/* ---------- forms (beehiiv embeds sit on cream) ---------- */
+.signup { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.form-box { border: 1.5px solid var(--green); background: var(--cream); padding: 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.form-box .label { font-size: 11px; }
+.form-box .embed { min-height: 64px; width: 100%; }
+.form-box .embed iframe { max-width: 100%; }
+.form-box .fine { color: var(--ink); opacity: 0.85; }
+.form-box .fallback { color: var(--ink); }
+.form-box .fallback[hidden] { display: none; }
+@media (max-width: 860px) { .signup { grid-template-columns: minmax(0, 1fr); } }
+
+/* preview-only stand-in for the beehiiv iframe */
+.embed-stub { display: flex; flex-wrap: wrap; gap: 8px; }
+.embed-stub .field { flex: 1 1 200px; min-height: 48px; border: 1px solid var(--hair); background: var(--white); padding: 12px 14px; color: #6b7a72; font-size: 16px; }
+.embed-stub .btn { pointer-events: none; }
+.embed-stub-note { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--berry); }
+
+/* ---------- rainbow corners (homepage signup boxes and the summit panel) ---------- */
+.stripe-corner { position: relative; overflow: hidden; }
+.stripe-corner::after { content: ""; position: absolute; right: -110px; bottom: -80px; width: 260px; height: 120px; transform: rotate(-38deg); pointer-events: none;
+  background: linear-gradient(to bottom, var(--r1) 0 16.6%, var(--r2) 16.6% 33.3%, var(--r3) 33.3% 50%, var(--r4) 50% 66.6%, var(--r5) 66.6% 83.3%, var(--r6) 83.3% 100%); }
+.form-box.stripe-corner { padding-bottom: 40px; }
+.summit-panel.stripe-corner::after { right: -120px; bottom: -90px; width: 420px; height: 210px; z-index: 0; }
+.summit-panel.stripe-corner { padding-bottom: calc(clamp(28px, 5vw, 56px) + 110px); }
+.summit-panel.stripe-corner > * { position: relative; z-index: 1; }
+@media (max-width: 860px) {
+  .summit-panel.stripe-corner::after { right: -110px; bottom: -80px; width: 260px; height: 120px; }
+  .summit-panel.stripe-corner { padding-bottom: calc(clamp(28px, 5vw, 56px) + 104px); }
+}
+
+/* ---------- summit ---------- */
+.summit-panel { background: var(--cream); color: var(--ink); padding: clamp(28px, 5vw, 56px); }
+.summit-panel h2 { color: var(--green); }
+.summit-panel .label { color: var(--green); }
+.summit-panel .signup { align-items: start; }
+.summit-panel .side { gap: 28px; }
+.proof { display: flex; flex-direction: column; gap: 18px; padding-inline: 4px; }
+.proof .label { font-size: 11px; }
+.quote { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.quote .stars { color: var(--gold); font-size: 14px; letter-spacing: 0.1em; }
+.quote blockquote { margin: 0; font-family: var(--display); font-variation-settings: "SOFT" 80; font-size: 19px; line-height: 1.4; color: var(--green); max-width: 40ch; text-wrap: pretty; }
+.quote figcaption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); opacity: 0.7; }
+
+/* ---------- speaking ---------- */
+.speaking .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.speaking p { color: var(--cream-soft); }
+.speaking .or, .partners-hero .or { font-size: 15px; color: var(--cream-soft); }
+.speaking .email, .partners-hero .email { font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; color: var(--cream); }
+@media (max-width: 860px) { .speaking .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- partners ---------- */
+.partners-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
+.partners-hero .lead { color: var(--cream-soft); }
+.partners-hero .headshot { max-width: 380px; width: 100%; justify-self: end; border: 1.5px solid var(--cream); }
+.two-col { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.pillar-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.pillar-list li { border-top: 1px dashed rgba(49, 86, 71, 0.35); padding-top: 10px; }
+.reach-grid { margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 24px; }
+.reach { border-top: 1px solid var(--hair-cream); padding-top: 16px; display: flex; flex-direction: column; gap: 4px; }
+.reach .big { font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 700; font-size: clamp(30px, 3.6vw, 40px); line-height: 1; color: var(--gold); }
+.reach .big.text { font-size: clamp(24px, 2.6vw, 30px); line-height: 1.05; }
+.reach .what { font-weight: 600; color: var(--cream); }
+.reach .note { font-size: 14px; color: var(--cream-soft); }
+.note-line { margin-top: 24px; color: var(--cream-soft); }
+.ways { margin-top: 32px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.band--berry p { color: var(--cream-soft); }
+.band--berry a:not(.btn) { color: var(--cream); }
+@media (max-width: 860px) {
+  .partners-hero .wrap, .two-col { grid-template-columns: minmax(0, 1fr); }
+  .partners-hero .headshot { max-width: 300px; justify-self: center; }
+  .reach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ways { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) { .reach-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- summit pages ---------- */
+.summit-hero .wrap { align-items: center; }
+.summit-hero .when { color: var(--cream); font-size: 19px; line-height: 1.4; }
+.summit-hero .when strong { font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 700; font-size: 26px; color: var(--gold); }
+.summit-hero .form-box .eyebrow, .band--green .form-box .eyebrow { color: var(--pink); }
+.days { margin-top: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.day { border-top: 1px dashed rgba(49, 86, 71, 0.35); padding-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+.day .eyebrow.small { color: var(--green); }
+.format-note { margin-top: 24px; color: var(--ink); opacity: 0.8; }
+.speaker-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.speaker { display: flex; flex-direction: column; gap: 8px; }
+.speaker img { border-radius: 14px; border: 1.5px solid var(--green); }
+.speaker .who { color: var(--ink); opacity: 0.8; }
+.speaker .session { font-family: var(--display); font-variation-settings: "SOFT" 80; font-size: 19px; line-height: 1.3; color: var(--green); }
+.faq-wrap { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.faq { display: flex; flex-direction: column; }
+.faq details { border-top: 1px dashed rgba(49, 86, 71, 0.35); }
+.faq details:last-child { border-bottom: 1px dashed rgba(49, 86, 71, 0.35); }
+.faq summary { cursor: pointer; list-style: none; padding: 18px 40px 18px 0; position: relative; font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 600; font-size: 22px; line-height: 1.2; color: var(--green); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font-family: var(--mono); font-size: 24px; color: var(--pink); }
+.faq details[open] summary::after { content: "\2212"; }
+.faq summary:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+.faq details p { padding: 0 0 20px; max-width: 60ch; }
+.next.belief-grid { margin-top: 28px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cal-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.cal { border-top: 1px dashed var(--hair-cream); padding-top: 18px; display: flex; flex-direction: column; gap: 14px; }
+.cal h3 { color: var(--cream); }
+@media (max-width: 860px) {
+  .days, .cal-grid, .faq-wrap { grid-template-columns: minmax(0, 1fr); }
+  .speaker-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .next.belief-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) { .speaker-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- about ---------- */
+.about .wrap { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+.about .photo { border: 1.5px solid var(--green); border-radius: 14px; transform: rotate(2deg); }
+.about.calm .photo { transform: none; }
+.about .stack { gap: 16px; }
+@media (max-width: 860px) {
+  .about .wrap { grid-template-columns: minmax(0, 1fr); }
+  .about .photo { max-width: 320px; }
+}
+
+/* ---------- footer ---------- */
+.site-footer { background: var(--green); color: var(--cream); padding-block: clamp(56px, 8vw, 96px) 40px; }
+.closing { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px; padding-bottom: clamp(40px, 6vw, 64px); border-bottom: 1px solid var(--hair-cream); }
+.closing h2 { color: var(--cream); font-size: clamp(34px, 5vw, 52px); }
+.closing p { color: var(--cream-soft); margin-top: 10px; }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 1.3fr); gap: 32px; padding-top: 40px; }
+.foot-links { display: flex; flex-direction: column; gap: 12px; }
+.foot-links .label { color: var(--gold); font-size: 11px; }
+.foot-links.more a { font-size: 15px; color: var(--cream-soft); }
+.foot-links.more .label { color: var(--cream-soft); }
+.foot-grid .wordmark { color: var(--cream); }
+.foot-grid ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.foot-grid a { color: var(--cream); text-decoration: none; }
+.foot-grid a:hover { color: var(--gold); text-decoration: underline; }
+.disclaimer { color: var(--cream-soft); font-size: 14px; }
+.copyright { margin-top: 32px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-soft); }
+@media (max-width: 760px) { .foot-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .foot-grid > .stack, .foot-grid > .disclaimer { grid-column: 1 / -1; } }
+
+/* ---------- privacy page ---------- */
+.legal { padding-block: clamp(48px, 7vw, 88px); }
+.legal .wrap { max-width: 760px; }
+.legal article { display: flex; flex-direction: column; gap: 16px; }
+.legal h1 { font-size: clamp(36px, 5vw, 52px); }
+.legal h2 { font-size: 26px; margin-top: 24px; }
+.legal .meta { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); }
+.summit-panel a:not(.btn) { color: var(--pink); }
+.summit-panel a:not(.btn):hover { color: var(--berry); }
+.summit-panel :focus-visible { outline-color: var(--pink); }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/#top" aria-label="Teachers With Money, home">
+      <picture><source srcset="/assets/coin-apple.webp" type="image/webp"><img src="/assets/coin-apple.png" alt="" width="38" height="36"></picture>
+      <span class="wordmark"><span class="top">Teachers With</span> <span class="bottom">MONEY</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="/#podcast">Podcast</a>
+      <a href="/#newsletter">Newsletter</a>
+      <a href="/summit/">Summit</a>
+      <a href="/#speaking">Speaking</a>
+      <a href="/#about">About</a>
+      <a class="btn btn--primary" href="/#newsletter">Join free &rarr;</a>
+    </nav>
+  </div>
+</header>
+<main id="top">
+
+  <section class="band band--green summit-hero" aria-labelledby="summit-title">
+    <div class="wrap signup">
+      <div class="stack">
+        <p class="eyebrow">the summit</p>
+        <h1 id="summit-title">Teachers With Money Summit</h1>
+        <p class="lead">A free weekend of teacher money basics, without the overwhelm.</p>
+        <p class="when"><strong>January 30 and 31, 2027</strong><br>Two days, online, free</p>
+      </div>
+      <div class="form-box stripe-corner">
+        <p class="eyebrow small">join the waitlist</p>
+        <!-- SUMMIT FORM: swapped in build.py (SUMMIT_PAGE_FORM_ID). Dec 28: registration form goes here. -->
+        <div class="embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="04d15350-3e84-45c0-912f-db1615eafa2d"></script></div>
+        <p class="small fallback" hidden>Not seeing the form? You're probably already subscribed in this browser. If not, <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">join on beehiiv</a>.</p>
+        <p class="small fine">Use your personal email (not school!)</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="what-title">
+    <div class="wrap">
+      <div class="stack">
+        <p class="eyebrow">what it is</p>
+        <h2 id="what-title">Two days. One for your money, one for your income.</h2><!-- DRAFT COPY: Christa to review -->
+      </div>
+      <div class="days">
+        <div class="day">
+          <p class="eyebrow small">day 1, saturday</p>
+          <h3>Getting your money right.</h3>
+          <p>The basics nobody handed you with your first contract: how teacher pay actually works, what to do with it, and why money feels heavier than it should. Every session ends with one small step you can take that day.</p><!-- DRAFT COPY: Christa to review -->
+        </div>
+        <div class="day">
+          <p class="eyebrow small">day 2, sunday</p>
+          <h3>Growing income around the pay scale.</h3>
+          <p>The pay scale is fixed. Your income isn't. Sunday is about building income around the schedule, beginner level on purpose, and then picking your one thing before the weekend ends.</p><!-- DRAFT COPY: Christa to review -->
+        </div>
+      </div>
+      <p class="small format-note">Sessions are pre-recorded and released across the weekend, so you can watch when it suits you. Captions on every video.</p><!-- DRAFT COPY: Christa to review -->
+    </div>
+  </section>
+
+  <section class="band band--green" aria-labelledby="who-title">
+    <div class="wrap two-col">
+      <div class="stack">
+        <p class="eyebrow">who's invited</p>
+        <h2 id="who-title">Class Acts of every kind.</h2><!-- DRAFT COPY: Christa to review -->
+        <p>Classroom teachers. Specialists. Admins. Paras. Former teachers. Edupreneurs. If you work in education, or you did, you're on the list.</p><!-- DRAFT COPY: Christa to review -->
+      </div>
+      <div class="stack">
+        <p>If you were never taught how your own money works, and you've been avoiding it a little (or a lot), this weekend was built for you. No shame here, no lectures. Just a weekend of catching up on the stuff we should have been taught, together.</p><!-- DRAFT COPY: Christa to review -->
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="speakers" aria-labelledby="speakers-title">
+    <div class="wrap">
+      <div class="stack">
+        <p class="eyebrow">the lineup</p>
+        <h2 id="speakers-title">The lineup is coming together right now.</h2>
+        <p>Invitations are out. As each speaker says yes, they show up here.</p><!-- DRAFT COPY: Christa to review -->
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--berry" aria-labelledby="party-title">
+    <div class="wrap two-col">
+      <div class="stack">
+        <p class="eyebrow">why it's a party</p>
+        <h2 id="party-title">Picture a party at my house.</h2>
+      </div>
+      <div class="stack">
+        <p>I'm not running a conference. I'm filling a room with my favorite people in teacher money and introducing you to all of them. That's my whole job that weekend.</p><!-- DRAFT COPY: Christa to review -->
+        <p>Come in your coziest sweatpants. Bring a teacher friend. Stay for the parts you need and skip the rest, because money stuff is way more fun with company.</p><!-- DRAFT COPY: Christa to review -->
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="faq-title">
+    <div class="wrap faq-wrap">
+      <div class="stack">
+        <p class="eyebrow">questions</p>
+        <h2 id="faq-title">The short answers.</h2><!-- DRAFT COPY: Christa to review -->
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Is it free?</summary>
+          <p>Yes. The live weekend is free, funded by sponsors so it stays that way.</p><!-- DRAFT COPY: Christa to review -->
+        </details>
+        <details>
+          <summary>Do I have to watch live?</summary>
+          <p>No. Sessions are released across the weekend, and the replays are free for a limited window. [REPLAY WINDOW TBD]</p><!-- DRAFT COPY: Christa to review -->
+        </details>
+        <details>
+          <summary>Is this financial advice?</summary>
+          <p>No. The Summit is education, not individualized advice. Nobody here will tell you what to do inside your own accounts, and nothing here is therapy. For your own situation, talk with a qualified professional.</p><!-- DRAFT COPY: Christa to review -->
+        </details>
+        <details>
+          <summary>Is there a paid option?</summary>
+          <p>An all-access pass with ongoing access is coming.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--green" aria-labelledby="bottom-title">
+    <div class="wrap signup">
+      <div class="stack">
+        <p class="eyebrow">save your spot</p>
+        <h2 id="bottom-title">Registration opens December 28.</h2><!-- DRAFT COPY: Christa to review -->
+        <p class="lead">Join the waitlist now and you'll get the first invite, before anyone else.</p><!-- DRAFT COPY: Christa to review -->
+      </div>
+      <div class="form-box stripe-corner">
+        <p class="eyebrow small">join the waitlist</p>
+        <!-- SUMMIT FORM: same block as the hero; swapped in build.py. -->
+        <div class="embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="04d15350-3e84-45c0-912f-db1615eafa2d"></script></div>
+        <p class="small fallback" hidden>Not seeing the form? You're probably already subscribed in this browser. If not, <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">join on beehiiv</a>.</p>
+        <p class="small fine">Use your personal email (not school!)</p>
+      </div>
+    </div>
+  </section>
+
+<script>
+  setTimeout(function () {
+    document.querySelectorAll(".form-box").forEach(function (box) {
+      if (!box.querySelector(".embed iframe")) {
+        var f = box.querySelector(".fallback"); if (f) f.hidden = false;
+      }
+    });
+  }, 4000);
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="closing">
+      <div>
+        <h2>Let's get the ball rolling.</h2>
+        <p>The confident feelings will come after.</p>
+      </div>
+      <a class="btn btn--primary" href="/#newsletter">Join the newsletter &rarr;</a>
+    </div>
+    <div class="foot-grid">
+      <div class="stack">
+        <span class="wordmark" aria-label="Teachers With Money"><span class="top">Teachers With</span> <span class="bottom">MONEY</span></span>
+        <p class="small">christa@teacherswithmoney.com</p>
+      </div>
+      <div class="foot-links">
+        <p class="eyebrow small">explore</p>
+        <ul aria-label="Explore">
+          <li><a href="/#podcast">Podcast</a></li>
+          <li><a href="/#newsletter">Newsletter</a></li>
+          <li><a href="/summit/">Summit</a></li>
+          <li><a href="/#speaking">Speaking</a></li>
+          <li><a href="/partners.html" target="_blank" rel="noopener">Partners</a></li>
+          <li><a href="/pillars.html" target="_blank" rel="noopener">Our Pillars</a></li>
+        </ul>
+      </div>
+      <div class="foot-links more">
+        <p class="eyebrow small muted">more</p>
+        <ul aria-label="More">
+          <li><a href="https://christajones.samcart.com/products/tpt-launch-lab" target="_blank" rel="noopener">TPT Launch Lab</a></li>
+          <li><a href="https://tally.so/r/vGkpLl" target="_blank" rel="noopener">Coaching</a></li>
+          <li><a href="mailto:christa@teacherswithmoney.com">Contact</a></li>
+          <li><a href="https://www.instagram.com/christajeanjones/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/christajeanjones/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <p class="disclaimer">This is for educational and informational purposes only and is not intended as financial advice. Please consult a qualified financial professional for guidance specific to your situation.</p>
+    </div>
+    <p class="copyright">© 2026 Teachers With Money</p>
+  </div>
+</footer>
+<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
+</body>
+</html>

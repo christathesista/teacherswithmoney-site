@@ -20,6 +20,8 @@ privacy_main = (SRC / "privacy-main.html").read_text()
 pillars_main = (SRC / "pillars-main.html").read_text()
 partners_main = (SRC / "partners-main.html").read_text()
 media_kit = (SRC / "media-kit.html").read_text()
+summit_main = (SRC / "summit-main.html").read_text()
+summit_thanks_main = (SRC / "summit-thanks-main.html").read_text()
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
@@ -119,9 +121,63 @@ else:
 
 (SITE / "sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    "".join(f"  <url><loc>https://teacherswithmoney.com/{p}</loc></url>\n" for p in ("", "pillars.html", "partners.html", "privacy.html")) +
+    "".join(f"  <url><loc>https://teacherswithmoney.com/{p}</loc></url>\n" for p in ("", "summit/", "pillars.html", "partners.html", "privacy.html")) +
     "</urlset>\n")
-(SITE / "robots.txt").write_text("User-agent: *\nAllow: /\nDisallow: /media-kit.html\nSitemap: https://teacherswithmoney.com/sitemap.xml\n")
+(SITE / "robots.txt").write_text("User-agent: *\nAllow: /\nDisallow: /media-kit.html\nDisallow: /summit/thanks/\nSitemap: https://teacherswithmoney.com/sitemap.xml\n")
+
+# ---------- Summit pages (/summit/ and /summit/thanks/) ----------
+# THE SUMMIT FORM. Today: the "Summit waitlist - website" beehiiv form (same as the homepage).
+# Dec 28, 2026: paste the "Summit registration - website" form ID here. One line, then rebuild.
+SUMMIT_PAGE_FORM_ID = SUMMIT_ID
+
+import json
+def nested(html):
+    """Root-relative asset and page links for pages that live one folder down."""
+    for a in ('src="assets/', 'srcset="assets/', 'href="assets/'):
+        html = html.replace(a, a.replace('"assets/', '"/assets/'))
+    for page in ("privacy.html", "pillars.html", "partners.html", "media-kit.pdf"):
+        html = html.replace(f'href="{page}"', f'href="/{page}"')
+    return html
+
+def speakers_html():
+    speakers = json.loads((ROOT / "data" / "speakers.json").read_text())
+    if not speakers:
+        return ('<h2 id="speakers-title">The lineup is coming together right now.</h2>\n'
+                '        <p>Invitations are out. As each speaker says yes, they show up here.</p><!-- DRAFT COPY: Christa to review -->')
+    cards = []
+    for s in speakers:
+        day = f'<span class="eyebrow tiny">day {s["day"]}</span>' if s.get("day") else ""
+        cards.append(
+            '<div class="speaker">'
+            f'<img src="/{s["photo"]}" alt="{s["name"]}" width="600" height="600" loading="lazy">'
+            f'{day}<h3>{s["name"]}</h3><p class="small who">{s.get("title", "")}</p>'
+            f'<p class="session">{s.get("session", "")}</p></div>')
+    return (f'<h2 id="speakers-title">{len(speakers)} speakers so far.</h2>\n'
+            '        <div class="speaker-grid">' + "".join(cards) + '</div>')
+
+SUMMIT_TITLE = "Teachers With Money Summit | Free, Jan 30\u201331, 2027"
+SUMMIT_DESC = "A free weekend of teacher money basics, without the overwhelm. January 30 and 31, 2027, online."
+summit_body = (header.replace("{{HOME}}", "/") +
+               summit_main.replace("{{FORM_SUMMIT_PAGE}}", embed(SUMMIT_PAGE_FORM_ID)).replace("{{SPEAKERS}}", speakers_html()) +
+               footer.replace("{{HOME}}", "/") + ATTRIBUTION)
+(SITE / "summit").mkdir(exist_ok=True)
+(SITE / "summit" / "index.html").write_text(nested(page(
+    head(SUMMIT_TITLE, SUMMIT_DESC, "https://teacherswithmoney.com/summit/"), summit_body)))
+
+thanks_body = header.replace("{{HOME}}", "/") + summit_thanks_main + footer.replace("{{HOME}}", "/")
+(SITE / "summit" / "thanks").mkdir(exist_ok=True)
+(SITE / "summit" / "thanks" / "index.html").write_text(nested(page(
+    head("You're in! | Teachers With Money Summit", "You're on the list for the Teachers With Money Summit, January 30 and 31, 2027.",
+         "https://teacherswithmoney.com/summit/thanks/", extra='\n<meta name="robots" content="noindex">'), thanks_body)))
+
+def ics(uid, summary, start, end, desc):
+    return ("BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Teachers With Money//Summit//EN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\n"
+            f"BEGIN:VEVENT\r\nUID:{uid}@teacherswithmoney.com\r\nDTSTAMP:20261026T120000Z\r\nDTSTART;VALUE=DATE:{start}\r\nDTEND;VALUE=DATE:{end}\r\n"
+            f"SUMMARY:{summary}\r\nDESCRIPTION:{desc}\r\nLOCATION:Online\r\nURL:https://teacherswithmoney.com/summit/\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n")
+(SITE / "summit" / "twm-summit-day-1.ics").write_text(ics("twm-summit-2027-day1", "Teachers With Money Summit, Day 1", "20270130", "20270131",
+    "Day 1: getting your money right. Free and online. https://teacherswithmoney.com/summit/"))
+(SITE / "summit" / "twm-summit-day-2.ics").write_text(ics("twm-summit-2027-day2", "Teachers With Money Summit, Day 2", "20270131", "20270201",
+    "Day 2: growing income around the pay scale. Free and online. https://teacherswithmoney.com/summit/"))
 
 # ---------- preview ----------
 if PREVIEW.exists():

@@ -277,6 +277,41 @@ p { margin: 0; max-width: 68ch; }
 }
 @media (max-width: 560px) { .reach-grid { grid-template-columns: minmax(0, 1fr); } }
 
+/* ---------- summit pages ---------- */
+.summit-hero .wrap { align-items: center; }
+.summit-hero .when { color: var(--cream); font-size: 19px; line-height: 1.4; }
+.summit-hero .when strong { font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 700; font-size: 26px; color: var(--gold); }
+.summit-hero .form-box .eyebrow, .band--green .form-box .eyebrow { color: var(--pink); }
+.days { margin-top: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.day { border-top: 1px dashed rgba(49, 86, 71, 0.35); padding-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+.day .eyebrow.small { color: var(--green); }
+.format-note { margin-top: 24px; color: var(--ink); opacity: 0.8; }
+.speaker-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.speaker { display: flex; flex-direction: column; gap: 8px; }
+.speaker img { border-radius: 14px; border: 1.5px solid var(--green); }
+.speaker .who { color: var(--ink); opacity: 0.8; }
+.speaker .session { font-family: var(--display); font-variation-settings: "SOFT" 80; font-size: 19px; line-height: 1.3; color: var(--green); }
+.faq-wrap { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.faq { display: flex; flex-direction: column; }
+.faq details { border-top: 1px dashed rgba(49, 86, 71, 0.35); }
+.faq details:last-child { border-bottom: 1px dashed rgba(49, 86, 71, 0.35); }
+.faq summary { cursor: pointer; list-style: none; padding: 18px 40px 18px 0; position: relative; font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 600; font-size: 22px; line-height: 1.2; color: var(--green); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font-family: var(--mono); font-size: 24px; color: var(--pink); }
+.faq details[open] summary::after { content: "\2212"; }
+.faq summary:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+.faq details p { padding: 0 0 20px; max-width: 60ch; }
+.next.belief-grid { margin-top: 28px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cal-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.cal { border-top: 1px dashed var(--hair-cream); padding-top: 18px; display: flex; flex-direction: column; gap: 14px; }
+.cal h3 { color: var(--cream); }
+@media (max-width: 860px) {
+  .days, .cal-grid, .faq-wrap { grid-template-columns: minmax(0, 1fr); }
+  .speaker-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .next.belief-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) { .speaker-grid { grid-template-columns: minmax(0, 1fr); } }
+
 /* ---------- about ---------- */
 .about .wrap { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
 .about .photo { border: 1.5px solid var(--green); border-radius: 14px; transform: rotate(2deg); }
@@ -327,7 +362,7 @@ p { margin: 0; max-width: 68ch; }
     <nav class="nav" aria-label="Main">
       <a href="#podcast">Podcast</a>
       <a href="#newsletter">Newsletter</a>
-      <a href="#summit">Summit</a>
+      <a href="/summit/">Summit</a>
       <a href="#speaking">Speaking</a>
       <a href="#about">About</a>
       <a class="btn btn--primary" href="#newsletter">Join free &rarr;</a>
@@ -464,6 +499,7 @@ p { margin: 0; max-width: 68ch; }
             <p>Picture a party at my house. The playlist is great, the snacks are out, and the room is full of my favorite people in teacher money. My only job is introducing you to all of them!</p>
             <p>It's two days, January 30 and 31, 2027, online and free. Day one is about getting your money right, and day two is about growing your income around the pay scale. Come in your coziest sweatpants and bring a teacher friend, because money stuff is way more fun with company.</p>
             <p>The guest list is coming together right now. Join the waitlist and you'll be first to get your invite when registration opens.</p>
+            <div class="btn-row"><a class="btn btn--outline" href="/summit/">All the details &rarr;</a></div>
           </div>
           <div class="stack side">
           <div class="form-box stripe-corner">
@@ -556,7 +592,7 @@ p { margin: 0; max-width: 68ch; }
         <ul aria-label="Explore">
           <li><a href="#podcast">Podcast</a></li>
           <li><a href="#newsletter">Newsletter</a></li>
-          <li><a href="#summit">Summit</a></li>
+          <li><a href="/summit/">Summit</a></li>
           <li><a href="#speaking">Speaking</a></li>
           <li><a href="partners.html" target="_blank" rel="noopener">Partners</a></li>
           <li><a href="pillars.html" target="_blank" rel="noopener">Our Pillars</a></li>

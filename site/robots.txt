@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /media-kit.html
+Disallow: /summit/thanks/
 Sitemap: https://teacherswithmoney.com/sitemap.xml
