@@ -350,6 +350,62 @@ p { margin: 0; max-width: 68ch; }
 .summit-panel a:not(.btn) { color: var(--pink); }
 .summit-panel a:not(.btn):hover { color: var(--berry); }
 .summit-panel :focus-visible { outline-color: var(--pink); }
+
+/* ---------- summit: cozy party pass ---------- */
+.nav a[aria-current="page"] { color: var(--pink); }
+.rainbow { height: 18px; background: linear-gradient(to bottom, var(--r1) 0 16.6%, var(--r2) 16.6% 33.3%, var(--r3) 33.3% 50%, var(--r4) 50% 66.6%, var(--r5) 66.6% 83.3%, var(--r6) 83.3% 100%); }
+.summit-hero.stripe-corner::after, .thanks-hero.stripe-corner::after { right: -200px; bottom: -150px; width: 640px; height: 320px; z-index: 0; }
+.summit-hero > .wrap, .thanks-hero > .wrap, .party > .wrap { position: relative; z-index: 1; }
+.summit-hero.stripe-corner, .thanks-hero.stripe-corner { padding-bottom: calc(clamp(64px, 9vw, 112px) + 40px); }
+.summit-hero .sticker { margin-top: -6px; }
+.party.stripe-corner { padding-bottom: calc(clamp(64px, 9vw, 112px) + 50px); }
+.party .sticker { background: var(--gold); color: var(--ink); box-shadow: 0 3px 0 var(--pink); transform: rotate(3deg); margin-top: 4px; }
+
+.day { position: relative; border-top: 8px solid var(--gold); border-radius: 18px; background: var(--white); padding: 26px 24px 24px; gap: 10px; }
+.day--2 { border-top-color: var(--pink); }
+.record { position: absolute; top: -34px; right: 20px; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--script); font-size: 22px; line-height: 1; color: var(--ink); box-shadow: 0 3px 0 var(--berry);
+  background: radial-gradient(circle, var(--gold) 0 13px, #1b1b1b 13px 15px, #3b3b3b 15px 16px, #1b1b1b 16px 19px, #3b3b3b 19px 20px, #1b1b1b 20px 23px, #3b3b3b 23px 24px, #1b1b1b 24px 100%); }
+.record span { transform: translateY(1px); }
+.day--2 .record { color: var(--white); background: radial-gradient(circle, var(--pink) 0 13px, #1b1b1b 13px 15px, #3b3b3b 15px 16px, #1b1b1b 16px 19px, #3b3b3b 19px 20px, #1b1b1b 20px 23px, #3b3b3b 23px 24px, #1b1b1b 24px 100%); }
+.days { margin-top: 48px; }
+
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 8px; }
+.chips li { font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 600; font-size: 18px; line-height: 1; padding: 10px 16px 11px; border-radius: 999px; background: var(--cream); color: var(--green); transform: rotate(-2deg); }
+.chips li:nth-child(2n) { transform: rotate(2deg); background: var(--gold); color: var(--ink); }
+.chips li:nth-child(3n) { background: var(--pink); color: var(--white); }
+
+.band--gold { background: var(--gold); color: var(--ink); }
+.band--gold h2, .band--gold h3 { color: var(--ink); }
+.band--gold .eyebrow { color: var(--berry); }
+.band--gold .lead { color: var(--ink); max-width: 46ch; }
+.band--gold .speaker img { border-color: var(--ink); }
+.band--gold .speaker .session { color: var(--berry); }
+.band--gold .speaker .who { opacity: 0.9; }
+.mystery-row { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 22px 26px; }
+.mystery { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 120px; }
+.mystery .disc { width: 108px; height: 108px; border-radius: 50%; display: grid; place-items: center; font-family: var(--script); font-size: 44px; line-height: 1; color: var(--cream); transform: rotate(-6deg); box-shadow: 0 4px 0 var(--berry);
+  background: radial-gradient(circle, var(--pink) 0 24px, #1b1b1b 24px 27px, #3b3b3b 27px 29px, #1b1b1b 29px 34px, #3b3b3b 34px 36px, #1b1b1b 36px 41px, #3b3b3b 41px 43px, #1b1b1b 43px 100%); }
+.mystery:nth-child(2n) .disc { transform: rotate(5deg); background: radial-gradient(circle, var(--green) 0 24px, #1b1b1b 24px 27px, #3b3b3b 27px 29px, #1b1b1b 29px 34px, #3b3b3b 34px 36px, #1b1b1b 36px 41px, #3b3b3b 41px 43px, #1b1b1b 43px 100%); }
+.mystery:nth-child(3n) .disc { background: radial-gradient(circle, var(--berry) 0 24px, #1b1b1b 24px 27px, #3b3b3b 27px 29px, #1b1b1b 29px 34px, #3b3b3b 34px 36px, #1b1b1b 36px 41px, #3b3b3b 41px 43px, #1b1b1b 43px 100%); }
+.mystery .eyebrow.tiny { color: var(--berry); text-align: center; }
+
+.inbox-tip { background: var(--cream); color: var(--ink); padding: 24px; border-radius: 18px; display: flex; flex-direction: column; gap: 12px; }
+.inbox-tip .eyebrow { color: var(--pink); }
+.inbox-tip p { font-size: 16px; line-height: 1.5; }
+
+@media (max-width: 860px) {
+  .summit-hero.stripe-corner::after, .thanks-hero.stripe-corner::after { right: -130px; bottom: -100px; width: 380px; height: 190px; }
+  .summit-hero.stripe-corner, .thanks-hero.stripe-corner { padding-bottom: calc(clamp(64px, 9vw, 112px) + 20px); }
+  .days { gap: 44px; }
+  .mystery { width: 92px; }
+  .mystery .disc { width: 84px; height: 84px; font-size: 36px; }
+  .mystery-row { gap: 18px 14px; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .nav .btn { white-space: nowrap; font-size: 14px; padding: 8px 14px; min-height: 38px; }
+  .site-header .wrap { gap: 12px; }
+}
 </style>
 </head>
 <body>
@@ -361,20 +417,20 @@ p { margin: 0; max-width: 68ch; }
     </a>
     <nav class="nav" aria-label="Main">
       <a href="/#podcast">Podcast</a>
-      <a href="/#newsletter">Newsletter</a>
-      <a href="/summit/">Summit</a>
+      <a href="#top" aria-current="page">Summit</a>
       <a href="/#speaking">Speaking</a>
       <a href="/#about">About</a>
-      <a class="btn btn--primary" href="/#newsletter">Join free &rarr;</a>
+      <a class="btn btn--primary" href="/#newsletter">Join the newsletter &rarr;</a>
     </nav>
   </div>
 </header>
 <main id="top">
 
-  <section class="band band--green summit-hero" aria-labelledby="summit-title">
+  <section class="band band--green summit-hero stripe-corner" aria-labelledby="summit-title">
     <div class="wrap signup">
       <div class="stack">
         <p class="eyebrow">the summit</p>
+        <span class="sticker">you're invited!</span>
         <h1 id="summit-title">Teachers With Money Summit</h1>
         <p class="lead">A free weekend of teacher money basics, without the overwhelm.</p>
         <p class="when"><strong>January 30 and 31, 2027</strong><br>Two days, online, free</p>
@@ -389,25 +445,30 @@ p { margin: 0; max-width: 68ch; }
     </div>
   </section>
 
+  <div class="rainbow" aria-hidden="true"></div>
+
   <section class="band" aria-labelledby="what-title">
     <div class="wrap">
       <div class="stack">
         <p class="eyebrow">what it is</p>
-        <h2 id="what-title">Two days. One for your money, one for your income.</h2><!-- DRAFT COPY: Christa to review -->
+        <h2 id="what-title">A cozy weekend party about teacher money.</h2><!-- DRAFT COPY: Christa to review -->
       </div>
       <div class="days">
-        <div class="day">
+        <div class="day day--1">
+          <span class="record" aria-hidden="true"><span>1</span></span>
           <p class="eyebrow small">day 1, saturday</p>
           <h3>Getting your money right.</h3>
           <p>The basics nobody handed you with your first contract: how teacher pay actually works, what to do with it, and why money feels heavier than it should. Every session ends with one small step you can take that day.</p><!-- DRAFT COPY: Christa to review -->
         </div>
-        <div class="day">
+        <div class="day day--2">
+          <span class="record" aria-hidden="true"><span>2</span></span>
           <p class="eyebrow small">day 2, sunday</p>
           <h3>Growing income around the pay scale.</h3>
-          <p>The pay scale is fixed. Your income isn't. Sunday is about building income around the schedule, beginner level on purpose, and then picking your one thing before the weekend ends.</p><!-- DRAFT COPY: Christa to review -->
+          <p>The pay scale is fixed. Your income isn't. Sunday is educators sharing how they built income around a teaching schedule, beginner level on purpose, with zero pressure to copy any of it. Ask the questions you'd never ask in the staff lounge. This room is kind.</p><!-- DRAFT COPY: Christa to review -->
+          <p>We keep pushing for better teacher pay AND we build what we can in the meantime.</p><!-- DRAFT COPY: Christa to review -->
         </div>
       </div>
-      <p class="small format-note">Sessions are pre-recorded and released across the weekend, so you can watch when it suits you. Captions on every video.</p><!-- DRAFT COPY: Christa to review -->
+      <p class="small format-note">Sessions are pre-recorded and released across the weekend, so you can watch when it suits you.</p><!-- DRAFT COPY: Christa to review -->
     </div>
   </section>
 
@@ -416,7 +477,15 @@ p { margin: 0; max-width: 68ch; }
       <div class="stack">
         <p class="eyebrow">who's invited</p>
         <h2 id="who-title">Class Acts of every kind.</h2><!-- DRAFT COPY: Christa to review -->
-        <p>Classroom teachers. Specialists. Admins. Paras. Former teachers. Edupreneurs. If you work in education, or you did, you're on the list.</p><!-- DRAFT COPY: Christa to review -->
+        <ul class="chips" aria-label="Who the Summit is for">
+          <li>Classroom teachers</li>
+          <li>Specialists</li>
+          <li>Admins</li>
+          <li>Paras</li>
+          <li>Former teachers</li>
+          <li>Edupreneurs</li>
+        </ul>
+        <p>If you work in education, or you did, you're on the list.</p><!-- DRAFT COPY: Christa to review -->
       </div>
       <div class="stack">
         <p>If you were never taught how your own money works, and you've been avoiding it a little (or a lot), this weekend was built for you. No shame here, no lectures. Just a weekend of catching up on the stuff we should have been taught, together.</p><!-- DRAFT COPY: Christa to review -->
@@ -424,25 +493,27 @@ p { margin: 0; max-width: 68ch; }
     </div>
   </section>
 
-  <section class="band" id="speakers" aria-labelledby="speakers-title">
+  <section class="band band--gold" id="speakers" aria-labelledby="speakers-title">
     <div class="wrap">
       <div class="stack">
         <p class="eyebrow">the lineup</p>
-        <h2 id="speakers-title">The lineup is coming together right now.</h2>
-        <p>Invitations are out. As each speaker says yes, they show up here.</p><!-- DRAFT COPY: Christa to review -->
+        <h2 id="speakers-title">The lineup drops in January.</h2><!-- DRAFT COPY: Christa to review -->
+        <p class="lead">Think starting lineup. The guests I've been chasing since summer, each with one session built for educators. The waitlist hears the names first. Everyone else finds out when the socials do.</p><!-- DRAFT COPY: Christa to review -->
+        <div class="mystery-row" aria-label="Five speaker spots, names announced in January"><div class="mystery"><span class="disc" aria-hidden="true">?</span><span class="eyebrow tiny">announcing soon</span></div><div class="mystery"><span class="disc" aria-hidden="true">?</span><span class="eyebrow tiny">announcing soon</span></div><div class="mystery"><span class="disc" aria-hidden="true">?</span><span class="eyebrow tiny">announcing soon</span></div><div class="mystery"><span class="disc" aria-hidden="true">?</span><span class="eyebrow tiny">announcing soon</span></div><div class="mystery"><span class="disc" aria-hidden="true">?</span><span class="eyebrow tiny">announcing soon</span></div></div>
       </div>
     </div>
   </section>
 
-  <section class="band band--berry" aria-labelledby="party-title">
+  <section class="band band--berry stripe-corner party" aria-labelledby="party-title">
     <div class="wrap two-col">
       <div class="stack">
         <p class="eyebrow">why it's a party</p>
         <h2 id="party-title">Picture a party at my house.</h2>
+        <span class="sticker">sweatpants welcome!</span>
       </div>
       <div class="stack">
-        <p>I'm not running a conference. I'm filling a room with my favorite people in teacher money and introducing you to all of them. That's my whole job that weekend.</p><!-- DRAFT COPY: Christa to review -->
-        <p>Come in your coziest sweatpants. Bring a teacher friend. Stay for the parts you need and skip the rest, because money stuff is way more fun with company.</p><!-- DRAFT COPY: Christa to review -->
+        <p>Sweatpants on. Snack within reach. A teacher friend texting you "wait, are you watching this one?!" The sessions drop across the weekend and you pick the ones that fit your life right now. Your watchlist, your pace.</p><!-- DRAFT COPY: Christa to review -->
+        <p>The playlist is good and the people are better. The questions you'd never ask in the staff lounge are welcome here, and nobody gets graded.</p><!-- DRAFT COPY: Christa to review -->
       </div>
     </div>
   </section>
@@ -451,16 +522,16 @@ p { margin: 0; max-width: 68ch; }
     <div class="wrap faq-wrap">
       <div class="stack">
         <p class="eyebrow">questions</p>
-        <h2 id="faq-title">The short answers.</h2><!-- DRAFT COPY: Christa to review -->
+        <h2 id="faq-title">Before you ask.</h2><!-- DRAFT COPY: Christa to review -->
       </div>
       <div class="faq">
         <details>
           <summary>Is it free?</summary>
-          <p>Yes. The live weekend is free, funded by sponsors so it stays that way.</p><!-- DRAFT COPY: Christa to review -->
+          <p>Yes!! The live weekend is free, funded by sponsors so it stays that way. If you want the sessions for keeps, the all-access pass keeps every video open after the weekend. [MORE PASS BENEFITS: Christa to add] Pricing lands when registration opens on December 28.</p><!-- DRAFT COPY: Christa to review -->
         </details>
         <details>
           <summary>Do I have to watch live?</summary>
-          <p>No. Sessions are released across the weekend, and the replays are free for a limited window. [REPLAY WINDOW TBD]</p><!-- DRAFT COPY: Christa to review -->
+          <p>No. Sessions release across the weekend and each one stays up for 48 hours. If you want them longer than that, the all-access pass is for you.</p><!-- DRAFT COPY: Christa to review -->
         </details>
         <details>
           <summary>Is this financial advice?</summary>
@@ -468,11 +539,13 @@ p { margin: 0; max-width: 68ch; }
         </details>
         <details>
           <summary>Is there a paid option?</summary>
-          <p>An all-access pass with ongoing access is coming.</p>
+          <p>Yes, and it's a good one!! The all-access pass keeps every session open after the 48 hours are up, so you can rewatch the one that hit, catch the ones you missed, and come back in July when the thing you were avoiding is suddenly urgent. Pass details and pricing drop when registration opens on December 28.</p><!-- DRAFT COPY: Christa to review -->
         </details>
       </div>
     </div>
   </section>
+
+  <div class="rainbow" aria-hidden="true"></div>
 
   <section class="band band--green" aria-labelledby="bottom-title">
     <div class="wrap signup">
@@ -520,7 +593,7 @@ p { margin: 0; max-width: 68ch; }
         <ul aria-label="Explore">
           <li><a href="/#podcast">Podcast</a></li>
           <li><a href="/#newsletter">Newsletter</a></li>
-          <li><a href="/summit/">Summit</a></li>
+          <li><a href="/summit/" target="_blank" rel="noopener">Summit</a></li>
           <li><a href="/#speaking">Speaking</a></li>
           <li><a href="/partners.html" target="_blank" rel="noopener">Partners</a></li>
           <li><a href="/pillars.html" target="_blank" rel="noopener">Our Pillars</a></li>

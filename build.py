@@ -142,8 +142,11 @@ def nested(html):
 def speakers_html():
     speakers = json.loads((ROOT / "data" / "speakers.json").read_text())
     if not speakers:
-        return ('<h2 id="speakers-title">The lineup is coming together right now.</h2>\n'
-                '        <p>Invitations are out. As each speaker says yes, they show up here.</p><!-- DRAFT COPY: Christa to review -->')
+        mystery = "".join('<div class="mystery"><span class="disc" aria-hidden="true">?</span><span class="eyebrow tiny">announcing soon</span></div>' for _ in range(5))
+        return ('<h2 id="speakers-title">The lineup drops in January.</h2><!-- DRAFT COPY: Christa to review -->\n'
+                '        <p class="lead">Think starting lineup. The guests I\'ve been chasing since summer, each with one session built for educators. '
+                'The waitlist hears the names first. Everyone else finds out when the socials do.</p><!-- DRAFT COPY: Christa to review -->\n'
+                '        <div class="mystery-row" aria-label="Five speaker spots, names announced in January">' + mystery + '</div>')
     cards = []
     for s in speakers:
         day = f'<span class="eyebrow tiny">day {s["day"]}</span>' if s.get("day") else ""
@@ -157,14 +160,15 @@ def speakers_html():
 
 SUMMIT_TITLE = "Teachers With Money Summit | Free, Jan 30\u201331, 2027"
 SUMMIT_DESC = "A free weekend of teacher money basics, without the overwhelm. January 30 and 31, 2027, online."
-summit_body = (header.replace("{{HOME}}", "/") +
+summit_header = header.replace("{{HOME}}", "/").replace('<a href="/#summit">Summit</a>', '<a href="#top" aria-current="page">Summit</a>')
+summit_body = (summit_header +
                summit_main.replace("{{FORM_SUMMIT_PAGE}}", embed(SUMMIT_PAGE_FORM_ID)).replace("{{SPEAKERS}}", speakers_html()) +
                footer.replace("{{HOME}}", "/") + ATTRIBUTION)
 (SITE / "summit").mkdir(exist_ok=True)
 (SITE / "summit" / "index.html").write_text(nested(page(
     head(SUMMIT_TITLE, SUMMIT_DESC, "https://teacherswithmoney.com/summit/"), summit_body)))
 
-thanks_body = header.replace("{{HOME}}", "/") + summit_thanks_main + footer.replace("{{HOME}}", "/")
+thanks_body = summit_header + summit_thanks_main + footer.replace("{{HOME}}", "/")
 (SITE / "summit" / "thanks").mkdir(exist_ok=True)
 (SITE / "summit" / "thanks" / "index.html").write_text(nested(page(
     head("You're in! | Teachers With Money Summit", "You're on the list for the Teachers With Money Summit, January 30 and 31, 2027.",
