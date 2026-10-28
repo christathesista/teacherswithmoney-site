@@ -495,7 +495,7 @@ html.anim .chips.in li { opacity: 1; transform: rotate(var(--r)); }
 .sparkle { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 40; }
 
 /* ---- surprises round 3: clickable stickers that peel, vinyl cursor, the magic word ---- */
-a.sticker { text-decoration: none; color: var(--cream); }
+a.sticker, a.sticker:hover, .summit-panel a.sticker:not(.btn), .summit-panel a.sticker:not(.btn):hover { text-decoration: none; color: var(--cream); }
 a.sticker:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 .sticker { position: relative; overflow: hidden; }
 /* the peel: a folded corner that lifts on hover, plus the sticker lifting off the page */
