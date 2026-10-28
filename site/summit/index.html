@@ -371,8 +371,8 @@ p { margin: 0; max-width: 68ch; }
 .days { margin-top: 48px; }
 
 .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 8px; }
-.chips li { font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 600; font-size: 18px; line-height: 1; padding: 10px 16px 11px; border-radius: 999px; background: var(--cream); color: var(--green); transform: rotate(-2deg); }
-.chips li:nth-child(2n) { transform: rotate(2deg); background: var(--gold); color: var(--ink); }
+.chips li { --r: -2deg; font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 600; font-size: 18px; line-height: 1; padding: 10px 16px 11px; border-radius: 999px; background: var(--cream); color: var(--green); transform: rotate(var(--r)); }
+.chips li:nth-child(2n) { --r: 2deg; background: var(--gold); color: var(--ink); }
 .chips li:nth-child(3n) { background: var(--pink); color: var(--white); }
 
 .band--gold { background: var(--gold); color: var(--ink); }
@@ -406,6 +406,74 @@ p { margin: 0; max-width: 68ch; }
   .nav .btn { white-space: nowrap; font-size: 14px; padding: 8px 14px; min-height: 38px; }
   .site-header .wrap { gap: 12px; }
 }
+
+/* ---------- summit: record player, tracklist, confetti ---------- */
+.player { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 6px; }
+.record-btn { appearance: none; background: none; border: 0; padding: 6px; cursor: pointer; border-radius: 50%; line-height: 0; }
+.record-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+.record-btn .disc { display: block; width: 168px; height: 168px; border-radius: 50%; position: relative; box-shadow: 0 4px 0 var(--berry);
+  background: radial-gradient(circle, #1b1b1b 0 40px, #3b3b3b 40px 42px, #1b1b1b 42px 48px, #3b3b3b 48px 50px, #1b1b1b 50px 56px, #3b3b3b 56px 58px, #1b1b1b 58px 64px, #3b3b3b 64px 66px, #1b1b1b 66px 72px, #3b3b3b 72px 74px, #1b1b1b 74px 100%); }
+.record-btn .label { position: absolute; inset: 50%; width: 74px; height: 74px; margin: -37px 0 0 -37px; border-radius: 50%; overflow: hidden;
+  background: linear-gradient(-32deg, var(--r1) 0 16.6%, var(--r2) 16.6% 33.3%, var(--r3) 33.3% 50%, var(--r4) 50% 66.6%, var(--r5) 66.6% 83.3%, var(--r6) 83.3% 100%); }
+.record-btn .label::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--cream); }
+.record-btn:hover .disc { transform: scale(1.02); }
+@keyframes spin { to { transform: rotate(360deg); } }
+.record-btn[aria-pressed="true"] .disc { animation: spin 1.8s linear infinite; }
+.player-state { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-soft); margin-left: 6px; }
+@media (prefers-reduced-motion: reduce) {
+  .record-btn[aria-pressed="true"] .disc { animation: none; }
+  .record-btn:hover .disc { transform: none; }
+}
+
+.tracklist { width: 100%; box-sizing: border-box; margin-top: 28px; background: var(--cream); color: var(--ink); border: 1.5px solid var(--ink); border-radius: 18px; padding: clamp(22px, 3vw, 36px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 48px); }
+.tracklist .side { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.tracklist .eyebrow.small { color: var(--pink); }
+.tracks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.track { border-top: 1px dashed rgba(30, 54, 44, 0.35); }
+.track:last-child { border-bottom: 1px dashed rgba(30, 54, 44, 0.35); }
+.track summary, .track.blank { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 12px; align-items: baseline; padding: 12px 0; list-style: none; cursor: pointer; }
+.track.blank { cursor: default; }
+.track summary::-webkit-details-marker { display: none; }
+.track summary:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
+.track .num { font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; color: var(--berry); }
+.track .title { font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 600; font-size: 18px; line-height: 1.2; color: var(--green); }
+.track.blank .title { border-bottom: 2px dotted rgba(30, 54, 44, 0.3); height: 10px; }
+.track .artist { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); opacity: 0.75; white-space: nowrap; }
+.track .liner { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 18px; padding: 4px 0 18px 46px; }
+.track .liner img { width: 120px; height: 120px; object-fit: cover; border-radius: 14px; border: 1.5px solid var(--green); }
+.track .liner .stack { gap: 8px; }
+.track .liner .links a { color: var(--pink); margin-right: 12px; }
+@media (max-width: 760px) {
+  .tracklist { grid-template-columns: minmax(0, 1fr); }
+  .track summary, .track.blank { grid-template-columns: 30px minmax(0, 1fr); }
+  .track .artist { grid-column: 2; white-space: normal; }
+  .track .liner { grid-template-columns: minmax(0, 1fr); padding-left: 0; }
+}
+.confetti { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 50; }
+
+/* ---------- summit: surprises ---------- */
+html.anim .chips li { opacity: 0; transform: translateY(-24px) rotate(var(--r)); transition: opacity .35s ease, transform .55s cubic-bezier(.34, 1.56, .64, 1); transition-delay: calc(var(--i, 0) * 90ms); }
+html.anim .chips.in li { opacity: 1; transform: rotate(var(--r)); }
+.bside { margin: 0; }
+.bside .sticker { background: var(--gold); color: var(--ink); box-shadow: 0 3px 0 var(--pink); transform: rotate(3deg); animation: pop .45s cubic-bezier(.34, 1.56, .64, 1); }
+@keyframes pop { from { transform: scale(0.4) rotate(-12deg); opacity: 0; } to { transform: scale(1) rotate(3deg); opacity: 1; } }
+.countdown { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
+.countdown:empty { display: none; }
+@media (prefers-reduced-motion: reduce) { .bside .sticker { animation: none; } }
+
+/* ---------- summit: B-side, ticket ---------- */
+.record-btn.side-b .label { background: linear-gradient(-32deg, var(--green-deep) 0 50%, var(--green) 50% 100%); }
+.record-btn.side-b .label::after { background: var(--gold); }
+.flip { appearance: none; background: none; border: 0; padding: 0; margin-left: 6px; cursor: pointer; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.flip:hover { color: var(--cream); }
+.flip:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.flip[hidden] { display: none; }
+.ticket-wrap { align-items: center; }
+.ticket { display: flex; justify-content: center; }
+.ticket-img { width: min(100%, 300px); height: auto; border-radius: 18px; box-shadow: 0 6px 0 var(--pink); transform: rotate(2deg); }
+.ticket-img[hidden], .ticket-save[hidden] { display: none; }
+.band--berry .ticket-note { color: var(--cream-soft); }
+@media (prefers-reduced-motion: reduce) { .ticket-img { transform: none; } }
 </style>
 </head>
 <body>
@@ -426,7 +494,7 @@ p { margin: 0; max-width: 68ch; }
 </header>
 <main id="top">
 
-  <section class="band band--green summit-hero stripe-corner" aria-labelledby="summit-title">
+  <section class="band band--green summit-hero" aria-labelledby="summit-title">
     <div class="wrap signup">
       <div class="stack">
         <p class="eyebrow">the summit</p>
@@ -434,6 +502,15 @@ p { margin: 0; max-width: 68ch; }
         <h1 id="summit-title">Teachers With Money Summit</h1>
         <p class="lead">A free weekend of teacher money basics, without the overwhelm.</p>
         <p class="when"><strong>January 30 and 31, 2027</strong><br>Two days, online, free</p>
+        <div class="player">
+          <!-- RECORD PLAYER. Audio file: /assets/audio/summit-welcome.mp3 (Christa to supply). Until it exists the record still spins and nothing breaks. -->
+          <button class="record-btn" type="button" aria-label="Play the Summit welcome clip" aria-pressed="false">
+            <span class="disc" aria-hidden="true"><span class="label"></span></span>
+          </button>
+          <p class="small player-state" aria-live="polite">tap the record to play the welcome clip</p><!-- DRAFT COPY: Christa to review -->
+          <p class="bside" aria-live="polite"></p>
+          <button class="flip" type="button" hidden>flip to side a</button><!-- filled on the third tap: "you found the B-side!" --><!-- DRAFT COPY: Christa to review -->
+        </div>
       </div>
       <div class="form-box stripe-corner">
         <p class="eyebrow small">join the waitlist</p>
@@ -455,20 +532,20 @@ p { margin: 0; max-width: 68ch; }
       </div>
       <div class="days">
         <div class="day day--1">
-          <span class="record" aria-hidden="true"><span>1</span></span>
-          <p class="eyebrow small">day 1, saturday</p>
+          <span class="record" aria-hidden="true"><span>A</span></span>
+          <p class="eyebrow small">side a · day 1, saturday</p>
           <h3>Getting your money right.</h3>
           <p>The basics nobody handed you with your first contract: how teacher pay actually works, what to do with it, and why money feels heavier than it should. Every session ends with one small step you can take that day.</p><!-- DRAFT COPY: Christa to review -->
         </div>
         <div class="day day--2">
-          <span class="record" aria-hidden="true"><span>2</span></span>
-          <p class="eyebrow small">day 2, sunday</p>
+          <span class="record" aria-hidden="true"><span>B</span></span>
+          <p class="eyebrow small">side b · day 2, sunday</p>
           <h3>Growing income around the pay scale.</h3>
           <p>The pay scale is fixed. Your income isn't. Sunday is educators sharing how they built income around a teaching schedule, beginner level on purpose, with zero pressure to copy any of it. Ask the questions you'd never ask in the staff lounge. This room is kind.</p><!-- DRAFT COPY: Christa to review -->
-          <p>We keep pushing for better teacher pay AND we build what we can in the meantime.</p><!-- DRAFT COPY: Christa to review -->
+          <p>We keep pushing for better teacher pay AND we kick ass in the meantime.</p><!-- DRAFT COPY: Christa to review -->
         </div>
       </div>
-      <p class="small format-note">Sessions are pre-recorded and released across the weekend, so you can watch when it suits you.</p><!-- DRAFT COPY: Christa to review -->
+      <p class="small format-note">Each session is around 20 minutes, pre-recorded and released across the weekend, so you can watch when it suits you.</p><!-- DRAFT COPY: Christa to review -->
     </div>
   </section>
 
@@ -480,6 +557,8 @@ p { margin: 0; max-width: 68ch; }
         <ul class="chips" aria-label="Who the Summit is for">
           <li>Classroom teachers</li>
           <li>Specialists</li>
+          <li>School librarians</li>
+          <li>School nurses</li>
           <li>Admins</li>
           <li>Paras</li>
           <li>Former teachers</li>
@@ -497,9 +576,9 @@ p { margin: 0; max-width: 68ch; }
     <div class="wrap">
       <div class="stack">
         <p class="eyebrow">the lineup</p>
-        <h2 id="speakers-title">The lineup drops in January.</h2><!-- DRAFT COPY: Christa to review -->
-        <p class="lead">Think starting lineup. The guests I've been chasing since summer, each with one session built for educators. The waitlist hears the names first. Everyone else finds out when the socials do.</p><!-- DRAFT COPY: Christa to review -->
-        <div class="mystery-row" aria-label="Five speaker spots, names announced in January"><div class="mystery"><span class="disc" aria-hidden="true">?</span><span class="eyebrow tiny">announcing soon</span></div><div class="mystery"><span class="disc" aria-hidden="true">?</span><span class="eyebrow tiny">announcing soon</span></div><div class="mystery"><span class="disc" aria-hidden="true">?</span><span class="eyebrow tiny">announcing soon</span></div><div class="mystery"><span class="disc" aria-hidden="true">?</span><span class="eyebrow tiny">announcing soon</span></div><div class="mystery"><span class="disc" aria-hidden="true">?</span><span class="eyebrow tiny">announcing soon</span></div></div>
+        <h2 id="speakers-title">The tracklist drops in January.</h2><!-- DRAFT COPY: Christa to review -->
+        <p class="lead">Waitlist hears the names first.</p><!-- DRAFT COPY: Christa to review -->
+        <div class="tracklist"><div class="side"><p class="eyebrow small">side a · saturday, january 30</p><ol class="tracks"><li class="track blank"><span class="num">01</span><span class="title"></span><span class="artist">announcing in january</span></li><li class="track blank"><span class="num">02</span><span class="title"></span><span class="artist">announcing in january</span></li><li class="track blank"><span class="num">03</span><span class="title"></span><span class="artist">announcing in january</span></li><li class="track blank"><span class="num">04</span><span class="title"></span><span class="artist">announcing in january</span></li></ol></div><div class="side"><p class="eyebrow small">side b · sunday, january 31</p><ol class="tracks"><li class="track blank"><span class="num">01</span><span class="title"></span><span class="artist">announcing in january</span></li><li class="track blank"><span class="num">02</span><span class="title"></span><span class="artist">announcing in january</span></li><li class="track blank"><span class="num">03</span><span class="title"></span><span class="artist">announcing in january</span></li><li class="track blank"><span class="num">04</span><span class="title"></span><span class="artist">announcing in january</span></li></ol></div></div>
       </div>
     </div>
   </section>
@@ -522,12 +601,12 @@ p { margin: 0; max-width: 68ch; }
     <div class="wrap faq-wrap">
       <div class="stack">
         <p class="eyebrow">questions</p>
-        <h2 id="faq-title">Before you ask.</h2><!-- DRAFT COPY: Christa to review -->
+        <h2 id="faq-title">Questions at the door.</h2><!-- DRAFT COPY: Christa to review -->
       </div>
       <div class="faq">
         <details>
           <summary>Is it free?</summary>
-          <p>Yes!! The live weekend is free, funded by sponsors so it stays that way. If you want the sessions for keeps, the all-access pass keeps every video open after the weekend. [MORE PASS BENEFITS: Christa to add] Pricing lands when registration opens on December 28.</p><!-- DRAFT COPY: Christa to review -->
+          <p>Yes!! The live weekend is free, funded by sponsors so it stays that way. If you want the sessions for keeps, the all-access pass keeps every video open after the weekend, plus workbooks, session notes, a private podcast feed, and more fun things I'm still packing in. Pricing lands when registration opens on December 28.</p><!-- DRAFT COPY: Christa to review -->
         </details>
         <details>
           <summary>Do I have to watch live?</summary>
@@ -539,7 +618,7 @@ p { margin: 0; max-width: 68ch; }
         </details>
         <details>
           <summary>Is there a paid option?</summary>
-          <p>Yes, and it's a good one!! The all-access pass keeps every session open after the 48 hours are up, so you can rewatch the one that hit, catch the ones you missed, and come back in July when the thing you were avoiding is suddenly urgent. Pass details and pricing drop when registration opens on December 28.</p><!-- DRAFT COPY: Christa to review -->
+          <p>Yes, and it's a good one!! The all-access pass (the Deluxe Edition) keeps every session open after the 48 hours are up, so you can rewatch the one that hit, catch the ones you missed, and come back in July when the thing you were avoiding is suddenly urgent. It comes with workbooks, session notes, a private podcast feed, and more fun things. Pass details and pricing drop when registration opens on December 28.</p><!-- DRAFT COPY: Christa to review -->
         </details>
       </div>
     </div>
@@ -553,6 +632,7 @@ p { margin: 0; max-width: 68ch; }
         <p class="eyebrow">save your spot</p>
         <h2 id="bottom-title">Registration opens December 28.</h2><!-- DRAFT COPY: Christa to review -->
         <p class="lead">Join the waitlist now and you'll get the first invite, before anyone else.</p><!-- DRAFT COPY: Christa to review -->
+        <p class="small countdown" aria-live="off"></p><!-- filled by script: "registration opens in N days" / "registration opens tomorrow" / "registration is open" --><!-- DRAFT COPY: Christa to review -->
       </div>
       <div class="form-box stripe-corner">
         <p class="eyebrow small">join the waitlist</p>
@@ -565,6 +645,141 @@ p { margin: 0; max-width: 68ch; }
   </section>
 
 <script>
+/* Teachers With Money confetti. Brand colors, square pieces, runs once, off under reduced motion.
+   twmConfetti()            rain from the top of the viewport (thank-you page)
+   twmConfetti({x, y})      burst from a point on screen (viewport pixels) */
+window.twmConfetti = function (opts) {
+  opts = opts || {};
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var c = document.createElement("canvas"); c.className = "confetti"; c.setAttribute("aria-hidden", "true");
+  document.body.appendChild(c);
+  var ctx = c.getContext && c.getContext("2d"); if (!ctx) { c.remove(); return; }
+  var dpr = Math.min(window.devicePixelRatio || 1, 2), W = window.innerWidth, H = window.innerHeight;
+  c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  var colors = ["#FAF3DE", "#F9C000", "#E84263", "#315647", "#FACC04", "#F97B06", "#EC321A", "#BB2D17", "#E84263", "#6B1F3A"];
+  var burst = typeof opts.x === "number", n = opts.count || (burst ? 70 : Math.min(160, Math.round(W / 6)));
+  var pieces = [], i;
+  for (i = 0; i < n; i++) {
+    var p = { s: 7 + Math.random() * 7, r: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.25, col: colors[Math.floor(Math.random() * colors.length)] };
+    if (burst) {
+      var a = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 0.95, v = 5 + Math.random() * 7;
+      p.x = opts.x; p.y = opts.y; p.vx = Math.cos(a) * v; p.vy = Math.sin(a) * v;
+    } else {
+      p.x = Math.random() * W; p.y = -20 - Math.random() * H * 0.6; p.vx = (Math.random() - 0.5) * 2.2; p.vy = 2.5 + Math.random() * 3.5;
+    }
+    pieces.push(p);
+  }
+  var g = burst ? 0.18 : 0.05, start = null;
+  function frame(ts) {
+    if (!start) start = ts;
+    ctx.clearRect(0, 0, W, H);
+    var alive = 0;
+    for (var k = 0; k < pieces.length; k++) {
+      var q = pieces[k];
+      q.x += q.vx; q.y += q.vy; q.vy += g; q.vx *= 0.99; q.r += q.vr;
+      if (q.y < H + 20) alive++;
+      ctx.save(); ctx.translate(q.x, q.y); ctx.rotate(q.r); ctx.fillStyle = q.col; ctx.fillRect(-q.s / 2, -q.s / 2, q.s, q.s); ctx.restore();
+    }
+    if (alive > 0 && ts - start < 4000) requestAnimationFrame(frame); else c.remove();
+  }
+  requestAnimationFrame(frame);
+};
+
+  (function () {
+    var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* record player: Side A is the welcome clip, Side B is the secret track found on the third tap */
+    var btn = document.querySelector(".record-btn"), state = document.querySelector(".player-state"),
+        bside = document.querySelector(".bside"), flip = document.querySelector(".flip");
+    if (btn) {
+      var clips = { A: "/assets/audio/summit-welcome.mp3", B: "/assets/audio/summit-bside.mp3" };
+      var audio = {}, side = "A", playing = false, taps = 0, found = false;
+      var set = function (on) {
+        playing = on;
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        btn.setAttribute("aria-label", (on ? "Pause" : "Play") + (side === "B" ? " the Summit B-side" : " the Summit welcome clip"));
+        state.textContent = side === "B"
+          ? (on ? "side b playing. tap the record to pause" : "side b. tap the record to play")
+          : (on ? "playing. tap the record to pause" : "tap the record to play the welcome clip");
+        if (flip && found) { flip.hidden = false; flip.textContent = side === "B" ? "flip to side a" : "flip to side b"; }
+      };
+      var track = function () {
+        if (!audio[side]) {
+          audio[side] = new Audio(clips[side]);
+          audio[side].preload = "none";
+          audio[side].addEventListener("ended", function () { set(false); });
+        }
+        return audio[side];
+      };
+      var stop = function () { if (audio[side]) { audio[side].pause(); audio[side].currentTime = 0; } };
+      var play = function () {
+        set(true);
+        var p = track().play();
+        if (p && p.catch) p.catch(function () { /* clip not there yet: the record still spins */ });
+      };
+      btn.addEventListener("click", function () {
+        taps++;
+        if (taps === 3 && !found) {
+          found = true;
+          stop(); side = "B";
+          btn.classList.add("side-b");
+          if (bside) bside.innerHTML = '<span class="sticker">you found the B-side!</span>';
+          var r = btn.getBoundingClientRect();
+          if (window.twmConfetti) twmConfetti({ x: r.left + r.width / 2, y: r.top + r.height / 2, count: 90 });
+          play();
+          return;
+        }
+        if (playing) { track().pause(); set(false); return; }
+        play();
+      });
+      if (flip) flip.addEventListener("click", function () {
+        stop(); side = side === "B" ? "A" : "B";
+        btn.classList.toggle("side-b", side === "B");
+        set(false);
+      });
+    }
+
+    /* confetti the first time the paid-option answer opens */
+    var paid = document.querySelector(".faq details:last-child"), popped = false;
+    if (paid) paid.addEventListener("toggle", function () {
+      if (!paid.open || popped || !window.twmConfetti) return;
+      popped = true;
+      var r = paid.querySelector("summary").getBoundingClientRect();
+      twmConfetti({ x: r.left + r.width / 2, y: r.top + r.height / 2, count: 80 });
+    });
+
+    /* the who's-invited chips tumble in */
+    var chips = document.querySelector(".chips");
+    if (chips && "IntersectionObserver" in window && !reduced) {
+      document.documentElement.classList.add("anim");
+      var items = chips.querySelectorAll("li");
+      for (var i = 0; i < items.length; i++) items[i].style.setProperty("--i", i);
+      var reveal = function () { chips.classList.add("in"); window.removeEventListener("scroll", check); };
+      var check = function () { var r = chips.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) reveal(); };
+      new IntersectionObserver(function (entries, io) {
+        for (var j = 0; j < entries.length; j++) if (entries[j].isIntersecting) { reveal(); io.disconnect(); }
+      }, { threshold: 0.3 }).observe(chips);
+      window.addEventListener("scroll", check, { passive: true });
+      check();
+    }
+
+    /* countdown to registration day, Dec 28, 2026. From that day the bottom box flips to doors-open mode on its own. */
+    var cd = document.querySelector(".countdown");
+    if (cd) {
+      var opens = new Date(2026, 11, 28), now = new Date();
+      var days = Math.ceil((opens - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5);
+      if (/doors=open/.test(location.search)) days = 0; /* preview hook: ?doors=open shows the Dec 28 state */
+      if (days > 1) cd.textContent = "registration opens in " + days + " days";
+      else if (days === 1) cd.textContent = "registration opens tomorrow";
+      else {
+        cd.textContent = "registration is open";
+        var h = document.getElementById("bottom-title"), lead = h && h.nextElementSibling;
+        if (h) h.textContent = "Registration is open!";
+        if (lead) lead.textContent = "Grab your spot and tell a teacher friend. The party starts January 30.";
+        if (days > -8 && window.twmConfetti) setTimeout(function () { twmConfetti(); }, 400);
+      }
+    }
+  })();
   setTimeout(function () {
     document.querySelectorAll(".form-box").forEach(function (box) {
       if (!box.querySelector(".embed iframe")) {

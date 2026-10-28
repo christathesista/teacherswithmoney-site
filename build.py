@@ -140,35 +140,46 @@ def nested(html):
     return html
 
 def speakers_html():
+    """The lineup as an album tracklist: Side A (Day 1) and Side B (Day 2), liner notes per track."""
     speakers = json.loads((ROOT / "data" / "speakers.json").read_text())
-    if not speakers:
-        mystery = "".join('<div class="mystery"><span class="disc" aria-hidden="true">?</span><span class="eyebrow tiny">announcing soon</span></div>' for _ in range(5))
-        return ('<h2 id="speakers-title">The lineup drops in January.</h2><!-- DRAFT COPY: Christa to review -->\n'
-                '        <p class="lead">Think starting lineup. The guests I\'ve been chasing since summer, each with one session built for educators. '
-                'The waitlist hears the names first. Everyone else finds out when the socials do.</p><!-- DRAFT COPY: Christa to review -->\n'
-                '        <div class="mystery-row" aria-label="Five speaker spots, names announced in January">' + mystery + '</div>')
-    cards = []
-    for s in speakers:
-        day = f'<span class="eyebrow tiny">day {s["day"]}</span>' if s.get("day") else ""
-        cards.append(
-            '<div class="speaker">'
-            f'<img src="/{s["photo"]}" alt="{s["name"]}" width="600" height="600" loading="lazy">'
-            f'{day}<h3>{s["name"]}</h3><p class="small who">{s.get("title", "")}</p>'
-            f'<p class="session">{s.get("session", "")}</p></div>')
-    return (f'<h2 id="speakers-title">{len(speakers)} speakers so far.</h2>\n'
-            '        <div class="speaker-grid">' + "".join(cards) + '</div>')
+    def side_of(s):
+        side = str(s.get("side", "")).upper()
+        if side in ("A", "B"): return side
+        return "B" if str(s.get("day", "")) == "2" else "A"
+    def track(i, s):
+        links = "".join(f'<a href="{l["url"]}" target="_blank" rel="noopener">{l["label"]}</a>' for l in s.get("links", []))
+        links = f'<p class="small links">{links}</p>' if links else ""
+        photo = f'<img src="/{s["photo"]}" alt="{s["name"]}" width="320" height="320" loading="lazy">' if s.get("photo") else ""
+        bio = f'<p>{s["bio"]}</p>' if s.get("bio") else ""
+        return ('<li class="track"><details><summary>'
+                f'<span class="num">{i:02d}</span><span class="title">{s.get("session", "")}</span><span class="artist">{s["name"]}</span>'
+                f'</summary><div class="liner">{photo}<div class="stack"><p class="eyebrow tiny">liner notes</p>{bio}{links}</div></div></details></li>')
+    def blank(i):
+        return f'<li class="track blank"><span class="num">{i:02d}</span><span class="title"></span><span class="artist">announcing in january</span></li>'
+    def side(letter, label, items):
+        tracks = "".join(track(i, s) for i, s in enumerate(items, 1)) if items else "".join(blank(i) for i in range(1, 5))
+        return f'<div class="side"><p class="eyebrow small">side {letter.lower()} · {label}</p><ol class="tracks">{tracks}</ol></div>'
+    a = [s for s in speakers if side_of(s) == "A"]
+    bb = [s for s in speakers if side_of(s) == "B"]
+    if speakers:
+        head = '<h2 id="speakers-title">The tracklist.</h2>'
+    else:
+        head = ('<h2 id="speakers-title">The tracklist drops in January.</h2><!-- DRAFT COPY: Christa to review -->\n'
+                '        <p class="lead">Waitlist hears the names first.</p><!-- DRAFT COPY: Christa to review -->')
+    return (head + '\n        <div class="tracklist">' + side("A", "saturday, january 30", a) + side("B", "sunday, january 31", bb) + '</div>')
 
 SUMMIT_TITLE = "Teachers With Money Summit | Free, Jan 30\u201331, 2027"
 SUMMIT_DESC = "A free weekend of teacher money basics, without the overwhelm. January 30 and 31, 2027, online."
 summit_header = header.replace("{{HOME}}", "/").replace('<a href="/#summit">Summit</a>', '<a href="#top" aria-current="page">Summit</a>')
+CONFETTI_JS = (ROOT / "src" / "confetti.js").read_text()
 summit_body = (summit_header +
-               summit_main.replace("{{FORM_SUMMIT_PAGE}}", embed(SUMMIT_PAGE_FORM_ID)).replace("{{SPEAKERS}}", speakers_html()) +
+               summit_main.replace("{{FORM_SUMMIT_PAGE}}", embed(SUMMIT_PAGE_FORM_ID)).replace("{{SPEAKERS}}", speakers_html()).replace("{{CONFETTI_JS}}", CONFETTI_JS) +
                footer.replace("{{HOME}}", "/") + ATTRIBUTION)
 (SITE / "summit").mkdir(exist_ok=True)
 (SITE / "summit" / "index.html").write_text(nested(page(
     head(SUMMIT_TITLE, SUMMIT_DESC, "https://teacherswithmoney.com/summit/"), summit_body)))
 
-thanks_body = summit_header + summit_thanks_main + footer.replace("{{HOME}}", "/")
+thanks_body = summit_header + summit_thanks_main.replace("{{CONFETTI_JS}}", CONFETTI_JS) + footer.replace("{{HOME}}", "/")
 (SITE / "summit" / "thanks").mkdir(exist_ok=True)
 (SITE / "summit" / "thanks" / "index.html").write_text(nested(page(
     head("You're in! | Teachers With Money Summit", "You're on the list for the Teachers With Money Summit, January 30 and 31, 2027.",

@@ -1,6 +1,6 @@
 <main id="top">
 
-  <section class="band band--green summit-hero stripe-corner" aria-labelledby="summit-title">
+  <section class="band band--green summit-hero" aria-labelledby="summit-title">
     <div class="wrap signup">
       <div class="stack">
         <p class="eyebrow">the summit</p>
@@ -8,6 +8,15 @@
         <h1 id="summit-title">Teachers With Money Summit</h1>
         <p class="lead">A free weekend of teacher money basics, without the overwhelm.</p>
         <p class="when"><strong>January 30 and 31, 2027</strong><br>Two days, online, free</p>
+        <div class="player">
+          <!-- RECORD PLAYER. Audio file: /assets/audio/summit-welcome.mp3 (Christa to supply). Until it exists the record still spins and nothing breaks. -->
+          <button class="record-btn" type="button" aria-label="Play the Summit welcome clip" aria-pressed="false">
+            <span class="disc" aria-hidden="true"><span class="label"></span></span>
+          </button>
+          <p class="small player-state" aria-live="polite">tap the record to play the welcome clip</p><!-- DRAFT COPY: Christa to review -->
+          <p class="bside" aria-live="polite"></p>
+          <button class="flip" type="button" hidden>flip to side a</button><!-- filled on the third tap: "you found the B-side!" --><!-- DRAFT COPY: Christa to review -->
+        </div>
       </div>
       <div class="form-box stripe-corner">
         <p class="eyebrow small">join the waitlist</p>
@@ -29,20 +38,20 @@
       </div>
       <div class="days">
         <div class="day day--1">
-          <span class="record" aria-hidden="true"><span>1</span></span>
-          <p class="eyebrow small">day 1, saturday</p>
+          <span class="record" aria-hidden="true"><span>A</span></span>
+          <p class="eyebrow small">side a · day 1, saturday</p>
           <h3>Getting your money right.</h3>
           <p>The basics nobody handed you with your first contract: how teacher pay actually works, what to do with it, and why money feels heavier than it should. Every session ends with one small step you can take that day.</p><!-- DRAFT COPY: Christa to review -->
         </div>
         <div class="day day--2">
-          <span class="record" aria-hidden="true"><span>2</span></span>
-          <p class="eyebrow small">day 2, sunday</p>
+          <span class="record" aria-hidden="true"><span>B</span></span>
+          <p class="eyebrow small">side b · day 2, sunday</p>
           <h3>Growing income around the pay scale.</h3>
           <p>The pay scale is fixed. Your income isn't. Sunday is educators sharing how they built income around a teaching schedule, beginner level on purpose, with zero pressure to copy any of it. Ask the questions you'd never ask in the staff lounge. This room is kind.</p><!-- DRAFT COPY: Christa to review -->
-          <p>We keep pushing for better teacher pay AND we build what we can in the meantime.</p><!-- DRAFT COPY: Christa to review -->
+          <p>We keep pushing for better teacher pay AND we kick ass in the meantime.</p><!-- DRAFT COPY: Christa to review -->
         </div>
       </div>
-      <p class="small format-note">Sessions are pre-recorded and released across the weekend, so you can watch when it suits you.</p><!-- DRAFT COPY: Christa to review -->
+      <p class="small format-note">Each session is around 20 minutes, pre-recorded and released across the weekend, so you can watch when it suits you.</p><!-- DRAFT COPY: Christa to review -->
     </div>
   </section>
 
@@ -54,6 +63,8 @@
         <ul class="chips" aria-label="Who the Summit is for">
           <li>Classroom teachers</li>
           <li>Specialists</li>
+          <li>School librarians</li>
+          <li>School nurses</li>
           <li>Admins</li>
           <li>Paras</li>
           <li>Former teachers</li>
@@ -94,12 +105,12 @@
     <div class="wrap faq-wrap">
       <div class="stack">
         <p class="eyebrow">questions</p>
-        <h2 id="faq-title">Before you ask.</h2><!-- DRAFT COPY: Christa to review -->
+        <h2 id="faq-title">Questions at the door.</h2><!-- DRAFT COPY: Christa to review -->
       </div>
       <div class="faq">
         <details>
           <summary>Is it free?</summary>
-          <p>Yes!! The live weekend is free, funded by sponsors so it stays that way. If you want the sessions for keeps, the all-access pass keeps every video open after the weekend. [MORE PASS BENEFITS: Christa to add] Pricing lands when registration opens on December 28.</p><!-- DRAFT COPY: Christa to review -->
+          <p>Yes!! The live weekend is free, funded by sponsors so it stays that way. If you want the sessions for keeps, the all-access pass keeps every video open after the weekend, plus workbooks, session notes, a private podcast feed, and more fun things I'm still packing in. Pricing lands when registration opens on December 28.</p><!-- DRAFT COPY: Christa to review -->
         </details>
         <details>
           <summary>Do I have to watch live?</summary>
@@ -111,7 +122,7 @@
         </details>
         <details>
           <summary>Is there a paid option?</summary>
-          <p>Yes, and it's a good one!! The all-access pass keeps every session open after the 48 hours are up, so you can rewatch the one that hit, catch the ones you missed, and come back in July when the thing you were avoiding is suddenly urgent. Pass details and pricing drop when registration opens on December 28.</p><!-- DRAFT COPY: Christa to review -->
+          <p>Yes, and it's a good one!! The all-access pass (the Deluxe Edition) keeps every session open after the 48 hours are up, so you can rewatch the one that hit, catch the ones you missed, and come back in July when the thing you were avoiding is suddenly urgent. It comes with workbooks, session notes, a private podcast feed, and more fun things. Pass details and pricing drop when registration opens on December 28.</p><!-- DRAFT COPY: Christa to review -->
         </details>
       </div>
     </div>
@@ -125,6 +136,7 @@
         <p class="eyebrow">save your spot</p>
         <h2 id="bottom-title">Registration opens December 28.</h2><!-- DRAFT COPY: Christa to review -->
         <p class="lead">Join the waitlist now and you'll get the first invite, before anyone else.</p><!-- DRAFT COPY: Christa to review -->
+        <p class="small countdown" aria-live="off"></p><!-- filled by script: "registration opens in N days" / "registration opens tomorrow" / "registration is open" --><!-- DRAFT COPY: Christa to review -->
       </div>
       <div class="form-box stripe-corner">
         <p class="eyebrow small">join the waitlist</p>
@@ -137,6 +149,102 @@
   </section>
 
 <script>
+{{CONFETTI_JS}}
+  (function () {
+    var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* record player: Side A is the welcome clip, Side B is the secret track found on the third tap */
+    var btn = document.querySelector(".record-btn"), state = document.querySelector(".player-state"),
+        bside = document.querySelector(".bside"), flip = document.querySelector(".flip");
+    if (btn) {
+      var clips = { A: "/assets/audio/summit-welcome.mp3", B: "/assets/audio/summit-bside.mp3" };
+      var audio = {}, side = "A", playing = false, taps = 0, found = false;
+      var set = function (on) {
+        playing = on;
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        btn.setAttribute("aria-label", (on ? "Pause" : "Play") + (side === "B" ? " the Summit B-side" : " the Summit welcome clip"));
+        state.textContent = side === "B"
+          ? (on ? "side b playing. tap the record to pause" : "side b. tap the record to play")
+          : (on ? "playing. tap the record to pause" : "tap the record to play the welcome clip");
+        if (flip && found) { flip.hidden = false; flip.textContent = side === "B" ? "flip to side a" : "flip to side b"; }
+      };
+      var track = function () {
+        if (!audio[side]) {
+          audio[side] = new Audio(clips[side]);
+          audio[side].preload = "none";
+          audio[side].addEventListener("ended", function () { set(false); });
+        }
+        return audio[side];
+      };
+      var stop = function () { if (audio[side]) { audio[side].pause(); audio[side].currentTime = 0; } };
+      var play = function () {
+        set(true);
+        var p = track().play();
+        if (p && p.catch) p.catch(function () { /* clip not there yet: the record still spins */ });
+      };
+      btn.addEventListener("click", function () {
+        taps++;
+        if (taps === 3 && !found) {
+          found = true;
+          stop(); side = "B";
+          btn.classList.add("side-b");
+          if (bside) bside.innerHTML = '<span class="sticker">you found the B-side!</span>';
+          var r = btn.getBoundingClientRect();
+          if (window.twmConfetti) twmConfetti({ x: r.left + r.width / 2, y: r.top + r.height / 2, count: 90 });
+          play();
+          return;
+        }
+        if (playing) { track().pause(); set(false); return; }
+        play();
+      });
+      if (flip) flip.addEventListener("click", function () {
+        stop(); side = side === "B" ? "A" : "B";
+        btn.classList.toggle("side-b", side === "B");
+        set(false);
+      });
+    }
+
+    /* confetti the first time the paid-option answer opens */
+    var paid = document.querySelector(".faq details:last-child"), popped = false;
+    if (paid) paid.addEventListener("toggle", function () {
+      if (!paid.open || popped || !window.twmConfetti) return;
+      popped = true;
+      var r = paid.querySelector("summary").getBoundingClientRect();
+      twmConfetti({ x: r.left + r.width / 2, y: r.top + r.height / 2, count: 80 });
+    });
+
+    /* the who's-invited chips tumble in */
+    var chips = document.querySelector(".chips");
+    if (chips && "IntersectionObserver" in window && !reduced) {
+      document.documentElement.classList.add("anim");
+      var items = chips.querySelectorAll("li");
+      for (var i = 0; i < items.length; i++) items[i].style.setProperty("--i", i);
+      var reveal = function () { chips.classList.add("in"); window.removeEventListener("scroll", check); };
+      var check = function () { var r = chips.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) reveal(); };
+      new IntersectionObserver(function (entries, io) {
+        for (var j = 0; j < entries.length; j++) if (entries[j].isIntersecting) { reveal(); io.disconnect(); }
+      }, { threshold: 0.3 }).observe(chips);
+      window.addEventListener("scroll", check, { passive: true });
+      check();
+    }
+
+    /* countdown to registration day, Dec 28, 2026. From that day the bottom box flips to doors-open mode on its own. */
+    var cd = document.querySelector(".countdown");
+    if (cd) {
+      var opens = new Date(2026, 11, 28), now = new Date();
+      var days = Math.ceil((opens - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5);
+      if (/doors=open/.test(location.search)) days = 0; /* preview hook: ?doors=open shows the Dec 28 state */
+      if (days > 1) cd.textContent = "registration opens in " + days + " days";
+      else if (days === 1) cd.textContent = "registration opens tomorrow";
+      else {
+        cd.textContent = "registration is open";
+        var h = document.getElementById("bottom-title"), lead = h && h.nextElementSibling;
+        if (h) h.textContent = "Registration is open!";
+        if (lead) lead.textContent = "Grab your spot and tell a teacher friend. The party starts January 30.";
+        if (days > -8 && window.twmConfetti) setTimeout(function () { twmConfetti(); }, 400);
+      }
+    }
+  })();
   setTimeout(function () {
     document.querySelectorAll(".form-box").forEach(function (box) {
       if (!box.querySelector(".embed iframe")) {

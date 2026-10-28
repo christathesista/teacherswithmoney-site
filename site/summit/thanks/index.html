@@ -371,8 +371,8 @@ p { margin: 0; max-width: 68ch; }
 .days { margin-top: 48px; }
 
 .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 8px; }
-.chips li { font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 600; font-size: 18px; line-height: 1; padding: 10px 16px 11px; border-radius: 999px; background: var(--cream); color: var(--green); transform: rotate(-2deg); }
-.chips li:nth-child(2n) { transform: rotate(2deg); background: var(--gold); color: var(--ink); }
+.chips li { --r: -2deg; font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 600; font-size: 18px; line-height: 1; padding: 10px 16px 11px; border-radius: 999px; background: var(--cream); color: var(--green); transform: rotate(var(--r)); }
+.chips li:nth-child(2n) { --r: 2deg; background: var(--gold); color: var(--ink); }
 .chips li:nth-child(3n) { background: var(--pink); color: var(--white); }
 
 .band--gold { background: var(--gold); color: var(--ink); }
@@ -406,6 +406,74 @@ p { margin: 0; max-width: 68ch; }
   .nav .btn { white-space: nowrap; font-size: 14px; padding: 8px 14px; min-height: 38px; }
   .site-header .wrap { gap: 12px; }
 }
+
+/* ---------- summit: record player, tracklist, confetti ---------- */
+.player { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 6px; }
+.record-btn { appearance: none; background: none; border: 0; padding: 6px; cursor: pointer; border-radius: 50%; line-height: 0; }
+.record-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+.record-btn .disc { display: block; width: 168px; height: 168px; border-radius: 50%; position: relative; box-shadow: 0 4px 0 var(--berry);
+  background: radial-gradient(circle, #1b1b1b 0 40px, #3b3b3b 40px 42px, #1b1b1b 42px 48px, #3b3b3b 48px 50px, #1b1b1b 50px 56px, #3b3b3b 56px 58px, #1b1b1b 58px 64px, #3b3b3b 64px 66px, #1b1b1b 66px 72px, #3b3b3b 72px 74px, #1b1b1b 74px 100%); }
+.record-btn .label { position: absolute; inset: 50%; width: 74px; height: 74px; margin: -37px 0 0 -37px; border-radius: 50%; overflow: hidden;
+  background: linear-gradient(-32deg, var(--r1) 0 16.6%, var(--r2) 16.6% 33.3%, var(--r3) 33.3% 50%, var(--r4) 50% 66.6%, var(--r5) 66.6% 83.3%, var(--r6) 83.3% 100%); }
+.record-btn .label::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: var(--cream); }
+.record-btn:hover .disc { transform: scale(1.02); }
+@keyframes spin { to { transform: rotate(360deg); } }
+.record-btn[aria-pressed="true"] .disc { animation: spin 1.8s linear infinite; }
+.player-state { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-soft); margin-left: 6px; }
+@media (prefers-reduced-motion: reduce) {
+  .record-btn[aria-pressed="true"] .disc { animation: none; }
+  .record-btn:hover .disc { transform: none; }
+}
+
+.tracklist { width: 100%; box-sizing: border-box; margin-top: 28px; background: var(--cream); color: var(--ink); border: 1.5px solid var(--ink); border-radius: 18px; padding: clamp(22px, 3vw, 36px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 48px); }
+.tracklist .side { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.tracklist .eyebrow.small { color: var(--pink); }
+.tracks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.track { border-top: 1px dashed rgba(30, 54, 44, 0.35); }
+.track:last-child { border-bottom: 1px dashed rgba(30, 54, 44, 0.35); }
+.track summary, .track.blank { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 12px; align-items: baseline; padding: 12px 0; list-style: none; cursor: pointer; }
+.track.blank { cursor: default; }
+.track summary::-webkit-details-marker { display: none; }
+.track summary:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
+.track .num { font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; color: var(--berry); }
+.track .title { font-family: var(--display); font-variation-settings: "SOFT" 80; font-weight: 600; font-size: 18px; line-height: 1.2; color: var(--green); }
+.track.blank .title { border-bottom: 2px dotted rgba(30, 54, 44, 0.3); height: 10px; }
+.track .artist { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); opacity: 0.75; white-space: nowrap; }
+.track .liner { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 18px; padding: 4px 0 18px 46px; }
+.track .liner img { width: 120px; height: 120px; object-fit: cover; border-radius: 14px; border: 1.5px solid var(--green); }
+.track .liner .stack { gap: 8px; }
+.track .liner .links a { color: var(--pink); margin-right: 12px; }
+@media (max-width: 760px) {
+  .tracklist { grid-template-columns: minmax(0, 1fr); }
+  .track summary, .track.blank { grid-template-columns: 30px minmax(0, 1fr); }
+  .track .artist { grid-column: 2; white-space: normal; }
+  .track .liner { grid-template-columns: minmax(0, 1fr); padding-left: 0; }
+}
+.confetti { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 50; }
+
+/* ---------- summit: surprises ---------- */
+html.anim .chips li { opacity: 0; transform: translateY(-24px) rotate(var(--r)); transition: opacity .35s ease, transform .55s cubic-bezier(.34, 1.56, .64, 1); transition-delay: calc(var(--i, 0) * 90ms); }
+html.anim .chips.in li { opacity: 1; transform: rotate(var(--r)); }
+.bside { margin: 0; }
+.bside .sticker { background: var(--gold); color: var(--ink); box-shadow: 0 3px 0 var(--pink); transform: rotate(3deg); animation: pop .45s cubic-bezier(.34, 1.56, .64, 1); }
+@keyframes pop { from { transform: scale(0.4) rotate(-12deg); opacity: 0; } to { transform: scale(1) rotate(3deg); opacity: 1; } }
+.countdown { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
+.countdown:empty { display: none; }
+@media (prefers-reduced-motion: reduce) { .bside .sticker { animation: none; } }
+
+/* ---------- summit: B-side, ticket ---------- */
+.record-btn.side-b .label { background: linear-gradient(-32deg, var(--green-deep) 0 50%, var(--green) 50% 100%); }
+.record-btn.side-b .label::after { background: var(--gold); }
+.flip { appearance: none; background: none; border: 0; padding: 0; margin-left: 6px; cursor: pointer; font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.flip:hover { color: var(--cream); }
+.flip:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.flip[hidden] { display: none; }
+.ticket-wrap { align-items: center; }
+.ticket { display: flex; justify-content: center; }
+.ticket-img { width: min(100%, 300px); height: auto; border-radius: 18px; box-shadow: 0 6px 0 var(--pink); transform: rotate(2deg); }
+.ticket-img[hidden], .ticket-save[hidden] { display: none; }
+.band--berry .ticket-note { color: var(--cream-soft); }
+@media (prefers-reduced-motion: reduce) { .ticket-img { transform: none; } }
 </style>
 <meta name="robots" content="noindex">
 </head>
@@ -493,6 +561,24 @@ p { margin: 0; max-width: 68ch; }
 
   <!-- FAST-ACTION OFFER GOES HERE (all-access pass), added later -->
 
+  <section class="band band--berry" aria-labelledby="ticket-title">
+    <div class="wrap two-col ticket-wrap">
+      <div class="stack">
+        <p class="eyebrow">tell the group chat</p>
+        <h2 id="ticket-title">Grab your ticket.</h2><!-- DRAFT COPY: Christa to review -->
+        <p>Save it, post it to your story, and tag me so I can cheer. Every teacher who sees it is one more person at the party.</p><!-- DRAFT COPY: Christa to review -->
+        <div class="btn-row">
+          <a class="btn btn--primary ticket-save" href="#" download="teachers-with-money-summit-ticket.png" hidden>Save my ticket &rarr;</a>
+        </div>
+        <p class="small ticket-note">On a phone, press and hold the ticket to save it.</p><!-- DRAFT COPY: Christa to review -->
+      </div>
+      <div class="ticket">
+        <!-- drawn by script below; the img gets the finished ticket so phones can press-and-hold to save -->
+        <img class="ticket-img" alt="Ticket: I'm in! Teachers With Money Summit, January 30 and 31, 2027. Two days, online, free. teacherswithmoney.com/summit" width="540" height="960" hidden>
+      </div>
+    </div>
+  </section>
+
   <section class="band" aria-labelledby="friend-title">
     <div class="wrap two-col">
       <div class="stack">
@@ -506,6 +592,97 @@ p { margin: 0; max-width: 68ch; }
     </div>
   </section>
 
+<script>
+/* Teachers With Money confetti. Brand colors, square pieces, runs once, off under reduced motion.
+   twmConfetti()            rain from the top of the viewport (thank-you page)
+   twmConfetti({x, y})      burst from a point on screen (viewport pixels) */
+window.twmConfetti = function (opts) {
+  opts = opts || {};
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var c = document.createElement("canvas"); c.className = "confetti"; c.setAttribute("aria-hidden", "true");
+  document.body.appendChild(c);
+  var ctx = c.getContext && c.getContext("2d"); if (!ctx) { c.remove(); return; }
+  var dpr = Math.min(window.devicePixelRatio || 1, 2), W = window.innerWidth, H = window.innerHeight;
+  c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  var colors = ["#FAF3DE", "#F9C000", "#E84263", "#315647", "#FACC04", "#F97B06", "#EC321A", "#BB2D17", "#E84263", "#6B1F3A"];
+  var burst = typeof opts.x === "number", n = opts.count || (burst ? 70 : Math.min(160, Math.round(W / 6)));
+  var pieces = [], i;
+  for (i = 0; i < n; i++) {
+    var p = { s: 7 + Math.random() * 7, r: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.25, col: colors[Math.floor(Math.random() * colors.length)] };
+    if (burst) {
+      var a = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 0.95, v = 5 + Math.random() * 7;
+      p.x = opts.x; p.y = opts.y; p.vx = Math.cos(a) * v; p.vy = Math.sin(a) * v;
+    } else {
+      p.x = Math.random() * W; p.y = -20 - Math.random() * H * 0.6; p.vx = (Math.random() - 0.5) * 2.2; p.vy = 2.5 + Math.random() * 3.5;
+    }
+    pieces.push(p);
+  }
+  var g = burst ? 0.18 : 0.05, start = null;
+  function frame(ts) {
+    if (!start) start = ts;
+    ctx.clearRect(0, 0, W, H);
+    var alive = 0;
+    for (var k = 0; k < pieces.length; k++) {
+      var q = pieces[k];
+      q.x += q.vx; q.y += q.vy; q.vy += g; q.vx *= 0.99; q.r += q.vr;
+      if (q.y < H + 20) alive++;
+      ctx.save(); ctx.translate(q.x, q.y); ctx.rotate(q.r); ctx.fillStyle = q.col; ctx.fillRect(-q.s / 2, -q.s / 2, q.s, q.s); ctx.restore();
+    }
+    if (alive > 0 && ts - start < 4000) requestAnimationFrame(frame); else c.remove();
+  }
+  requestAnimationFrame(frame);
+};
+
+twmConfetti();
+(function () {
+  var img = document.querySelector(".ticket-img"), save = document.querySelector(".ticket-save");
+  if (!img) return;
+  var W = 1080, H = 1920, c = document.createElement("canvas"); c.width = W; c.height = H;
+  var ctx = c.getContext && c.getContext("2d"); if (!ctx) return;
+  var cream = "#FAF3DE", green = "#315647", ink = "#1E362C", pink = "#E84263", berry = "#6B1F3A", gold = "#F9C000";
+  var rainbow = ["#FACC04", "#F97B06", "#EC321A", "#BB2D17", "#E84263", "#6B1F3A"];
+  function rr(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+  function draw() {
+    ctx.fillStyle = cream; ctx.fillRect(0, 0, W, H);
+    /* green card */
+    rr(60, 60, W - 120, H - 120, 40); ctx.fillStyle = green; ctx.fill();
+    /* rainbow stripes, bottom right, clipped to the card */
+    ctx.save(); rr(60, 60, W - 120, H - 120, 40); ctx.clip();
+    ctx.translate(W - 60, H - 60); ctx.rotate(-32 * Math.PI / 180);
+    for (var i = 0; i < rainbow.length; i++) { ctx.fillStyle = rainbow[i]; ctx.fillRect(-1400, -380 + i * 64, 2000, 64); }
+    ctx.restore();
+    /* sticker */
+    ctx.save(); ctx.translate(150, 250); ctx.rotate(-4 * Math.PI / 180);
+    rr(0, 0, 330, 120, 60); ctx.fillStyle = berry; ctx.fill();
+    rr(0, -8, 330, 120, 60); ctx.fillStyle = pink; ctx.fill();
+    ctx.fillStyle = cream; ctx.font = "400 64px Shrikhand, 'Cooper Black', Georgia, serif"; ctx.textBaseline = "middle"; ctx.fillText("I'm in!", 48, 50);
+    ctx.restore();
+    /* title */
+    ctx.fillStyle = cream; ctx.textBaseline = "alphabetic"; ctx.font = "700 118px Fraunces, Georgia, serif";
+    ctx.fillText("Teachers", 140, 560); ctx.fillText("With Money", 140, 690); ctx.fillText("Summit", 140, 820);
+    /* dates */
+    ctx.fillStyle = gold; ctx.font = "700 66px Fraunces, Georgia, serif";
+    ctx.fillText("January 30 and 31, 2027", 140, 960);
+    ctx.fillStyle = cream; ctx.font = "500 46px 'Instrument Sans', system-ui, sans-serif";
+    ctx.fillText("Two days, online, free", 140, 1040);
+    ctx.font = "400 40px 'Instrument Sans', system-ui, sans-serif";
+    ctx.fillText("A free weekend of teacher money basics,", 140, 1150); ctx.fillText("without the overwhelm.", 140, 1205);
+    /* footer */
+    ctx.fillStyle = cream; ctx.font = "500 36px 'JetBrains Mono', Menlo, monospace";
+    ctx.fillText("TEACHERSWITHMONEY.COM/SUMMIT", 140, 1700);
+    ctx.font = "400 34px 'Instrument Sans', system-ui, sans-serif";
+    ctx.fillText("@christajeanjones", 140, 1760);
+    var show = function (url) { img.src = url; img.hidden = false; if (save) { save.href = url; save.hidden = false; } };
+    if (c.toBlob) c.toBlob(function (blob) { show(blob ? URL.createObjectURL(blob) : c.toDataURL("image/png")); }, "image/png");
+    else show(c.toDataURL("image/png"));
+  }
+  var fonts = document.fonts ? Promise.all([
+    document.fonts.load("700 118px Fraunces"), document.fonts.load("400 64px Shrikhand"),
+    document.fonts.load("500 46px 'Instrument Sans'"), document.fonts.load("500 36px 'JetBrains Mono'")
+  ]).catch(function () {}) : Promise.resolve();
+  fonts.then(draw, draw);
+})();
+</script>
 </main>
 <footer class="site-footer">
   <div class="wrap">

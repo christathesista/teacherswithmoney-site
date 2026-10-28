@@ -66,6 +66,24 @@
 
   <!-- FAST-ACTION OFFER GOES HERE (all-access pass), added later -->
 
+  <section class="band band--berry" aria-labelledby="ticket-title">
+    <div class="wrap two-col ticket-wrap">
+      <div class="stack">
+        <p class="eyebrow">tell the group chat</p>
+        <h2 id="ticket-title">Grab your ticket.</h2><!-- DRAFT COPY: Christa to review -->
+        <p>Save it, post it to your story, and tag me so I can cheer. Every teacher who sees it is one more person at the party.</p><!-- DRAFT COPY: Christa to review -->
+        <div class="btn-row">
+          <a class="btn btn--primary ticket-save" href="#" download="teachers-with-money-summit-ticket.png" hidden>Save my ticket &rarr;</a>
+        </div>
+        <p class="small ticket-note">On a phone, press and hold the ticket to save it.</p><!-- DRAFT COPY: Christa to review -->
+      </div>
+      <div class="ticket">
+        <!-- drawn by script below; the img gets the finished ticket so phones can press-and-hold to save -->
+        <img class="ticket-img" alt="Ticket: I'm in! Teachers With Money Summit, January 30 and 31, 2027. Two days, online, free. teacherswithmoney.com/summit" width="540" height="960" hidden>
+      </div>
+    </div>
+  </section>
+
   <section class="band" aria-labelledby="friend-title">
     <div class="wrap two-col">
       <div class="stack">
@@ -79,4 +97,56 @@
     </div>
   </section>
 
+<script>
+{{CONFETTI_JS}}
+twmConfetti();
+(function () {
+  var img = document.querySelector(".ticket-img"), save = document.querySelector(".ticket-save");
+  if (!img) return;
+  var W = 1080, H = 1920, c = document.createElement("canvas"); c.width = W; c.height = H;
+  var ctx = c.getContext && c.getContext("2d"); if (!ctx) return;
+  var cream = "#FAF3DE", green = "#315647", ink = "#1E362C", pink = "#E84263", berry = "#6B1F3A", gold = "#F9C000";
+  var rainbow = ["#FACC04", "#F97B06", "#EC321A", "#BB2D17", "#E84263", "#6B1F3A"];
+  function rr(x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+  function draw() {
+    ctx.fillStyle = cream; ctx.fillRect(0, 0, W, H);
+    /* green card */
+    rr(60, 60, W - 120, H - 120, 40); ctx.fillStyle = green; ctx.fill();
+    /* rainbow stripes, bottom right, clipped to the card */
+    ctx.save(); rr(60, 60, W - 120, H - 120, 40); ctx.clip();
+    ctx.translate(W - 60, H - 60); ctx.rotate(-32 * Math.PI / 180);
+    for (var i = 0; i < rainbow.length; i++) { ctx.fillStyle = rainbow[i]; ctx.fillRect(-1400, -380 + i * 64, 2000, 64); }
+    ctx.restore();
+    /* sticker */
+    ctx.save(); ctx.translate(150, 250); ctx.rotate(-4 * Math.PI / 180);
+    rr(0, 0, 330, 120, 60); ctx.fillStyle = berry; ctx.fill();
+    rr(0, -8, 330, 120, 60); ctx.fillStyle = pink; ctx.fill();
+    ctx.fillStyle = cream; ctx.font = "400 64px Shrikhand, 'Cooper Black', Georgia, serif"; ctx.textBaseline = "middle"; ctx.fillText("I'm in!", 48, 50);
+    ctx.restore();
+    /* title */
+    ctx.fillStyle = cream; ctx.textBaseline = "alphabetic"; ctx.font = "700 118px Fraunces, Georgia, serif";
+    ctx.fillText("Teachers", 140, 560); ctx.fillText("With Money", 140, 690); ctx.fillText("Summit", 140, 820);
+    /* dates */
+    ctx.fillStyle = gold; ctx.font = "700 66px Fraunces, Georgia, serif";
+    ctx.fillText("January 30 and 31, 2027", 140, 960);
+    ctx.fillStyle = cream; ctx.font = "500 46px 'Instrument Sans', system-ui, sans-serif";
+    ctx.fillText("Two days, online, free", 140, 1040);
+    ctx.font = "400 40px 'Instrument Sans', system-ui, sans-serif";
+    ctx.fillText("A free weekend of teacher money basics,", 140, 1150); ctx.fillText("without the overwhelm.", 140, 1205);
+    /* footer */
+    ctx.fillStyle = cream; ctx.font = "500 36px 'JetBrains Mono', Menlo, monospace";
+    ctx.fillText("TEACHERSWITHMONEY.COM/SUMMIT", 140, 1700);
+    ctx.font = "400 34px 'Instrument Sans', system-ui, sans-serif";
+    ctx.fillText("@christajeanjones", 140, 1760);
+    var show = function (url) { img.src = url; img.hidden = false; if (save) { save.href = url; save.hidden = false; } };
+    if (c.toBlob) c.toBlob(function (blob) { show(blob ? URL.createObjectURL(blob) : c.toDataURL("image/png")); }, "image/png");
+    else show(c.toDataURL("image/png"));
+  }
+  var fonts = document.fonts ? Promise.all([
+    document.fonts.load("700 118px Fraunces"), document.fonts.load("400 64px Shrikhand"),
+    document.fonts.load("500 46px 'Instrument Sans'"), document.fonts.load("500 36px 'JetBrains Mono'")
+  ]).catch(function () {}) : Promise.resolve();
+  fonts.then(draw, draw);
+})();
+</script>
 </main>
