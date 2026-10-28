@@ -493,6 +493,35 @@ html.anim .chips.in li { opacity: 1; transform: rotate(var(--r)); }
 }
 
 .sparkle { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 40; }
+
+/* ---- surprises round 3: clickable stickers that peel, vinyl cursor, the magic word ---- */
+a.sticker { text-decoration: none; color: var(--cream); }
+a.sticker:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.sticker { position: relative; overflow: hidden; }
+/* the peel: a folded corner that lifts on hover, plus the sticker lifting off the page */
+.sticker::after { content: ""; position: absolute; right: -1px; bottom: -1px; width: 0; height: 0;
+  background: linear-gradient(135deg, transparent 48%, rgba(107, 31, 58, 0.35) 50%, var(--cream) 56%);
+  border-top-left-radius: 6px; }
+@media (hover: hover) {
+  .sticker:hover { box-shadow: 0 6px 0 var(--berry), 0 10px 18px rgba(0, 0, 0, 0.18); }
+  .party .sticker:hover, .bside .sticker:hover { box-shadow: 0 6px 0 var(--pink), 0 10px 18px rgba(0, 0, 0, 0.18); }
+  .sticker:hover::after, a.sticker:focus-visible::after { width: 24px; height: 24px; }
+  html.anim .sticker { transition: box-shadow .2s ease; }
+  html.anim .sticker::after { transition: width .25s cubic-bezier(.34, 1.56, .64, 1), height .25s cubic-bezier(.34, 1.56, .64, 1); }
+}
+/* vinyl cursor on the Summit pages, only while hovering something clickable (mouse pointers only) */
+@media (hover: hover) and (pointer: fine) {
+  .summit-page a, .summit-page button, .summit-page summary, .summit-page label, .summit-page [role="button"] {
+    cursor: url("/assets/cursor-vinyl.png") 16 16, pointer;
+    cursor: -webkit-image-set(url("/assets/cursor-vinyl.png") 1x, url("/assets/cursor-vinyl@2x.png") 2x) 16 16, pointer;
+    cursor: image-set(url("/assets/cursor-vinyl.png") 1x, url("/assets/cursor-vinyl@2x.png") 2x) 16 16, pointer;
+  }
+}
+/* the magic word sticker */
+.magic-word { position: fixed; left: 50%; top: 22%; z-index: 45; transform: translateX(-50%); pointer-events: none; }
+.magic-word .sticker { font-size: clamp(26px, 4.5vw, 44px); padding: 14px 26px 16px; background: var(--gold); color: var(--ink); box-shadow: 0 5px 0 var(--pink); animation: pop .5s cubic-bezier(.34, 1.56, .64, 1); }
+.magic-word.out .sticker { opacity: 0; transition: opacity .5s ease; }
+@media (prefers-reduced-motion: reduce) { .magic-word .sticker { animation: none; } .magic-word.out .sticker { transition: none; } }
 </style>
 </head>
 <body>
@@ -511,7 +540,7 @@ html.anim .chips.in li { opacity: 1; transform: rotate(var(--r)); }
     </nav>
   </div>
 </header>
-<main id="top">
+<main id="top" class="summit-page">
 <script>
 /* After someone signs up, beehiiv asks this page to go to the thank-you page (a "beehiiv:redirect" message).
    We try to open it in a new tab so this page stays open, and let beehiiv do its usual same-tab redirect
@@ -581,7 +610,7 @@ window.addEventListener("message", function (e) {
     <div class="wrap signup">
       <div class="stack">
         <p class="eyebrow">the summit</p>
-        <span class="sticker">you're invited!</span>
+        <a class="sticker" href="#join">you're invited!</a>
         <h1 id="summit-title">Teachers With Money Summit</h1>
         <p class="lead">A free weekend of teacher money basics, without the overwhelm.</p>
         <p class="when"><strong>January 30 and 31, 2027</strong><br>Two days, online, free</p>
@@ -709,7 +738,7 @@ window.addEventListener("message", function (e) {
 
   <div class="rainbow" aria-hidden="true"></div>
 
-  <section class="band band--green" aria-labelledby="bottom-title">
+  <section class="band band--green" id="join" aria-labelledby="bottom-title">
     <div class="wrap signup">
       <div class="stack">
         <p class="eyebrow">save your spot</p>
@@ -767,6 +796,33 @@ window.twmConfetti = function (opts) {
   }
   requestAnimationFrame(frame);
 };
+
+/* The magic word. Type "party" anywhere on the page (not in a form field) and it rains confetti
+   with a sticker. Nobody finds it unless Christa tells them. Confetti skips itself under reduced motion. */
+(function () {
+  var buf = "", last = 0;
+  document.addEventListener("keydown", function (e) {
+    var t = e.target, tag = t && t.tagName ? t.tagName.toLowerCase() : "";
+    if (tag === "input" || tag === "textarea" || tag === "select" || (t && t.isContentEditable)) return;
+    if (!e.key || e.key.length !== 1) return;
+    buf = (buf + e.key.toLowerCase()).slice(-5);
+    if (buf !== "party") return;
+    buf = "";
+    var now = Date.now();
+    if (now - last < 6000) return;
+    last = now;
+    if (window.twmConfetti) twmConfetti();
+    var old = document.querySelector(".magic-word");
+    if (old) old.parentNode.removeChild(old);
+    var wrap = document.createElement("div");
+    wrap.className = "magic-word";
+    wrap.setAttribute("role", "status");
+    wrap.innerHTML = '<span class="sticker">you said the magic word!</span>'; /* DRAFT COPY: Christa to review */
+    document.body.appendChild(wrap);
+    setTimeout(function () { wrap.classList.add("out"); }, 3600);
+    setTimeout(function () { if (wrap.parentNode) wrap.parentNode.removeChild(wrap); }, 4200);
+  });
+})();
 
   (function () {
     var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;

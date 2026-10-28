@@ -1,4 +1,4 @@
-<main id="top">
+<main id="top" class="summit-page">
 <script>
 {{REDIRECT_JS}}
 </script>
@@ -10,7 +10,7 @@
     <div class="wrap signup">
       <div class="stack">
         <p class="eyebrow">the summit</p>
-        <span class="sticker">you're invited!</span>
+        <a class="sticker" href="#join">you're invited!</a>
         <h1 id="summit-title">Teachers With Money Summit</h1>
         <p class="lead">A free weekend of teacher money basics, without the overwhelm.</p>
         <p class="when"><strong>January 30 and 31, 2027</strong><br>Two days, online, free</p>
@@ -136,7 +136,7 @@
 
   <div class="rainbow" aria-hidden="true"></div>
 
-  <section class="band band--green" aria-labelledby="bottom-title">
+  <section class="band band--green" id="join" aria-labelledby="bottom-title">
     <div class="wrap signup">
       <div class="stack">
         <p class="eyebrow">save your spot</p>
@@ -156,6 +156,7 @@
 
 <script>
 {{CONFETTI_JS}}
+{{MAGIC_JS}}
   (function () {
     var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
