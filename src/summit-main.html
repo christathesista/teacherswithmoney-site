@@ -2,6 +2,9 @@
 <script>
 {{REDIRECT_JS}}
 </script>
+<script>
+{{SPARKLE_JS}}
+</script>
 
   <section class="band band--green summit-hero" aria-labelledby="summit-title">
     <div class="wrap signup">
@@ -223,10 +226,11 @@
       var items = chips.querySelectorAll("li");
       for (var i = 0; i < items.length; i++) items[i].style.setProperty("--i", i);
       var reveal = function () { chips.classList.add("in"); window.removeEventListener("scroll", check); };
-      var check = function () { var r = chips.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) reveal(); };
+      var check = function () { var r = chips.getBoundingClientRect(); if (r.bottom < window.innerHeight * 0.8 && r.bottom > 0) reveal(); };
+      /* fire once the chips are well up the screen, so the drop happens while you're looking */
       new IntersectionObserver(function (entries, io) {
         for (var j = 0; j < entries.length; j++) if (entries[j].isIntersecting) { reveal(); io.disconnect(); }
-      }, { threshold: 0.3 }).observe(chips);
+      }, { threshold: 0.6, rootMargin: "0px 0px -20% 0px" }).observe(chips);
       window.addEventListener("scroll", check, { passive: true });
       check();
     }

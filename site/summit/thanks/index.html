@@ -452,7 +452,7 @@ p { margin: 0; max-width: 68ch; }
 .confetti { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 50; }
 
 /* ---------- summit: surprises ---------- */
-html.anim .chips li { opacity: 0; transform: translateY(-24px) rotate(var(--r)); transition: opacity .35s ease, transform .55s cubic-bezier(.34, 1.56, .64, 1); transition-delay: calc(var(--i, 0) * 90ms); }
+html.anim .chips li { opacity: 0; transform: translateY(-90px) rotate(calc(var(--r) * 6)) scale(0.6); transition: opacity .5s ease, transform .9s cubic-bezier(.34, 1.56, .64, 1); transition-delay: calc(var(--i, 0) * 160ms); }
 html.anim .chips.in li { opacity: 1; transform: rotate(var(--r)); }
 .bside { margin: 0; }
 .bside .sticker { background: var(--gold); color: var(--ink); box-shadow: 0 3px 0 var(--pink); transform: rotate(3deg); animation: pop .45s cubic-bezier(.34, 1.56, .64, 1); }
@@ -476,9 +476,9 @@ html.anim .chips.in li { opacity: 1; transform: rotate(var(--r)); }
 @media (prefers-reduced-motion: reduce) { .ticket-img { transform: none; } }
 
 /* ---------- homepage: invitation strip under the summit panel ---------- */
-.invite-strip { margin-top: 24px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 22px; align-items: center; background: var(--green-deep); border: 1.5px solid var(--hair-cream); border-radius: 18px; padding: 20px 24px; }
-.invite-strip .stack { gap: 8px; }
-.invite-strip p { color: var(--cream); margin: 0; }
+.summit-panel .invite-strip { margin-top: 32px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 22px; align-items: center; background: var(--green-deep); border-radius: 18px; padding: 20px 24px; position: relative; z-index: 1; }
+.summit-panel .invite-strip .stack { gap: 8px; }
+.summit-panel .invite-strip p { color: var(--cream); margin: 0; max-width: none; }
 .invite-strip .sticker { font-size: 18px; padding: 7px 14px 8px; margin: 0 0 2px; }
 .mini-record { display: block; width: 72px; height: 72px; border-radius: 50%; position: relative; box-shadow: 0 3px 0 var(--berry);
   background: radial-gradient(circle, #1b1b1b 0 17px, #3b3b3b 17px 18px, #1b1b1b 18px 22px, #3b3b3b 22px 23px, #1b1b1b 23px 27px, #3b3b3b 27px 28px, #1b1b1b 28px 32px, #3b3b3b 32px 33px, #1b1b1b 33px 100%); }
@@ -488,9 +488,11 @@ html.anim .chips.in li { opacity: 1; transform: rotate(var(--r)); }
 .invite-strip:hover .mini-record, .invite-strip:focus-within .mini-record { animation: spin 1.8s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .invite-strip:hover .mini-record, .invite-strip:focus-within .mini-record { animation: none; } }
 @media (max-width: 760px) {
-  .invite-strip { grid-template-columns: auto minmax(0, 1fr); }
-  .invite-strip .invite-btn { grid-column: 1 / -1; justify-self: start; }
+  .summit-panel .invite-strip { grid-template-columns: auto minmax(0, 1fr); gap: 16px; padding: 18px; }
+  .summit-panel .invite-strip .invite-btn { grid-column: 1 / -1; justify-self: stretch; }
 }
+
+.sparkle { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 40; }
 </style>
 <meta name="robots" content="noindex">
 </head>
@@ -511,6 +513,53 @@ html.anim .chips.in li { opacity: 1; transform: rotate(var(--r)); }
   </div>
 </header>
 <main id="top">
+<script>
+/* Glitter cursor for the Summit pages: tiny brand-colored squares trail the pointer and burst on click.
+   Mouse only (no trail on phones), off under reduced motion, nothing to click through. */
+(function () {
+  if (!window.matchMedia) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!window.matchMedia("(pointer: fine)").matches) return;
+  var c = document.createElement("canvas"); c.className = "sparkle"; c.setAttribute("aria-hidden", "true");
+  document.body.appendChild(c);
+  var ctx = c.getContext && c.getContext("2d"); if (!ctx) { c.remove(); return; }
+  var dpr = Math.min(window.devicePixelRatio || 1, 2), W, H;
+  function size() { W = window.innerWidth; H = window.innerHeight; c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  size(); window.addEventListener("resize", size);
+  var colors = ["#F9C000", "#E84263", "#FACC04", "#F97B06", "#EC321A", "#FAF3DE", "#6B1F3A"];
+  var bits = [], last = 0, raf = null;
+  function spawn(x, y, n, burst) {
+    for (var i = 0; i < n; i++) {
+      var a = Math.random() * Math.PI * 2, v = burst ? 2 + Math.random() * 4 : 0.2 + Math.random() * 0.8;
+      bits.push({ x: x, y: y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - (burst ? 1.5 : 0.3), s: burst ? 5 + Math.random() * 5 : 3 + Math.random() * 4,
+        r: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.3, life: 1, decay: burst ? 0.018 : 0.03, col: colors[Math.floor(Math.random() * colors.length)] });
+    }
+    if (bits.length > 220) bits.splice(0, bits.length - 220);
+    if (!raf) raf = requestAnimationFrame(frame);
+  }
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    for (var i = bits.length - 1; i >= 0; i--) {
+      var b = bits[i];
+      b.x += b.vx; b.y += b.vy; b.vy += 0.08; b.r += b.vr; b.life -= b.decay;
+      if (b.life <= 0) { bits.splice(i, 1); continue; }
+      ctx.save(); ctx.globalAlpha = Math.max(0, b.life); ctx.translate(b.x, b.y); ctx.rotate(b.r);
+      ctx.fillStyle = b.col; ctx.fillRect(-b.s / 2, -b.s / 2, b.s, b.s); ctx.restore();
+    }
+    raf = bits.length ? requestAnimationFrame(frame) : null;
+  }
+  window.addEventListener("mousemove", function (e) {
+    var now = performance.now(); if (now - last < 24) return; last = now;
+    spawn(e.clientX, e.clientY, 2, false);
+  }, { passive: true });
+  window.addEventListener("click", function (e) {
+    var t = e.target;
+    if (t && t.closest && t.closest("input, textarea, select, iframe")) return;
+    spawn(e.clientX, e.clientY, 14, true);
+  });
+})();
+
+</script>
 
   <section class="band band--green stripe-corner thanks-hero" aria-labelledby="thanks-title">
     <div class="wrap two-col">

@@ -40,6 +40,7 @@ SUMMIT_ID = "04d15350-3e84-45c0-912f-db1615eafa2d"
 ATTRIBUTION = '<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>'
 CONFETTI_JS = (ROOT / "src" / "confetti.js").read_text()
 REDIRECT_JS = (ROOT / "src" / "redirect-newtab.js").read_text()
+SPARKLE_JS = (ROOT / "src" / "sparkle.js").read_text()
 
 def stub(button):
     return ('<div class="embed-stub" role="img" aria-label="Preview of the beehiiv signup form">'
@@ -174,13 +175,13 @@ SUMMIT_TITLE = "Teachers With Money Summit | Free, Jan 30\u201331, 2027"
 SUMMIT_DESC = "A free weekend of teacher money basics, without the overwhelm. January 30 and 31, 2027, online."
 summit_header = header.replace("{{HOME}}", "/").replace('<a href="/#summit">Summit</a>', '<a href="#top" aria-current="page">Summit</a>')
 summit_body = (summit_header +
-               summit_main.replace("{{FORM_SUMMIT_PAGE}}", embed(SUMMIT_PAGE_FORM_ID)).replace("{{SPEAKERS}}", speakers_html()).replace("{{CONFETTI_JS}}", CONFETTI_JS).replace("{{REDIRECT_JS}}", REDIRECT_JS) +
+               summit_main.replace("{{FORM_SUMMIT_PAGE}}", embed(SUMMIT_PAGE_FORM_ID)).replace("{{SPEAKERS}}", speakers_html()).replace("{{CONFETTI_JS}}", CONFETTI_JS).replace("{{REDIRECT_JS}}", REDIRECT_JS).replace("{{SPARKLE_JS}}", SPARKLE_JS) +
                footer.replace("{{HOME}}", "/") + ATTRIBUTION)
 (SITE / "summit").mkdir(exist_ok=True)
 (SITE / "summit" / "index.html").write_text(nested(page(
     head(SUMMIT_TITLE, SUMMIT_DESC, "https://teacherswithmoney.com/summit/"), summit_body)))
 
-thanks_body = summit_header + summit_thanks_main.replace("{{CONFETTI_JS}}", CONFETTI_JS) + footer.replace("{{HOME}}", "/")
+thanks_body = summit_header + summit_thanks_main.replace("{{CONFETTI_JS}}", CONFETTI_JS).replace("{{SPARKLE_JS}}", SPARKLE_JS) + footer.replace("{{HOME}}", "/")
 (SITE / "summit" / "thanks").mkdir(exist_ok=True)
 (SITE / "summit" / "thanks" / "index.html").write_text(nested(page(
     head("You're in! | Teachers With Money Summit", "You're on the list for the Teachers With Money Summit, January 30 and 31, 2027.",
