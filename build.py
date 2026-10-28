@@ -38,6 +38,8 @@ def embed(form_id):
 NEWSLETTER_ID = "b6cd0344-203d-4142-9f4f-25e7c0bf6114"
 SUMMIT_ID = "04d15350-3e84-45c0-912f-db1615eafa2d"
 ATTRIBUTION = '<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>'
+CONFETTI_JS = (ROOT / "src" / "confetti.js").read_text()
+REDIRECT_JS = (ROOT / "src" / "redirect-newtab.js").read_text()
 
 def stub(button):
     return ('<div class="embed-stub" role="img" aria-label="Preview of the beehiiv signup form">'
@@ -76,7 +78,7 @@ shutil.copytree(ROOT / "assets", SITE / "assets")
 
 idx_body = (header.replace("{{HOME}}", "") +
             index_main.replace("{{FORM_NEWSLETTER}}", embed(NEWSLETTER_ID))
-                      .replace("{{FORM_SUMMIT}}", embed(SUMMIT_ID)) +
+                      .replace("{{FORM_SUMMIT}}", embed(SUMMIT_ID)).replace("{{CONFETTI_JS}}", CONFETTI_JS).replace("{{REDIRECT_JS}}", REDIRECT_JS) +
             footer.replace("{{HOME}}", "") + ATTRIBUTION)
 (SITE / "index.html").write_text(page(head(TITLE, DESC, "https://teacherswithmoney.com/"), idx_body))
 
@@ -171,9 +173,8 @@ def speakers_html():
 SUMMIT_TITLE = "Teachers With Money Summit | Free, Jan 30\u201331, 2027"
 SUMMIT_DESC = "A free weekend of teacher money basics, without the overwhelm. January 30 and 31, 2027, online."
 summit_header = header.replace("{{HOME}}", "/").replace('<a href="/#summit">Summit</a>', '<a href="#top" aria-current="page">Summit</a>')
-CONFETTI_JS = (ROOT / "src" / "confetti.js").read_text()
 summit_body = (summit_header +
-               summit_main.replace("{{FORM_SUMMIT_PAGE}}", embed(SUMMIT_PAGE_FORM_ID)).replace("{{SPEAKERS}}", speakers_html()).replace("{{CONFETTI_JS}}", CONFETTI_JS) +
+               summit_main.replace("{{FORM_SUMMIT_PAGE}}", embed(SUMMIT_PAGE_FORM_ID)).replace("{{SPEAKERS}}", speakers_html()).replace("{{CONFETTI_JS}}", CONFETTI_JS).replace("{{REDIRECT_JS}}", REDIRECT_JS) +
                footer.replace("{{HOME}}", "/") + ATTRIBUTION)
 (SITE / "summit").mkdir(exist_ok=True)
 (SITE / "summit" / "index.html").write_text(nested(page(
@@ -202,7 +203,7 @@ shutil.copytree(ROOT / "assets", PREVIEW / "assets")
 prev_main = (f"<title>Teachers With Money</title>\n{FONTS}\n<style>\n{css}</style>\n" +
              header.replace("{{HOME}}", "") +
              index_main.replace("{{FORM_NEWSLETTER}}", stub("Count me in"))
-                       .replace("{{FORM_SUMMIT}}", stub("Save my spot")) +
+                       .replace("{{FORM_SUMMIT}}", stub("Save my spot")).replace("{{CONFETTI_JS}}", CONFETTI_JS).replace("{{REDIRECT_JS}}", REDIRECT_JS) +
              footer.replace("{{HOME}}", ""))
 (PREVIEW / "index.html").write_text(prev_main)
 (PREVIEW / "privacy.html").write_text(page(

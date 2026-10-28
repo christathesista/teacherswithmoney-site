@@ -474,6 +474,23 @@ html.anim .chips.in li { opacity: 1; transform: rotate(var(--r)); }
 .ticket-img[hidden], .ticket-save[hidden] { display: none; }
 .band--berry .ticket-note { color: var(--cream-soft); }
 @media (prefers-reduced-motion: reduce) { .ticket-img { transform: none; } }
+
+/* ---------- homepage: invitation strip under the summit panel ---------- */
+.invite-strip { margin-top: 24px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 22px; align-items: center; background: var(--green-deep); border: 1.5px solid var(--hair-cream); border-radius: 18px; padding: 20px 24px; }
+.invite-strip .stack { gap: 8px; }
+.invite-strip p { color: var(--cream); margin: 0; }
+.invite-strip .sticker { font-size: 18px; padding: 7px 14px 8px; margin: 0 0 2px; }
+.mini-record { display: block; width: 72px; height: 72px; border-radius: 50%; position: relative; box-shadow: 0 3px 0 var(--berry);
+  background: radial-gradient(circle, #1b1b1b 0 17px, #3b3b3b 17px 18px, #1b1b1b 18px 22px, #3b3b3b 22px 23px, #1b1b1b 23px 27px, #3b3b3b 27px 28px, #1b1b1b 28px 32px, #3b3b3b 32px 33px, #1b1b1b 33px 100%); }
+.mini-record .label { position: absolute; left: 50%; top: 50%; width: 32px; height: 32px; margin: -16px 0 0 -16px; border-radius: 50%; overflow: hidden;
+  background: linear-gradient(-32deg, var(--r1) 0 16.6%, var(--r2) 16.6% 33.3%, var(--r3) 33.3% 50%, var(--r4) 50% 66.6%, var(--r5) 66.6% 83.3%, var(--r6) 83.3% 100%); }
+.mini-record .label::after { content: ""; position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; background: var(--cream); }
+.invite-strip:hover .mini-record, .invite-strip:focus-within .mini-record { animation: spin 1.8s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .invite-strip:hover .mini-record, .invite-strip:focus-within .mini-record { animation: none; } }
+@media (max-width: 760px) {
+  .invite-strip { grid-template-columns: auto minmax(0, 1fr); }
+  .invite-strip .invite-btn { grid-column: 1 / -1; justify-self: start; }
+}
 </style>
 </head>
 <body>

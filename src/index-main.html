@@ -1,4 +1,7 @@
 <main id="top">
+<script>
+{{REDIRECT_JS}}
+</script>
 
   <section class="band band--green hero" aria-labelledby="hero-title">
     <div class="wrap">
@@ -153,8 +156,27 @@
           </div>
         </div>
       </div>
+      <div class="invite-strip">
+        <span class="mini-record" aria-hidden="true"><span class="label"></span></span>
+        <div class="stack">
+          <span class="sticker">psst</span>
+          <p>The full invitation has its own page: the lineup, the questions, and a record you can actually play.</p><!-- DRAFT COPY: Christa to review -->
+        </div>
+        <a class="btn btn--primary invite-btn" href="/summit/" target="_blank" rel="noopener">Open the invitation &rarr;</a>
+      </div>
     </div>
   </section>
+<script>
+{{CONFETTI_JS}}
+  (function () {
+    var b = document.querySelector(".invite-btn");
+    if (!b) return;
+    b.addEventListener("click", function () {
+      var r = b.getBoundingClientRect();
+      if (window.twmConfetti) twmConfetti({ x: r.left + r.width / 2, y: r.top + r.height / 2, count: 80 });
+    });
+  })();
+</script>
 
   <section class="band band--berry speaking" id="speaking" aria-labelledby="speaking-title">
     <div class="wrap">
