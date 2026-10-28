@@ -1,3 +1,6 @@
 .DS_Store
 preview/
 __pycache__/
+
+# raw audio sources and mixes (finished mp3s go in assets/audio/)
+audio-work/
