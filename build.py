@@ -1,3 +1,4 @@
+import re
 """Build the Teachers With Money site (site/) and the private preview (preview/).
 
 site/     = the real files to deploy: beehiiv embeds live, full HTML documents.
@@ -174,7 +175,10 @@ def speakers_html():
 
 SUMMIT_TITLE = "Teachers With Money Summit | Free, Jan 30\u201331, 2027"
 SUMMIT_DESC = "A free weekend of teacher money basics, without the overwhelm. January 30 and 31, 2027, online."
-summit_header = header.replace("{{HOME}}", "/").replace('<a href="/#summit">Summit</a>', '<a href="#top" aria-current="page">Summit</a>')
+# Summit pages: no menu bar and no logo link, so nobody clicks away by accident (Christa, Oct 30). The footer still links home.
+summit_header = re.sub(r'\s*<nav class="nav"[\s\S]*?</nav>', "", header.replace("{{HOME}}", "/"))
+summit_header = summit_header.replace('<a class="brand" href="/#top" aria-label="Teachers With Money, home">', '<span class="brand">').replace("</span></span>\n    </a>", "</span></span>\n    </span>")
+assert "<nav" not in summit_header and '<span class="brand">' in summit_header and "</a>" not in summit_header, summit_header
 summit_body = (summit_header +
                summit_main.replace("{{FORM_SUMMIT_PAGE}}", embed(SUMMIT_PAGE_FORM_ID)).replace("{{SPEAKERS}}", speakers_html()).replace("{{CONFETTI_JS}}", CONFETTI_JS).replace("{{REDIRECT_JS}}", REDIRECT_JS).replace("{{SPARKLE_JS}}", SPARKLE_JS).replace("{{MAGIC_JS}}", MAGIC_JS) +
                footer.replace("{{HOME}}", "/") + ATTRIBUTION)
