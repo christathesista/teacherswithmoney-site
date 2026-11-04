@@ -128,7 +128,7 @@ else:
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     "".join(f"  <url><loc>https://teacherswithmoney.com/{p}</loc></url>\n" for p in ("", "summit/", "pillars.html", "partners.html", "privacy.html")) +
     "</urlset>\n")
-(SITE / "robots.txt").write_text("User-agent: *\nAllow: /\nDisallow: /media-kit.html\nDisallow: /summit/thanks/\nSitemap: https://teacherswithmoney.com/sitemap.xml\n")
+(SITE / "robots.txt").write_text("User-agent: *\nAllow: /\nDisallow: /media-kit.html\nDisallow: /summit/thanks/\nDisallow: /summit/speakers/\nSitemap: https://teacherswithmoney.com/sitemap.xml\n")
 
 # ---------- Summit pages (/summit/ and /summit/thanks/) ----------
 # THE SUMMIT FORM. Today: the "Summit waitlist - website" beehiiv form (same as the homepage).
@@ -191,6 +191,113 @@ thanks_body = summit_header + summit_thanks_main.replace("{{CONFETTI_JS}}", CONF
 (SITE / "summit" / "thanks" / "index.html").write_text(nested(page(
     head("You're in! | Teachers With Money Summit", "You're on the list for the Teachers With Money Summit, January 30 and 31, 2027.",
          "https://teacherswithmoney.com/summit/thanks/", extra='\n<meta name="robots" content="noindex">'), thanks_body)))
+
+# ---------- Summit speaker hub (/summit/speakers/) ----------
+# Private page for invited speakers (Christa, Nov 4, 2026): noindex/nofollow, disallowed in robots.txt,
+# NOT in the sitemap, nav, or footer. Page-only styles live here so styles.css (and every other page) stays untouched.
+SPEAKERS_PAGE_CSS = """
+.spk .band { padding-block: clamp(48px, 7vw, 88px); }
+.spk h1, .spk h2 { overflow-wrap: break-word; }
+.spk li { max-width: 68ch; }
+.spk-hero { position: relative; overflow: hidden; padding-bottom: calc(clamp(48px, 7vw, 88px) + 96px); }
+.spk-hero .wrap { position: relative; z-index: 1; }
+.spk-hero .lead { color: var(--cream); }
+.spk-hero p:not(.label):not(.lead) { color: var(--cream-soft); }
+.spk-rainbow { position: absolute; right: -90px; bottom: -40px; width: 300px; height: 132px; transform: rotate(-32deg); display: grid; grid-template-rows: repeat(6, 1fr); z-index: 0; pointer-events: none; }
+.spk-rainbow span:nth-child(1) { background: #FACC04; }
+.spk-rainbow span:nth-child(2) { background: #F97B06; }
+.spk-rainbow span:nth-child(3) { background: #EC321A; }
+.spk-rainbow span:nth-child(4) { background: #BB2D17; }
+.spk-rainbow span:nth-child(5) { background: #E84263; }
+.spk-rainbow span:nth-child(6) { background: #6B1F3A; }
+.spk-jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.spk-jump a { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 14px; border: 1.5px solid var(--cream); border-radius: 0; font-weight: 600; font-size: 16px; text-decoration: none; }
+.band--green .spk-jump a:not(.btn) { color: var(--cream); }
+.band--green .spk-jump a:not(.btn):hover { background: var(--cream); color: var(--green); }
+.plus { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.plus li { position: relative; padding-left: 1.5em; }
+.plus li::before { content: "+"; position: absolute; left: 0; top: 0; font-family: var(--mono); font-weight: 500; color: var(--pink); }
+.band--green .plus li::before { color: var(--gold); }
+.band--green strong { color: var(--cream); }
+.spk-aside { display: block; margin-top: 6px; font-size: 0.55em; font-weight: 400; font-style: italic; }
+.spk-key .stack { border-left: 4px solid var(--pink); padding-left: 18px; }
+.spk-time { list-style: none; margin: 0; padding: 0 0 0 22px; border-left: 1.5px solid var(--hair-cream); display: flex; flex-direction: column; gap: 22px; }
+.spk-time li { position: relative; display: flex; flex-direction: column; gap: 2px; }
+.spk-time li::before { content: ""; position: absolute; left: -27.5px; top: 5px; width: 9px; height: 9px; background: var(--gold); }
+.spk-time .label { font-size: 12px; }
+.spk-sign { font-family: "Sacramento", cursive; font-size: 44px; line-height: 1; color: var(--pink); margin-top: 6px; }
+.spk h3 { font-size: 21px; }
+.spk-cards, .spk-rules { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.spk-cards li, .spk-rules li { border: 1.5px solid var(--hair-cream); padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+.spk-cards li:first-child, .spk-cards li:nth-child(3) { border-color: var(--gold); }
+.spk-cards p, .spk-rules p { color: var(--cream-soft); }
+.spk-steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: flex; flex-direction: column; gap: 28px; }
+.spk-steps li { counter-increment: step; position: relative; padding-left: 44px; display: flex; flex-direction: column; gap: 6px; }
+.spk-steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 30px; height: 30px; display: grid; place-items: center; background: var(--green); color: var(--cream); font-family: var(--mono); font-size: 14px; font-weight: 500; }
+.spk-steps .label { color: var(--pink); }
+.spk-foot { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--hair); display: flex; flex-direction: column; gap: 8px; }
+.spk-foot .label { font-family: var(--mono); font-size: 12px; }
+.spk-foot p { font-size: 15px; line-height: 1.55; opacity: 0.9; }
+.spk-callout { border: 1.5px solid var(--green); border-left: 6px solid var(--pink); padding: 14px 16px; }
+.spk-callout strong { color: var(--green); }
+.spk-email { font-family: var(--mono); font-size: 15px; letter-spacing: 0.02em; }
+@media (min-width: 861px) { .spk-steps, .spk-time, .plus, .spk-callout { max-width: 760px; } }
+@media (min-width: 861px) { .spk-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } .spk-cards li:last-child { grid-column: 1 / -1; } .spk-rules { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+"""
+SPEAKERS_EXTRA = ('\n<meta name="robots" content="noindex, nofollow">\n'
+                  '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">\n'
+                  f'<style>{SPEAKERS_PAGE_CSS}</style>')
+# Two tracks, two private pages, one template (Christa, Nov 4): featured speakers never see the 5-minute track.
+SPEAKER_TRACKS = {
+    "speakers": dict(
+        TITLE="Speaker Hub | Teachers With Money Summit",
+        KIND_LABEL="Featured speakers",
+        H1="Teachers With Money Summit: Speaker Hub",
+        INTRO="This page is the big-picture overview of speaking at the very first Teachers With Money Summit: what the weekend is, what's in it for you, and what I'd ask of you.",
+        ROLE_OVERVIEW="",
+        ITEM="session",
+        FREEBIE_BENEFIT="Your session ends with a quick pitch for your freebie, so every educator who loves what you taught can join your list right then, while they're excited about you.",
+        ASK_BASICS=("<p>Your bio, headshot, links and the freebie you'll mention in your session. I'll use them to build your spot on the Summit page and brag about you properly.</p>"
+                    "<p>New to freebies? It's anything free your audience can grab in exchange for their email address, like a checklist, a guide or a mini course. It's how attendees join your list.</p>"
+                    "<p>No email list yet? That's okay! Offer something of value to attendees anyway, like a free resource or a link to where they can keep learning from you.</p>"),
+        ASK_SESSION=("<h3>Your session</h3>"
+                     "<p>One pre-recorded session, 20 minutes max. Teach one thing attendees can actually use, and end with a clear next step they can take. Slides, talking to the camera or a mix of both all work.</p>"
+                     "<p>At the end, you can pitch your freebie. A minute or two is plenty.</p>"
+                     "<p>Would a conversation feel easier? We can record your session as an interview with me instead!</p>"),
+        ASK_PROMO="<p>At least 2 emails to your list and 3 social posts or stories, each sharing your affiliate link. I'll send you swipe copy and graphics, so it's mostly copy and paste.</p>",
+        TIMELINE_SESSION="Your session is due",
+    ),
+    "speakers/moments": dict(
+        TITLE="5-Minute Moments | Teachers With Money Summit",
+        KIND_LABEL="5-minute moments",
+        H1="Teachers With Money Summit: Leading a 5-Minute Moment",
+        INTRO="This page is the big-picture overview of leading a 5-minute moment at the very first Teachers With Money Summit: what the weekend is, what's in it for you, and what I'd ask of you.",
+        ROLE_OVERVIEW=("<h3>Where you come in</h3>"
+                       "<p>Between the longer sessions, the weekend has 5-minute moments: short pauses, like a guided breathing reset or a quick meditation, that help attendees reset before the next session. Money can feel heavy, and these moments make room for that. You'd lead one of them!</p>"),
+        ITEM="moment",
+        FREEBIE_BENEFIT="You can mention your freebie at the end of your moment, so every educator who loved it can join your list right then.",
+        ASK_BASICS=("<p>Your bio, headshot, links and the freebie you'd like to mention, if you have one. I'll use them to build your spot on the Summit page and brag about you properly.</p>"
+                    "<p>New to freebies? It's anything free your audience can grab in exchange for their email address, like a checklist, a guide or a short audio. It's how attendees join your list.</p>"
+                    "<p>No email list yet? That's okay! Offer something of value to attendees anyway, like a free resource or a link to where they can keep learning from you.</p>"),
+        ASK_SESSION=("<h3>Your 5-minute moment</h3>"
+                     "<p>One pre-recorded moment, about 5 minutes. Guide attendees through it as if they're right there with you. Talking to the camera works great.</p>"
+                     "<p>At the end, you're welcome to mention your freebie.</p>"),
+        ASK_PROMO="<p>At least 1 email to your list and 2 social posts or stories, each sharing your affiliate link. I'll send you swipe copy and graphics, so it's mostly copy and paste.</p>",
+        TIMELINE_SESSION="Your 5-minute moment is due",
+    ),
+}
+speakers_template = re.sub(r"<!--[\s\S]*?-->\s*", "", (SRC / "summit-speakers-main.html").read_text())  # source notes stay out of the published pages
+for path, t in SPEAKER_TRACKS.items():
+    body = speakers_template
+    for k, v in t.items():
+        body = body.replace("{{" + k + "}}", v)
+    assert "{{" not in body, f"unfilled placeholder on /summit/{path}/"
+    (SITE / "summit" / path).mkdir(parents=True, exist_ok=True)
+    (SITE / "summit" / path / "index.html").write_text(nested(page(
+        head(t["TITLE"],
+             "The speaker overview for the Teachers With Money Summit, January 30 and 31, 2027.",
+             f"https://teacherswithmoney.com/summit/{path}/", extra=SPEAKERS_EXTRA),
+        summit_header + body + footer.replace("{{HOME}}", "/"))))
 
 def ics(uid, summary, start, end, desc):
     return ("BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Teachers With Money//Summit//EN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\n"

@@ -1,0 +1,139 @@
+<!-- Summit speaker pages (/summit/speakers/ and /summit/speakers/moments/). Private: noindex, not in nav, footer, or sitemap.
+     One template, two pages. Double-brace placeholders are filled per track in build.py (SPEAKER_TRACKS).
+     Copy v3 (Christa's notes, Nov 4, 2026): overview first, hype the benefits, then the asks. -->
+<main id="top" class="spk">
+
+  <section class="band band--green spk-hero" aria-labelledby="spk-title">
+    <div class="spk-rainbow" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="wrap stack">
+      <p class="label">{{KIND_LABEL}} &middot; January 30 and 31, 2027</p>
+      <h1 id="spk-title">{{H1}}</h1>
+      <p class="lead">Hi friend!! I'm SO glad you're here.</p>
+      <p>{{INTRO}} Bookmark it! I'll keep it updated as things come together.</p>
+      <nav class="spk-jump" aria-label="On this page">
+        <a href="#perks">What's in it for you</a>
+        <a href="#need">What I'd need from you</a>
+        <a href="#guidelines">Content guidelines</a>
+        <a href="#agreement">Your speaker agreement</a>
+        <a href="#timeline">The timeline</a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="band spk-sec" aria-labelledby="weekend">
+    <div class="wrap stack">
+      <h2 id="weekend">The weekend, in a nutshell</h2>
+      <p>The Teachers With Money Summit is a free, virtual weekend of teacher money basics, without the overwhelm. It's the very first one, and I'd love for you to be part of it.</p>
+      <p class="spk-callout"><strong>Free to attend, with a paid upgrade.</strong> Every educator can register and watch for free. Attendees who want to keep the sessions can buy the optional All-Access Pass. More on that below, because the All-Access Pass is great news for you!</p>
+      <p>It's for educators who feel overwhelmed by their money and are ready to finally look at it: classroom teachers, specialists, admins and former teachers. Most of them were never taught how their own money works, and a lot of them have been avoiding it because of that. This weekend gives them a friendly, judgment-free place to start.</p>
+      <p>I'm Christa, host of the <em>First in Class</em> podcast and founder of Teachers With Money. Here's how the weekend works:</p>
+      <ul class="plus">
+        <li>Saturday, January 30 is about getting your money right: the basics, explained in plain language.</li>
+        <li>Sunday, January 31 is about building income around the pay scale. The pay scale is fixed. Your income isn't.</li>
+        <li>Every session is pre-recorded and released across the weekend, so attendees can watch from home, on their own schedule.</li>
+        <li>It's free for every educator. Sponsors fund the weekend so it stays that way.</li>
+        <li>Sunday ends with a live Money Date, where attendees pick one money task and actually do it, together. Then I close out the weekend.</li>
+        <li>Attendees who want to keep the sessions after the weekend can buy the All-Access Pass. It includes ongoing access to every session, notes and worksheets, and bonuses from the speakers.</li>
+      </ul>
+      {{ROLE_OVERVIEW}}
+    </div>
+  </section>
+
+  <section class="band band--green spk-sec" aria-labelledby="perks">
+    <div class="wrap stack">
+      <h2 id="perks">What's in it for you <span class="spk-aside">(spoiler: a LOT)</span></h2>
+      <p>Speaking here is a real growth opportunity for you and your business, and I built it that way on purpose. Here's what you get:</p>
+      <ul class="spk-cards">
+        <li><h3>Grow your email list</h3><p>{{FREEBIE_BENEFIT}}</p></li>
+        <li><h3>Grow it again with your pass bonus</h3><p>Add a bonus to the All-Access Pass, and every buyer who claims it signs up with you to get it. It's a second lead magnet, working for you the whole time the pass is on sale.</p></li>
+        <li><h3>Earn 50% on every pass you refer</h3><p>Yes, HALF!! You'll get your own affiliate link, and every All-Access Pass someone buys through it earns you 50%. Payouts go out after the Summit.</p></li>
+        <li><h3>Get the All-Access Pass, free</h3><p>Every session, the notes and worksheets, and every speaker bonus, on the house.</p></li>
+        <li><h3>Get shown off</h3><p>Your photo, bio and session go on the Summit page, and Teachers With Money shouts you out on social. I'm going to brag about you properly!</p></li>
+        <li><h3>Meet the other speakers</h3><p>I'll introduce you to everyone else on the lineup. This is my favorite part!! You'll leave with new friends and future collaborators.</p></li>
+        <li><h3>Come to the Money Date</h3><p>You're invited to the live Money Date on Sunday, just for fun. Zero pressure, and no stage.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band spk-sec" aria-labelledby="need">
+    <div class="wrap stack">
+      <h2 id="need">What I'd need from you</h2>
+      <p>I'll send reminders before each date, so you won't have to keep track of it all yourself.</p>
+      <ol class="spk-steps">
+        <li>
+          <p class="label">By Friday, December 11</p>
+          <h3>Your basics</h3>
+          {{ASK_BASICS}}
+        </li>
+        <li>
+          <p class="label">By Friday, January 8</p>
+          {{ASK_SESSION}}
+        </li>
+        <li>
+          <p class="label">Friday, January 15 to Sunday, January 31</p>
+          <h3>Your promo</h3>
+          {{ASK_PROMO}}
+          <p>Here's why it starts January 15: I promote first, so I can make sure registration, the pass checkout and the affiliate links all work before you send your people over. By the time you share, everything's tested and ready.</p>
+          <p>That's the minimum, and you're welcome to share more! The more you share your link, the more All-Access Pass sales you can bring in, and the more you can earn in affiliate commission.</p>
+        </li>
+        <li>
+          <p class="label">Optional, but SO appreciated</p>
+          <h3>A bonus for the All-Access Pass</h3>
+          <p>Anything on money, mindset or earning works, like a template, a workbook, a mini course or a recorded training. Pass buyers sign up with you to claim it, so it doubles as a lead magnet. You can create something new or share something you already have.</p>
+        </li>
+      </ol>
+      <h3>Being live is optional</h3>
+      <p>Want to pop into the chat while your {{ITEM}} plays? People will LOVE it. You don't have to, though. There may also be an optional live speaker panel on Saturday afternoon. Details soon!</p>
+    </div>
+  </section>
+
+  <section class="band band--green spk-sec spk-key" aria-labelledby="guidelines">
+    <div class="wrap stack">
+      <h2 id="guidelines">Content guidelines</h2>
+      <p>These keep the weekend safe and welcoming for every attendee, and they keep all of us clear of giving financial advice.</p>
+      <ul class="spk-rules">
+        <li><h3>Teach, don't advise</h3><p>Share how things work and what people can consider. Please don't tell attendees what to do with their own money, like which account to open or what to invest in.</p></li>
+        <li><h3>Keep product pitches out of your {{ITEM}}</h3><p>Please don't recommend or pitch specific retirement-account or investment products. Mentioning your freebie is totally welcome.</p></li>
+        <li><h3>No promised results</h3><p>Your story and real examples are great! Please don't promise attendees a specific income, savings number or result.</p></li>
+        <li><h3>Every path is welcome</h3><p>Our attendees are on lots of different paths, whether they stay in the classroom, move into a new role or have already left. Please skip "quit teaching" framing, so nobody feels like the weekend isn't for them.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band spk-sec spk-key" aria-labelledby="agreement">
+    <div class="wrap stack">
+      <h2 id="agreement">Your speaker agreement</h2>
+      <p>This page is the overview. After you say yes, I'll send you the speaker agreement, which is the official version of everything here. It also covers the details this page doesn't, like affiliate payouts and how session recordings are used. We both sign it, and if this page and the agreement ever differ, the agreement is what counts.</p>
+    </div>
+  </section>
+
+  <section class="band band--green spk-sec" aria-labelledby="timeline">
+    <div class="wrap stack">
+      <h2 id="timeline">The timeline</h2>
+      <ol class="spk-time">
+        <li><span class="label">By the date in your invite</span><span>Reply "I'm in!"</span></li>
+        <li><span class="label">A few days after your yes</span><span>I send your speaker agreement</span></li>
+        <li><span class="label">Friday, December 11</span><span>Your bio, headshot, links and freebie are due</span></li>
+        <li><span class="label">Friday, January 8</span><span>{{TIMELINE_SESSION}}</span></li>
+        <li><span class="label">Before January 15</span><span>I start promoting, so everything's tested before you share</span></li>
+        <li><span class="label">January 15 to 31</span><span>Your promo window, with your affiliate link</span></li>
+        <li><span class="label">January 30 and 31</span><span>Summit weekend!!</span></li>
+        <li><span class="label">After the Summit</span><span>Affiliate payouts (timing is in your agreement)</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band spk-sec" aria-labelledby="questions">
+    <div class="wrap stack">
+      <h2 id="questions">Questions?</h2>
+      <p>Just reply to my email. I'm always happy to help, and I can't wait to introduce you to everyone.</p>
+      <p class="spk-sign">Christa</p>
+      <p><a class="spk-email" href="mailto:christa@teacherswithmoney.com">christa@teacherswithmoney.com</a></p>
+      <aside class="spk-foot" aria-labelledby="ai-note">
+        <h3 id="ai-note" class="label">A note on AI tools</h3>
+        <p>We use AI tools to make captions and transcripts for every session, including any live session you join. Captions and transcripts are free for every attendee, for accessibility. We also use AI to help draft the notes and worksheets in the All-Access Pass, and I review everything before it goes out. I'll send you the notes from your {{ITEM}} to look over before anyone else sees them. We won't use your {{ITEM}} to make an AI version of your voice or likeness, and we won't sell or license it to anyone for AI training. Your speaker agreement covers this too.</p>
+      </aside>
+    </div>
+  </section>
+
+</main>
