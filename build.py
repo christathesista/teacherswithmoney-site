@@ -193,6 +193,9 @@ thanks_body = summit_header + summit_thanks_main.replace("{{CONFETTI_JS}}", CONF
          "https://teacherswithmoney.com/summit/thanks/", extra='\n<meta name="robots" content="noindex">'), thanks_body)))
 
 # ---------- Summit speaker hub (/summit/speakers/) ----------
+# Speaker pages keep the logo linked to the homepage (the public Summit pages unlink it); nav still stripped.
+speakers_header = re.sub(r'\s*<nav class="nav"[\s\S]*?</nav>', "", header.replace("{{HOME}}", "/"))
+assert "<nav" not in speakers_header and '<a class="brand" href="/#top"' in speakers_header, speakers_header
 # Private page for invited speakers (Christa, Nov 4, 2026): noindex/nofollow, disallowed in robots.txt,
 # NOT in the sitemap, nav, or footer. Page-only styles live here so styles.css (and every other page) stays untouched.
 SPEAKERS_PAGE_CSS = """
@@ -297,7 +300,7 @@ for path, t in SPEAKER_TRACKS.items():
         head(t["TITLE"],
              "The speaker overview for the Teachers With Money Summit, January 30 and 31, 2027.",
              f"https://teacherswithmoney.com/summit/{path}/", extra=SPEAKERS_EXTRA),
-        summit_header + body + footer.replace("{{HOME}}", "/"))))
+        speakers_header + body + footer.replace("{{HOME}}", "/"))))
 
 def ics(uid, summary, start, end, desc):
     return ("BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Teachers With Money//Summit//EN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\n"
