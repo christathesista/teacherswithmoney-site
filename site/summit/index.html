@@ -619,7 +619,7 @@ window.addEventListener("message", function (e) {
       </div>
       <div class="form-box stripe-corner">
         <p class="eyebrow small">join the waitlist</p>
-        <!-- SUMMIT FORM: swapped in build.py (SUMMIT_PAGE_FORM_ID). Dec 28: registration form goes here. -->
+        <!-- SUMMIT FORM: swapped in build.py (SUMMIT_PAGE_FORM_ID). Jan 11, 2027: registration form goes here. -->
         <div class="embed"><script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="04d15350-3e84-45c0-912f-db1615eafa2d"></script></div>
         <p class="small fallback" hidden>Not seeing the form? You're probably already subscribed in this browser. If not, <a href="https://teacherswithmoney.beehiiv.com/subscribe" target="_blank" rel="noopener">join on beehiiv</a>.</p>
         <p class="small fine">Use your personal email (not school!)</p>
@@ -711,7 +711,7 @@ window.addEventListener("message", function (e) {
       <div class="faq">
         <details>
           <summary>Is it free?</summary>
-          <p>Yes!! The live weekend is free, funded by sponsors so it stays that way. If you want the sessions for keeps, the all-access pass keeps every video open after the weekend, plus workbooks, session notes, a private podcast feed, and more fun things I'm still packing in. Pricing lands when registration opens on December 28.</p><!-- DRAFT COPY: Christa to review -->
+          <p>Yes!! The live weekend is free, funded by sponsors so it stays that way. If you want the sessions for keeps, the all-access pass keeps every video open after the weekend, plus workbooks, session notes, a private podcast feed, and more fun things I'm still packing in. All-access pass details go live when registration opens January 11.</p><!-- DRAFT COPY: Christa to review -->
         </details>
         <details>
           <summary>Do I have to watch live?</summary>
@@ -723,7 +723,7 @@ window.addEventListener("message", function (e) {
         </details>
         <details>
           <summary>Is there a paid option?</summary>
-          <p>Yes, and it's a good one!! The all-access pass (the Deluxe Edition) keeps every session open after the 48 hours are up, so you can rewatch the one that hit, catch the ones you missed, and come back in July when the thing you were avoiding is suddenly urgent. It comes with workbooks, session notes, a private podcast feed, and more fun things. Pass details and pricing drop when registration opens on December 28.</p><!-- DRAFT COPY: Christa to review -->
+          <p>Yes, and it's a good one!! The all-access pass (the Deluxe Edition) keeps every session open after the 48 hours are up, so you can rewatch the one that hit, catch the ones you missed, and come back in July when the thing you were avoiding is suddenly urgent. It comes with workbooks, session notes, a private podcast feed, and more fun things. Pass details go live when registration opens January 11.</p><!-- DRAFT COPY: Christa to review -->
         </details>
       </div>
     </div>
@@ -735,8 +735,8 @@ window.addEventListener("message", function (e) {
     <div class="wrap signup">
       <div class="stack">
         <p class="eyebrow">save your spot</p>
-        <h2 id="bottom-title">Registration opens December 28.</h2><!-- DRAFT COPY: Christa to review -->
-        <p class="lead">Join the waitlist now and you'll get the first invite, before anyone else.</p><!-- DRAFT COPY: Christa to review -->
+        <h2 id="bottom-title">Registration opens Monday, January 11.</h2><!-- DRAFT COPY: Christa to review -->
+        <p class="lead">Join the waitlist and you'll hear first.</p><!-- DRAFT COPY: Christa to review -->
         <p class="small countdown" aria-live="off"></p><!-- filled by script: "registration opens in N days" / "registration opens tomorrow" / "registration is open" --><!-- DRAFT COPY: Christa to review -->
       </div>
       <div class="form-box stripe-corner">
@@ -896,12 +896,12 @@ window.twmConfetti = function (opts) {
       check();
     }
 
-    /* countdown to registration day, Dec 28, 2026. From that day the bottom box flips to doors-open mode on its own. */
+    /* countdown to registration day, Jan 11, 2027. From that day the bottom box flips to doors-open mode on its own. */
     var cd = document.querySelector(".countdown");
     if (cd) {
-      var opens = new Date(2026, 11, 28), now = new Date();
+      var opens = new Date(2027, 0, 11), now = new Date();
       var days = Math.ceil((opens - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 864e5);
-      if (/doors=open/.test(location.search)) days = 0; /* preview hook: ?doors=open shows the Dec 28 state */
+      if (/doors=open/.test(location.search)) days = 0; /* preview hook: ?doors=open shows the Jan 11 state */
       if (days > 1) cd.textContent = "registration opens in " + days + " days";
       else if (days === 1) cd.textContent = "registration opens tomorrow";
       else {

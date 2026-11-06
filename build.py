@@ -132,7 +132,7 @@ else:
 
 # ---------- Summit pages (/summit/ and /summit/thanks/) ----------
 # THE SUMMIT FORM. Today: the "Summit waitlist - website" beehiiv form (same as the homepage).
-# Dec 28, 2026: paste the "Summit registration - website" form ID here. One line, then rebuild.
+# Jan 11, 2027: paste the "Summit registration - website" form ID here. One line, then rebuild.
 SUMMIT_PAGE_FORM_ID = SUMMIT_ID
 
 import json
