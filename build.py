@@ -279,12 +279,12 @@ SPEAKER_TRACKS = {
         ROLE_OVERVIEW=("<h3>Where you come in</h3>"
                        "<p>Between the longer sessions, the weekend has 5-minute moments: short pauses, like a guided breathing reset or a quick meditation, that help attendees reset before the next session. Money can feel heavy, and these moments make room for that. You'd lead one of them!</p>"),
         ITEM="moment",
-        FREEBIE_BENEFIT="End your moment with a minute or two inviting attendees to connect with you: your freebie, your socials or your website. That same link goes on your session page so attendees can find you after the weekend. We don't share attendee email addresses, so your link is how they join your world.",
-        ASK_BASICS=("<p>One short form I'll email you after your yes (about 15 minutes): sign the speaker agreement, then send your session title, what attendees will learn, your bio, your headshot and your links.</p>"
+        FREEBIE_BENEFIT="End your moment with a minute or two inviting attendees to connect with you: your freebie, your socials or your website. That same link goes on your moment page so attendees can find you after the weekend. We don't share attendee email addresses, so your link is how they join your world.",
+        ASK_BASICS=("<p>One short form I'll email you after your yes (about 15 minutes): sign the speaker agreement, then send your moment title, what attendees will learn, your bio, your headshot and your links.</p>"
                     "<p>Your link is the ONE place you'll invite attendees at the end of your moment. It can be a freebie (a free resource like a checklist or guide that people get by joining your email list), your Instagram or LinkedIn, your website, or a booking page. No freebie or email list? Totally fine. Pick the place you'd most like people to find you.</p>"),
         ASK_SESSION=("<h3>Your 5-minute moment</h3>"
                      "<p>One pre-recorded moment, about 5 minutes. Guide attendees through it as if they're right there with you. Talking to the camera works great.</p>"
-                     "<p>You keep full ownership of your session. Please use only music and images you have the rights to, and skip third-party logos (your own logo is great!).</p>"
+                     "<p>You keep full ownership of your moment. Please use only music and images you have the rights to, and skip third-party logos (your own logo is great!).</p>"
                      "<p>At the end, you're welcome to invite attendees to connect with you.</p>"),
         ASK_PROMO=("<p>At least 1 email and 2 social posts or stories sharing the Summit, with your affiliate link if you have one. I'll send you swipe copy and graphics, so it's mostly copy and paste.</p>"
                    "<p>No email list, or not on social media? No problem. Swap in what you do have: extra posts, a teacher Facebook group or community you're part of, your podcast or YouTube channel, LinkedIn, your website, or a group chat with teacher friends.</p>"),
