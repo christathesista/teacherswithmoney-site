@@ -259,15 +259,16 @@ SPEAKER_TRACKS = {
         INTRO="This page is the big-picture overview of speaking at the very first Teachers With Money Summit: what the weekend is, what's in it for you, and what I'd ask of you.",
         ROLE_OVERVIEW="",
         ITEM="session",
-        FREEBIE_BENEFIT="Your session ends with a quick pitch for your freebie, so every educator who loves what you taught can join your list right then, while they're excited about you.",
-        ASK_BASICS=("<p>Your bio, headshot, links and the freebie you'll mention in your session. I'll use them to build your spot on the Summit page and brag about you properly.</p>"
-                    "<p>New to freebies? It's anything free your audience can grab in exchange for their email address, like a checklist, a guide or a mini course. It's how attendees join your list.</p>"
-                    "<p>No email list yet? That's okay! Offer something of value to attendees anyway, like a free resource or a link to where they can keep learning from you.</p>"),
+        FREEBIE_BENEFIT="End your session with a minute or two inviting attendees to connect with you: your freebie, your socials or your website. That same link goes on your session page so attendees can find you after the weekend. We don't share attendee email addresses, so your link is how they join your world.",
+        ASK_BASICS=("<p>One short form I'll email you after your yes (about 15 minutes): sign the speaker agreement, then send your session title, what attendees will learn, your bio, your headshot and your links.</p>"
+                    "<p>Your link is the ONE place you'll invite attendees at the end of your session. It can be a freebie (a free resource like a checklist or guide that people get by joining your email list), your Instagram or LinkedIn, your website, or a booking page. No freebie or email list? Totally fine. Pick the place you'd most like people to find you.</p>"),
         ASK_SESSION=("<h3>Your session</h3>"
                      "<p>One pre-recorded session, 20 minutes max. Teach one thing attendees can actually use, and end with a clear next step they can take. Slides, talking to the camera or a mix of both all work.</p>"
-                     "<p>At the end, you can pitch your freebie. A minute or two is plenty.</p>"
+                     "<p>You keep full ownership of your session. Please use only music and images you have the rights to, and skip third-party logos (your own logo is great!).</p>"
+                     "<p>At the end, invite attendees to connect with you (your freebie, socials or website). A minute or two is plenty.</p>"
                      "<p>Would a conversation feel easier? We can record your session as an interview with me instead!</p>"),
-        ASK_PROMO="<p>At least 2 emails to your list and 3 social posts or stories, each sharing your affiliate link. I'll send you swipe copy and graphics, so it's mostly copy and paste.</p>",
+        ASK_PROMO=("<p>At least 2 emails and 3 social posts or stories sharing the Summit, with your affiliate link if you have one. I'll send you swipe copy and graphics, so it's mostly copy and paste.</p>"
+                   "<p>No email list, or not on social media? No problem. Swap in what you do have: extra posts, a teacher Facebook group or community you're part of, your podcast or YouTube channel, LinkedIn, your website, or a group chat with teacher friends.</p>"),
         TIMELINE_SESSION="Your session is due",
     ),
     "speakers/moments": dict(
@@ -278,14 +279,15 @@ SPEAKER_TRACKS = {
         ROLE_OVERVIEW=("<h3>Where you come in</h3>"
                        "<p>Between the longer sessions, the weekend has 5-minute moments: short pauses, like a guided breathing reset or a quick meditation, that help attendees reset before the next session. Money can feel heavy, and these moments make room for that. You'd lead one of them!</p>"),
         ITEM="moment",
-        FREEBIE_BENEFIT="You can mention your freebie at the end of your moment, so every educator who loved it can join your list right then.",
-        ASK_BASICS=("<p>Your bio, headshot, links and the freebie you'd like to mention, if you have one. I'll use them to build your spot on the Summit page and brag about you properly.</p>"
-                    "<p>New to freebies? It's anything free your audience can grab in exchange for their email address, like a checklist, a guide or a short audio. It's how attendees join your list.</p>"
-                    "<p>No email list yet? That's okay! Offer something of value to attendees anyway, like a free resource or a link to where they can keep learning from you.</p>"),
+        FREEBIE_BENEFIT="End your moment with a minute or two inviting attendees to connect with you: your freebie, your socials or your website. That same link goes on your session page so attendees can find you after the weekend. We don't share attendee email addresses, so your link is how they join your world.",
+        ASK_BASICS=("<p>One short form I'll email you after your yes (about 15 minutes): sign the speaker agreement, then send your session title, what attendees will learn, your bio, your headshot and your links.</p>"
+                    "<p>Your link is the ONE place you'll invite attendees at the end of your moment. It can be a freebie (a free resource like a checklist or guide that people get by joining your email list), your Instagram or LinkedIn, your website, or a booking page. No freebie or email list? Totally fine. Pick the place you'd most like people to find you.</p>"),
         ASK_SESSION=("<h3>Your 5-minute moment</h3>"
                      "<p>One pre-recorded moment, about 5 minutes. Guide attendees through it as if they're right there with you. Talking to the camera works great.</p>"
-                     "<p>At the end, you're welcome to mention your freebie.</p>"),
-        ASK_PROMO="<p>At least 1 email to your list and 2 social posts or stories, each sharing your affiliate link. I'll send you swipe copy and graphics, so it's mostly copy and paste.</p>",
+                     "<p>You keep full ownership of your session. Please use only music and images you have the rights to, and skip third-party logos (your own logo is great!).</p>"
+                     "<p>At the end, you're welcome to invite attendees to connect with you.</p>"),
+        ASK_PROMO=("<p>At least 1 email and 2 social posts or stories sharing the Summit, with your affiliate link if you have one. I'll send you swipe copy and graphics, so it's mostly copy and paste.</p>"
+                   "<p>No email list, or not on social media? No problem. Swap in what you do have: extra posts, a teacher Facebook group or community you're part of, your podcast or YouTube channel, LinkedIn, your website, or a group chat with teacher friends.</p>"),
         TIMELINE_SESSION="Your 5-minute moment is due",
     ),
 }
